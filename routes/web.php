@@ -13,6 +13,9 @@
 Route::get('create_resume', function(){
     return view('candidate_create-resume');
 });
+Route::get('candidate_signup', function(){
+    return view('candidate_signup');
+});
 Route::get('/', function () {
     return view('welcome');
 });

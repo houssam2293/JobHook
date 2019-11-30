@@ -25,6 +25,9 @@ Route::get('profile_modify', function(){
 Route::get('acceuil', function(){
     return view('acceuil');
 });
+Route::get('jobs-list', function(){
+    return view('recruiter_jobs-list');
+});
 Route::get('/', function () {
     return view('welcome');
 });

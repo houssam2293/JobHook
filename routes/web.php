@@ -16,6 +16,9 @@ Route::get('create_resume', function(){
 Route::get('candidate_signup', function(){
     return view('candidate_signup');
 });
+Route::get('company_signup', function(){
+    return view('company_signup');
+});
 Route::get('/', function () {
     return view('welcome');
 });

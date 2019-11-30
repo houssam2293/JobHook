@@ -1,3 +1,6 @@
+@extends('layouts.master')
+@Section('content')
+
 	<section class="manage-resume gray">
 		<div class="container">
 			<div class="col-md-12 col-sm-12">
@@ -108,3 +111,4 @@
 			</div>
 		</div>
 	</section>
+@endsection

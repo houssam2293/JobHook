@@ -1,4 +1,4 @@
-@yield('content')
+
 <!-- Scripts
     ================================================== -->
     <script type="text/javascript" src="assets/plugins/js/jquery.min.js"></script>
@@ -17,7 +17,6 @@
     <script type="text/javascript" src="assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
     <script src="assets/js/custom.js"></script>
 
-</div>TESTBTEST
 </body>
 
 <!-- new-job-detail41:45-->

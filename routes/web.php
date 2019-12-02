@@ -25,12 +25,16 @@ Route::get('profile_modify', function(){
 Route::get('jobs-list', function(){
     return view('recruiter_jobs-list');
 });
+Route::get('candidats-list', function(){
+    return view('list-candidat');
+});
 Route::get('create-job-offer', function(){
     return view('add_offer_recruiter');
 });
 Route::get('/', function () {
     return view('acceuil');
 });
+Route::get('/candidats-list','OfferController@index');
 
 Auth::routes();
 

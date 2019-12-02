@@ -3,6 +3,11 @@
 
 
 			<!-- Title Header End -->
+			<section class="inner-header-title" style="background-image:url(assets/img/banner-2.jpg);">
+				<div class="container">
+				<h1> </h1>
+			</div>
+						</section>
 
 			<!-- Manage Company List Start -->
 			<section class="manage-company gray">
@@ -44,6 +49,7 @@
 						<div class="col-md-12">
 							<article>
 								<div class="mng-company">
+									<a href="{{ URL::action('OfferController@index') }}">
 									<div class="col-md-2 col-sm-2">
 										<div class="mng-company-pic">
 											<img src="assets/img/com-1.jpg" class="img-responsive" alt="" />
@@ -60,6 +66,7 @@
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>
 									</div>
+									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
 											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
@@ -71,6 +78,7 @@
 
 							<article>
 								<div class="mng-company">
+									<a href="{{ URL::action('OfferController@index') }}">
 									<div class="col-md-2 col-sm-2">
 										<div class="mng-company-pic">
 											<img src="assets/img/com-2.jpg" class="img-responsive" alt="" />
@@ -87,6 +95,7 @@
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>
 									</div>
+									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
 											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
@@ -98,6 +107,7 @@
 
 							<article>
 								<div class="mng-company">
+									<a href="{{ URL::action('OfferController@index') }}">
 									<div class="col-md-2 col-sm-2">
 										<div class="mng-company-pic">
 											<img src="assets/img/com-3.jpg" class="img-responsive" alt="" />
@@ -114,6 +124,7 @@
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>
 									</div>
+									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
 											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
@@ -125,6 +136,7 @@
 
 							<article>
 								<div class="mng-company">
+									<a href="{{ URL::action('OfferController@index') }}">
 									<div class="col-md-2 col-sm-2">
 										<div class="mng-company-pic">
 											<img src="assets/img/com-4.jpg" class="img-responsive" alt="" />
@@ -141,6 +153,7 @@
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>
 									</div>
+									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
 											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
@@ -152,6 +165,7 @@
 
 							<article>
 								<div class="mng-company">
+									<a href="{{ URL::action('OfferController@index') }}">
 									<div class="col-md-2 col-sm-2">
 										<div class="mng-company-pic">
 											<img src="assets/img/com-5.jpg" class="img-responsive" alt="" />
@@ -168,6 +182,7 @@
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>
 									</div>
+									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
 											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
@@ -179,6 +194,7 @@
 
 							<article>
 								<div class="mng-company">
+									<a href="{{ URL::action('OfferController@index') }}">
 									<div class="col-md-2 col-sm-2">
 										<div class="mng-company-pic">
 											<img src="assets/img/com-6.jpg" class="img-responsive" alt="" />
@@ -195,6 +211,7 @@
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>
 									</div>
+									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
 											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
@@ -206,6 +223,7 @@
 
 							<article>
 								<div class="mng-company">
+									<a href="{{ URL::action('OfferController@index') }}">
 									<div class="col-md-2 col-sm-2">
 										<div class="mng-company-pic">
 											<img src="assets/img/com-7.jpg" class="img-responsive" alt="" />
@@ -222,6 +240,7 @@
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>
 									</div>
+									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
 											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>

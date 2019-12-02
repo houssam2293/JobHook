@@ -22,14 +22,14 @@ Route::get('company_signup', function(){
 Route::get('profile_modify', function(){
     return view('candidate_modify-profile');
 });
-Route::get('acceuil', function(){
-    return view('acceuil');
-});
 Route::get('jobs-list', function(){
     return view('recruiter_jobs-list');
 });
+Route::get('create-job-offer', function(){
+    return view('add_offer_recruiter');
+});
 Route::get('/', function () {
-    return view('welcome');
+    return view('acceuil');
 });
 
 Auth::routes();

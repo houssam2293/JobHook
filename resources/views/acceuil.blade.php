@@ -3,7 +3,7 @@
 <!-- index35:56-->
 <head>
     <!-- Basic Page Needs==================================================-->
-    <title>JobHook</title>
+    <title>Job Hook</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- CSS==================================================-->
@@ -17,7 +17,7 @@
         <div class="container">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"><i
                     class="fa fa-bars"></i></button>
-            <div class="navbar-header"><a class="navbar-brand" href="index-2.html"><img src="assets/img/logo-white.png"
+            <div class="navbar-header"><a class="navbar-brand" href="acceuil"><img src="assets/img/logo-white.png"
                                                                                         class="logo logo-display"
                                                                                         alt=""><img
                     src="assets/img/logo-white.png" class="logo logo-scrolled" alt=""></a></div>
@@ -441,5 +441,5 @@
                 </div>
             </div>
         </div>
-    </section>        
+    </section>
 @include('includes.footer')

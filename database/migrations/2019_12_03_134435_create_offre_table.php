@@ -14,7 +14,24 @@ class CreateOffreTable extends Migration
     public function up()
     {
         Schema::create('offre', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->unsignedBigIncrements('offreId');
+            $table->string('intitule');
+            $table->string('type');
+            $table->unsignedBigInteger('domaineId');
+            $table->foreign('domaineId')->references('domaineId')->on('domaine');
+            $table->string('diplomeRequis');
+            $table->integer('anneeExperience');
+            $table->string('lieu');
+            $table->string('remuneration');
+            $table->date('dateDepot');
+            $table->date('dateDebut');
+            $table->string('duree');
+            $table->string('status');
+            $table->unsignedBigInteger('competencesId');
+            $table->foreign('conpetencesId')->references('conpetencesId')->on('conpetences');
+            $table->string('description');
+            $table->unsignedBigInteger('recruteurId');
+            $table->foreign('recruteurId')->references('recruteurId')->on('recruteur');
             $table->timestamps();
         });
     }

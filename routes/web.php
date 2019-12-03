@@ -34,11 +34,15 @@ Route::get('create-job-offer', function(){
 Route::get('modify-job-offer', function(){
     return view('modifier_offre_recruiter');
 });
+Route::get('show-detail', function(){
+    return view('candidat_details');
+});
 Route::get('/', function () {
     return view('acceuil');
 });
 Route::get('/candidats-list','OfferController@index');
 Route::get('/offer-modification','OfferController@modify');
+Route::get('/detail-candidat','OfferController@showDetail');
 
 Auth::routes();
 

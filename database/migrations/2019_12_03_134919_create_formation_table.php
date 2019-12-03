@@ -14,7 +14,15 @@ class CreateFormationTable extends Migration
     public function up()
     {
         Schema::create('formation', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('formationId');
+            $table->string('diplome');
+            $table->unsignedBigInteger('domaineId');
+            $table->string('lieu');
+            $table->date('dateDebut');
+            $table->date('dateFin');
+            $table->unsignedBigInteger('cvId');
+            $table->foreign('domaineId')->references('domaineId')->on('domaine');
+            $table->foreign('cvId')->references('cvId')->on('cv');
             $table->timestamps();
         });
     }

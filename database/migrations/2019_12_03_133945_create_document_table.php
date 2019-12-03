@@ -14,8 +14,13 @@ class CreateDocumentTable extends Migration
     public function up()
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+          $table->unsignedBigIncrements('documentId');
+          $table->string('type');
+          $table->string('nom');
+          $table->string('url');
+          $table->unsignedBigInteger('cvId');
+          $table->foreign('cvId')->references('cvId')->on('cv');
+          $table->timestamps();
         });
     }
 

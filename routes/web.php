@@ -13,6 +13,9 @@
 Route::get('create_resume', function(){
     return view('candidate_create-resume');
 });
+Route::get('modify_resume', function(){
+    return view('candidate_modify-resume');
+});
 Route::get('candidate_signup', function(){
     return view('candidate_signup');
 });
@@ -27,6 +30,15 @@ Route::get('acceuil', function(){
 });
 Route::get('jobs-list', function(){
     return view('recruiter_jobs-list');
+});
+Route::get('search-job', function(){
+    return view('candidate_search-job');
+});
+Route::get('search-job', function(){
+    return view('candidate_search-job');
+});
+Route::get('job-details', function () {
+    return view('candidate_search-job-details');
 });
 Route::get('/', function () {
     return view('welcome');

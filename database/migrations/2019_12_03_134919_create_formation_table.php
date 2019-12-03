@@ -21,8 +21,8 @@ class CreateFormationTable extends Migration
             $table->date('dateDebut');
             $table->date('dateFin');
             $table->unsignedBigInteger('cvId');
-            $table->foreign('domaineId')->references('domaineId')->on('domaine');
-            $table->foreign('cvId')->references('cvId')->on('cv');
+            //$table->foreign('domaineId')->references('domaineId')->on('domaine');
+            //$table->foreign('cvId')->references('cvId')->on('cv');
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ class CreateCandidatTable extends Migration
     public function up()
     {
         Schema::create('candidats', function (Blueprint $table) {
-            $table->unsignedBigIncrements('candidatId');
+            $table->bigIncrements('candidatId');
             $table->unsignedBigInteger('accountId');
             $table->string('civilite');
             $table->string('nom');
@@ -26,8 +26,8 @@ class CreateCandidatTable extends Migration
             $table->date('dateNaissance');
             $table->string('linkedin');
             $table->unsignedBigInteger('cvId');
-            $table->foreign('accountId')->references('accountId')->on('account');
-            $table->foreign('cvId')->references('cvId')->on('cv');
+            //$table->foreign('accountId')->references('accountId')->on('account');
+            //$table->foreign('cvId')->references('cvId')->on('cv');
             $table->timestamps();
         });
     }

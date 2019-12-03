@@ -18,9 +18,9 @@ class CreatePostulerTable extends Migration
             $table->unsignedBigInteger('offreId');
             $table->unsignedBigInteger('cvId');
             $table->date('datePostuler');
-            $table->foreign('offreId')->references('offreId')->on('offre');
-            $table->foreign('cvId')->references('cvId')->on('cv');
-            $table->unique('offreId','cvId');    
+            //$table->foreign('offreId')->references('offreId')->on('offre');
+            //$table->foreign('cvId')->references('cvId')->on('cv');
+            $table->unique('offreId','cvId');
             $table->timestamps();
         });
     }

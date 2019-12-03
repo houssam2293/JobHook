@@ -14,15 +14,15 @@ class CreateDiverTable extends Migration
     public function up()
     {
         Schema::create('divers', function (Blueprint $table) {
-          $table->unsignedBigIncrements('diverId');
+          $table->bigIncrements('diverId');
           $table->unsignedBigInteger('typeDiverId');
           $table->string('intitule');
           $table->string('lieu');
           $table->date('dateDebut');
           $table->date('datefin');
           $table->unsignedBigInteger('cvId');
-          $table->foreign('typeDiverId')->references('typeDiverId')->on('typeDivers');
-          $table->foreign('cvId')->references('cvId')->on('cv');
+          //$table->foreign('typeDiverId')->references('typeDiverId')->on('typeDivers');
+          //$table->foreign('cvId')->references('cvId')->on('cv');
           $table->timestamps();
         });
     }

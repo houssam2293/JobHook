@@ -14,7 +14,7 @@ class CreateTypeDiverTable extends Migration
     public function up()
     {
         Schema::create('typeDivers', function (Blueprint $table) {
-          $table->unsignedBigIncrements('typeDiverId');
+          $table->bigIncrements('typeDiverId');
           $table->string('nom');
           $table->timestamps();
         });

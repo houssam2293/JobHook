@@ -6,7 +6,7 @@
 			<!-- Header Title Start -->
 			<section class="inner-header-title blank">
 				<div class="container">
-					<h1>Modify Profile</h1>
+					<h1>Modifie Profile</h1>
 				</div>
 			</section>
 			<div class="clearfix"></div>
@@ -29,13 +29,13 @@
 						<form class="add-feild">
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Your Name">
+									<input type="text" class="form-control" placeholder="Votre Nom">
 								</div>
 							</div>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
-									<input type="email" class="form-control" placeholder="Last Name">
+									<input type="text" class="form-control" placeholder="Votre prenom">
 								</div>
 							</div>
 
@@ -43,11 +43,10 @@
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<select class="form-control input-lg">
-										<option>Civility</option>
+										<option>Civilité</option>
 										<option>M.</option>
 										<option>Mme</option>
-										<option>Dr.</option>
-										<option>Pr.</option>
+										<option>Mlle</option>
 									</select>
 								</div>
 							</div>
@@ -59,7 +58,7 @@
 						<div class="detail pannel-footer">
 							<div class="col-md-12 col-sm-12">
 								<div class="detail-pannel-footer-btn pull-right">
-									<a href="#" class="footer-btn choose-cover">Choose Cover Image</a>
+									<a href="#" class="footer-btn choose-cover">Chosire ta photo</a>
 								</div>
 							</div>
 						</div>
@@ -74,40 +73,34 @@
 				<div class="container">
 					<div class="row bottom-mrg extra-mrg">
 						<form>
-							<h2 class="detail-title">General Information</h2>
+							<h2 class="detail-title">Informations General</h2>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-									<input type="text" class="form-control" placeholder="Email Address">
+									<input type="text" class="form-control" placeholder="Votre Email">
 								</div>
 							</div>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-phone"></i></span>
-									<input type="text" class="form-control" placeholder="Phone Number">
+									<input type="text" class="form-control" placeholder="Numero de Tel">
 								</div>
 							</div>
 
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-globe"></i></span>
-									<input type="text" class="form-control" placeholder="Website Address">
-								</div>
-							</div>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-									<input type="text" class="form-control" placeholder="Location: Algeria DZ, Tlemcen..">
+									<input type="text" class="form-control" placeholder="Adresse: Algeria DZ, Tlemcen..">
 								</div>
 							</div>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-birthday-cake"></i></span>
-									<input type="text" id="dob" data-lang="en" data-large-mode="true" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" readonly="">
+									<input type="text" id="dob" data-lang="en" data-large-mode="true" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" readonly="">{{-- error here --}}
 								</div>
 							</div>
 
@@ -130,27 +123,14 @@
 					<div class="row bottom-mrg extra-mrg">
 						<form>
 							<h2 class="detail-title">Social Profile</h2>
-
-							<!-- <div class="col-md-6 col-sm-6">
+{{-- 
+							 <div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-facebook"></i></span>
 									<input type="text" class="form-control" placeholder="Profile Link">
 								</div>
-							</div>
+							</div> --}}
 
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-twitter"></i></span>
-									<input type="text" class="form-control" placeholder="Profile Link">
-								</div>
-							</div> -->
-
-							<!-- <div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-instagram"></i></span>
-									<input type="text" class="form-control" placeholder="Profile Link">
-								</div>
-							</div> -->
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
@@ -159,12 +139,7 @@
 								</div>
 							</div>
 
-							<!-- <div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-dribbble"></i></span>
-									<input type="text" class="form-control" placeholder="Profile Link">
-								</div>
-							</div> -->
+							
 
 						</form>
 					</div>
@@ -177,7 +152,8 @@
 					</div>
 					<div class="row bottom-mrg extra-mrg" >
 						<form>
-							<h2 class="detail-title">Resumes List</h2>
+							<h2 class="detail-title">Votre cv</h2>
+							
 							<div class="col-md-12 col-sm-12">
 
 							</div>
@@ -194,14 +170,14 @@
 									</div> -->
 									<div class="col-md-3 col-sm-3">
 										<div class="mng-resume-name">
-											<h4><span class="cand-designation">Web Developer</span></h4>
+											<h4><span class="cand-designation">Master 2, Developeer Web</span></h4>
 											<span class="cand-status">Tlemcen, Algerie</span>
 										</div>
 									</div>
 									<div class="col-md-4 col-sm-4">
 										<div class="per-hour-rate">
 											<!-- <p><i class="fa fa-money"></i></p> -->
-											<p>Naltis - Tlemcen</p>
+											<p>Master2 - Tlemcen</p>
 										</div>
 									</div>
 									<!-- <div class="col-md-2 col-sm-2">
@@ -217,45 +193,7 @@
 									</div>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-resume-action">
-											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
-											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</article>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-12">
-							<article>
-								<div class="mng-resume" style="border-left: 3px solid #07b107;">
-									<div class="col-md-3 col-sm-3">
-										<div class="mng-resume-name">
-											<h4><span class="cand-designation">Database Administrator</span></h4>
-											<span class="cand-status">Algerie</span>
-										</div>
-									</div>
-									<!-- <div class="col-md-2 col-sm-2">
-										<div class="mng-resume-pic">
-
-										</div>
-									</div> -->
-
-									<div class="col-md-4 col-sm-4">
-										<div class="per-hour-rate">
-											<!-- <p><i class="fa fa-money"></i></p> -->
-											<p>Master Degree - University of Abou Bakr Belkaid</p>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-4">
-										<div class="mng-employee-skill">
-											<span>sql</span><span>linux</span><span>oracle</span>
-										</div>
-									</div>
-									<div class="col-md-1 col-sm-1">
-										<div class="mng-resume-action">
-											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+											<a href="{{ ('modify_resume') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
 											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
 										</div>
 									</div>

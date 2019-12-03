@@ -22,6 +22,12 @@ Route::get('company_signup', function(){
 Route::get('profile_modify', function(){
     return view('candidate_modify-profile');
 });
+Route::get('company_modify', function(){
+    return view('recruiter_modify-company');
+});
+Route::get('acceuil', function(){
+    return view('acceuil');
+});
 Route::get('jobs-list', function(){
     return view('recruiter_jobs-list');
 });

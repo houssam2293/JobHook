@@ -14,8 +14,11 @@ class CreateListCompetenceCandidatTable extends Migration
     public function up()
     {
         Schema::create('listCompetencesCandidat', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+          $table->unsignedBigIncrements('competenceId');
+          $table->unsignedBigIncrements('cvId');
+          $table->foreign('competenceId')->references('competenceId')->on('competences');
+          $table->foreign('cvId')->references('cvId')->on('cv');
+          $table->timestamps();
         });
     }
 

@@ -59,7 +59,7 @@
                             <div class="input-group"><input type="text" class="form-control right-bor" id="joblist"
                                                             placeholder="Domaine, Competences, Companies"></div>
                         </div>
-                        <div class="col-md-3 no-padd">
+                        <div class="col-md-5 no-padd">
                             <div class="input-group">
                                 <select id="choose-city" class="form-control">
                                     <option>Choisissez la ville</option>

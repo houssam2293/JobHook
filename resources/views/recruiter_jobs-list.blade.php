@@ -69,7 +69,7 @@
 									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
-											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
 											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
 										</div>
 									</div>
@@ -98,7 +98,7 @@
 									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
-											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
 											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
 										</div>
 									</div>
@@ -127,7 +127,7 @@
 									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
-											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
 											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
 										</div>
 									</div>
@@ -156,7 +156,7 @@
 									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
-											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
 											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
 										</div>
 									</div>
@@ -185,7 +185,7 @@
 									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
-											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
 											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
 										</div>
 									</div>
@@ -214,7 +214,7 @@
 									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
-											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
 											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
 										</div>
 									</div>
@@ -243,7 +243,7 @@
 									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
-											<a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
 											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
 										</div>
 									</div>

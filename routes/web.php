@@ -31,10 +31,14 @@ Route::get('candidats-list', function(){
 Route::get('create-job-offer', function(){
     return view('add_offer_recruiter');
 });
+Route::get('modify-job-offer', function(){
+    return view('modifier_offre_recruiter');
+});
 Route::get('/', function () {
     return view('acceuil');
 });
 Route::get('/candidats-list','OfferController@index');
+Route::get('/offer-modification','OfferController@modify');
 
 Auth::routes();
 

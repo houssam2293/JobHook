@@ -25,4 +25,8 @@ class OfferController extends Controller
     {
         return view('list-candidat');
     }
+    public function modify()
+    {
+      return view('modifier_offre_recruiter');
+    }
 }

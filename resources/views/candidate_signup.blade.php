@@ -36,7 +36,7 @@
 												<input type="password" class="form-control" placeholder="Confirmez le mot de passe">
 											</div>
 											<!-- Change this to a button or input when using this as a form -->
-											<a href="" class="btn btn-login">Inscription</a>
+											<a href="profile_modify" class="btn btn-login">Inscription</a>
 										</fieldset>
 									</form>
 									<ul class="social-login">

@@ -33,7 +33,7 @@
 												<input type="password" class="form-control" placeholder="Confirmer le mot de passe">
 											</div>
 											<!-- Change this to a button or input when using this as a form -->
-											<a href="" class="btn btn-login">Inscription</a>
+											<a href="company_modify" class="btn btn-login">Inscription</a>
 										</fieldset>
 									</form>
 								</div>

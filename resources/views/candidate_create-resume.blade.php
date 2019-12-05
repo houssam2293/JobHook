@@ -98,7 +98,10 @@
 							<div class="multi-box">
 								<div class="dublicat-box">
 									<div class="col-md-12 col-sm-12">
-										<input name="typediver" type="text" class="form-control" placeholder="Type..eg Bénévol">
+										<input name="intitileDiver" type="text" class="form-control" placeholder="intitule">
+									</div>
+									<div class="col-md-12 col-sm-12">
+										<input name="typeDiver" type="text" class="form-control" placeholder="Type..eg Bénévol">
 									</div>
 									<div class="col-md-12 col-sm-12">
 										<input name="diver_lieu" type="text" class="form-control" placeholder="Lieu..eg Centre de soin">
@@ -107,19 +110,19 @@
 									<div class="col-md-6 col-sm-6">
 										<div class="input-group">
 											<span class="input-group-addon">Debut</span>
-											<input name="divers_date_debut" type="text" id="exp-start" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control">
+											<input name="diver_date_debut" type="text" id="exp-start" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control">
 										</div>
 									</div>
 
 									<div class="col-md-6 col-sm-6">
 										<div class="input-group">
 											<span class="input-group-addon">Fin</span>
-											<input name="diversdate_fin" type="text" id="exp-end" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control">
+											<input name="diver_date_fin" type="text" id="exp-end" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control">
 										</div>
 									</div>
 
 									<div class="col-md-12 col-sm-12 ">
-										<textarea class="form-control " placeholder="Remarques" style="margin-top: 15px 
+										<textarea name="diver_description" class="form-control " placeholder="Remarques" style="margin-top: 15px 
 										"></textarea>
 									</div>
 

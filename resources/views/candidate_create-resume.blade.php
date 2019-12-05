@@ -64,13 +64,13 @@
 										<input name="intitule" type="text" class="form-control" placeholder="Position, e.g. Designeur du WEB">
 									</div>
 									<div class="col-md-12 col-sm-12">
-										<input name="lieu" type="text" class="form-control" placeholder="Lieu, eg Sonelgaz">
+										<input name="exp_lieu" type="text" class="form-control" placeholder="Lieu, eg Sonelgaz">
 									</div>
 
 									<div class="col-md-6 col-sm-6">
 										<div class="input-group">
 											<span class="input-group-addon">Debut</span>
-											<input name="ex_date_debut" type="text" id="exp-start" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" readonly="">
+											<input name="exp_date_debut" type="text" id="exp-start" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" readonly="">
 										</div>
 									</div>
 

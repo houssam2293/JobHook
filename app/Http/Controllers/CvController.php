@@ -1,5 +1,5 @@
 <?php
-
+// author: Aboura Sid-Ahmed
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -9,6 +9,8 @@ use DB;
 use app\Domaine;
 use app\Formation;
 use app\Http\Controllers\FormationController;
+use app\Experience;
+use app\Http\Controllers\ExperienceController;
 class CvController extends Controller
 {
     public function create(){
@@ -21,7 +23,8 @@ class CvController extends Controller
 			$cv->titre=$request->input('titre');
             $cv->candidatId=1;
 			$cv->save();
-           app('App\Http\Controllers\FormationController')->store($request,$cv->id);
+            app('App\Http\Controllers\FormationController')->store($request,$cv->id);
+            app('App\Http\Controllers\ExperienceController')->store($request,$cv->id);
 		return redirect('profile_modify');
     }
 /*

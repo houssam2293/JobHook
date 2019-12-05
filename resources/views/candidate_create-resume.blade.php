@@ -3,14 +3,16 @@
 
 	<section class="manage-resume gray">
 		<div class="container">
-			<form action="{{('profile_modify')}}">
+			<form method="POST" action="{{('candidate_create-resume')}}">
+				{{csrf_field()}}
+
 			<div class="col-md-12 col-sm-12">
 				<div class="full-card">
 
 					<div class="row row-bottom mrg-0">
 						<h2 class="detail-title">Titre du job</h2>
 						<div class="col-md-12 col-sm-12">
-							<input type="text" class="form-control" placeholder="Titre, e.g. Ingenieur civil">
+							<input name="titre" type="text" class="form-control" placeholder="Titre, e.g. Ingenieur civil">
 						</div>
 					</div>
 

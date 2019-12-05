@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\cv;
+use DB;
+use app\Domaine;
 use app\Formation;
 use app\Http\Controllers\FormationController;
 class CvController extends Controller
@@ -19,8 +21,8 @@ class CvController extends Controller
 			$cv->titre=$request->input('titre');
             $cv->candidatId=1;
 			$cv->save();
-            app('App\Http\Controllers\FormationController')->store($request);
-		return redirect('candidate_modify-profiel');
+           app('App\Http\Controllers\FormationController')->store($request,$cv->id);
+		return redirect('profile_modify');
     }
 /*
 	public function edit($id){

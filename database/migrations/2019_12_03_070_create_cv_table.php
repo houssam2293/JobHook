@@ -15,6 +15,8 @@ class CreateCvTable extends Migration
     {
         Schema::create('cvs', function (Blueprint $table) {
             $table->bigIncrements('cvId');
+            $table->unsignedBigInteger('candidatId');
+            $table->foreign('candidatId')->references('candidatId')->on('candidats');
             $table->string('titre');
             $table->timestamps();
         });

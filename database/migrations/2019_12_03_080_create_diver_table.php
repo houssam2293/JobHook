@@ -21,8 +21,8 @@ class CreateDiverTable extends Migration
           $table->date('dateDebut');
           $table->date('datefin');
           $table->unsignedBigInteger('cvId');
-          //$table->foreign('typeDiverId')->references('typeDiverId')->on('typeDivers');
-          //$table->foreign('cvId')->references('cvId')->on('cv');
+          $table->foreign('typeDiverId')->references('typeDiverId')->on('typeDivers');
+          $table->foreign('cvId')->references('cvId')->on('cvs');
           $table->timestamps();
         });
     }

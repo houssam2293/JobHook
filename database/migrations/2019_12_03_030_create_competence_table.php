@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDomaineTable extends Migration
+class CreateCompetenceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateDomaineTable extends Migration
      */
     public function up()
     {
-        Schema::create('domaine', function (Blueprint $table) {
-            $table->bigIncrements('domaineId');
+        Schema::create('competences', function (Blueprint $table) {
+            $table->bigIncrements('competenceId');
             $table->string('nom');
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class CreateDomaineTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('domaine');
+        Schema::dropIfExists('competences');
     }
 }

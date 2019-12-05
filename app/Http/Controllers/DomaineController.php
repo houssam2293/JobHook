@@ -12,12 +12,8 @@ class DomaineController extends Controller
 	
   public function store($domaine){
 
-		 	//$domaine =new Domaine();
-			//$domaine->nom = $request->input('domain');
-			//$domain = Domaine::firstOrCreate(['nom' => $domaine]);
-			///dd($domain->id);
-		 	//return $domaine->id;
-			$domain = Domaine::firstOrCreate(['nom' => $domaine]);  	
+		 	
+			$domain = Domaine::firstOrCreate(['nom' => $domaine]); // insert if not exist! 	
 			 
     return $domain->id;
 	}

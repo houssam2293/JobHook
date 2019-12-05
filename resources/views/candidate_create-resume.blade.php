@@ -35,14 +35,14 @@
 									<div class="col-xs-6 col-md-6 col-sm-6">
 										<div class="input-group">
 											<span class="input-group-addon">De</span>
-											<input name="date_debut" type="text" id="edu-start" data-lang="en" data-large-mode="true" data-min-year="1990" data-max-year="2020" data-disabled-days="08/17/1990,08/18/2020" data-id="datedropper-0" data-theme="my-style" class="form-control">
+											<input name="date_debut" type="text" id="edu-start" data-lang="en" data-large-mode="true" data-min-year="1990" data-max-year="2020" data-disabled-days="08/17/1990,08/18/2020" data-id="datedropper-0" data-theme="my-style" class="form-control" placeholder="date comme: 2012-12-12">
 										</div>
 									</div>
 
 									<div class="col-xs-6 col-md-6 col-sm-6">
 										<div class="input-group">
 											<span class="input-group-addon">Jusqu'a</span>
-											<input name="date_fin" type="text" id="edu-end" data-lang="en" data-large-mode="true" data-min-year="1990" data-max-year="2020" data-disabled-days="08/17/1990,08/18/2020"data-id="datedropper-0" data-theme="my-style" class="form-control">
+											<input name="date_fin" type="text" id="edu-end" data-lang="en" data-large-mode="true" data-min-year="1990" data-max-year="2020" data-disabled-days="08/17/1990,08/18/2020"data-id="datedropper-0" data-theme="my-style" class="form-control" placeholder="date comme: 2012-12-12">
 										</div>
 									</div>
 

@@ -20,7 +20,6 @@ class FormationController extends Controller
 
             $formation->cvId=$cv;
 			$formation->save();
-			//TODO domain id
 
 		return ;
     }

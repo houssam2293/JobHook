@@ -5,29 +5,32 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\cv;
+use app\Formation;
+use app\Http\Controllers\FormationController;
 class CvController extends Controller
 {
     public function create(){
-		return view('candidate_create-resume');
+		return view('candidate_create');
 	}
 
 	public function store(Request $request){
 
 			$cv=new Cv();
 			$cv->titre=$request->input('titre');
+            $cv->candidatId=1;
 			$cv->save();
-		return redirect('candidate_modify-profie');
+            app('App\Http\Controllers\FormationController')->store($request);
+		return redirect('candidate_modify-profiel');
     }
 /*
 	public function edit($id){
         $cv = Cv::find($id);
         return view('cv.edit',['cv' => $cv]);
-    }
+    
 
 	public function update(Request $request,$id){
         $cv = Cv::find($id);
         $cv->titre=$request->input('titre');
-        $cv->presentation=$request->input('presentation');
         $cv->save();
         return redirect('cvs');
     }

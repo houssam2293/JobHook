@@ -120,11 +120,11 @@
 											<input name="diver_date_fin" type="text" id="exp-end" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control">
 										</div>
 									</div>
-
+{{-- 
 									<div class="col-md-12 col-sm-12 ">
 										<textarea name="diver_description" class="form-control " placeholder="Remarques" style="margin-top: 15px 
 										"></textarea>
-									</div>
+									</div> --}}
 
 									<button type="button" class="btn remove-field">Supprimer</button>
 								</div>

@@ -14,7 +14,7 @@ class DomaineController extends Controller
 
 		 	
 			$domain = Domaine::firstOrCreate(['nom' => $domaine]); // insert if not exist! 	
-			 
-    return $domain->id;
+			
+    return $domain->domaineId;
 	}
 }

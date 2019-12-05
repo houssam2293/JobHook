@@ -12,6 +12,7 @@ use app\Http\Controllers\FormationController;
 use app\Experience;
 use app\Http\Controllers\ExperienceController;
 use app\Http\Controllers\DiverController;
+use app\Http\Controllers\ListCompetencesCandidatController;
 
 class CvController extends Controller
 {
@@ -22,12 +23,13 @@ class CvController extends Controller
 	public function store(Request $request){
 
 			$cv=new Cv();
-			$cv->titre=$request->input('titre');
+            $cv->titre=$request->input('titre');
             $cv->candidatId=1;
 			$cv->save();
             app('App\Http\Controllers\FormationController')->store($request,$cv->id);
             app('App\Http\Controllers\ExperienceController')->store($request,$cv->id);
             app('App\Http\Controllers\DiverController')->store($request,$cv->id);
+            app('App\Http\Controllers\ListCompetencesCandidatController')->store($request,$cv->id);
 		return redirect('profile_modify');
     }
 /*

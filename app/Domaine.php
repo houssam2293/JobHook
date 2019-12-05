@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Domaine extends Model
 {
-    //ssv
+    protected $fillable = ['nom'];
+
 }

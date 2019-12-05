@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Formation;
-use app\Domaine;
+use App\Domaine;
 use app\Http\Controllers\DomaineController;
 class FormationController extends Controller
 {
@@ -16,7 +16,7 @@ class FormationController extends Controller
             $formation->lieu=$request->input('lieu');
             $formation->dateDebut=$request->input('date_debut');
             $formation->dateFin=$request->input('date_fin');
-            $formation->domain =app('App\Http\Controllers\DomaineController')->store($request);
+            $formation->domaineId =app('App\Http\Controllers\DomaineController')->store($request->input('domain'));
 
             $formation->cvId=$cv;
 			$formation->save();

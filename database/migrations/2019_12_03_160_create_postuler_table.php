@@ -13,13 +13,13 @@ class CreatePostulerTable extends Migration
      */
     public function up()
     {
-        Schema::create('postuler', function (Blueprint $table) {
+        Schema::create('postulers', function (Blueprint $table) {
             $table->bigIncrements('postulerId');
             $table->unsignedBigInteger('offreId');
             $table->unsignedBigInteger('cvId');
             $table->date('datePostuler');
-            //$table->foreign('offreId')->references('offreId')->on('offre');
-            //$table->foreign('cvId')->references('cvId')->on('cv');
+            $table->foreign('offreId')->references('offreId')->on('offres');
+            $table->foreign('cvId')->references('cvId')->on('cvs');
             $table->unique('offreId','cvId');
             $table->timestamps();
         });

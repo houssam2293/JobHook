@@ -21,7 +21,7 @@ class CreateExperiencesTable extends Migration
           $table->date('datefin');
           $table->string('description');
           $table->unsignedBigInteger('cvId');
-          //$table->foreign('cvId')->references('cvId')->on('cv');
+          $table->foreign('cvId')->references('cvId')->on('cvs');
           $table->timestamps();
         });
     }

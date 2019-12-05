@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDocumentTable extends Migration
+class CreateListCompetenceCandidatTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateDocumentTable extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
-          $table->bigIncrements('documentId');
-          $table->string('type');
-          $table->string('nom');
-          $table->string('url');
+        Schema::create('listCompetencesCandidats', function (Blueprint $table) {
+          $table->bigIncrements('competenceId');
           $table->unsignedBigInteger('cvId');
-          //$table->foreign('cvId')->references('cvId')->on('cv');
+          $table->foreign('competenceId')->references('competenceId')->on('competences');
+          $table->foreign('cvId')->references('cvId')->on('cvs');
           $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateDocumentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('listCompetencesCandidat');
     }
 }

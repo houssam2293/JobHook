@@ -25,9 +25,7 @@ class CreateCandidatTable extends Migration
             $table->string('addresse');
             $table->date('dateNaissance');
             $table->string('linkedin');
-            $table->unsignedBigInteger('cvId');
-            //$table->foreign('accountId')->references('accountId')->on('account');
-            //$table->foreign('cvId')->references('cvId')->on('cv');
+            $table->foreign('accountId')->references('accountId')->on('accounts');
             $table->timestamps();
         });
     }

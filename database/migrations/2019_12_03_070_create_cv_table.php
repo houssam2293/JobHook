@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAccountTable extends Migration
+class CreateCvTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAccountTable extends Migration
      */
     public function up()
     {
-        Schema::create('account', function (Blueprint $table) {
-            $table->bigIncrements('accountId');
-            $table->string('type');
-            $table->string('login');
-            $table->string('password');
+        Schema::create('cvs', function (Blueprint $table) {
+            $table->bigIncrements('cvId');
+            $table->unsignedBigInteger('candidatId');
+            $table->foreign('candidatId')->references('candidatId')->on('candidats');
+            $table->string('titre');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateAccountTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('account');
+        Schema::dropIfExists('cv');
     }
 }

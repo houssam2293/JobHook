@@ -13,10 +13,10 @@ class CreateRecruteurTable extends Migration
      */
     public function up()
     {
-        Schema::create('recruteur', function (Blueprint $table) {
+        Schema::create('recruteurs', function (Blueprint $table) {
             $table->bigIncrements('recruteurId');
             $table->unsignedBigInteger('accountId');
-            //$table->foreign('accountId')->references('accountId')->on('account');
+            $table->foreign('accountId')->references('accountId')->on('accounts');
             $table->string('type');
             $table->string('nom');
             $table->string('adresse');
@@ -25,7 +25,7 @@ class CreateRecruteurTable extends Migration
             $table->string('email');
             $table->string('siteWeb');
             $table->unsignedBigInteger('contactId');
-            //$table->foreign('contactId')->references('contactId')->on('contact');
+            $table->foreign('contactId')->references('contactId')->on('contacts');
 
         });
     }

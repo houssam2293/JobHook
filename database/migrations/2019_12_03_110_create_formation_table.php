@@ -13,7 +13,7 @@ class CreateFormationTable extends Migration
      */
     public function up()
     {
-        Schema::create('formation', function (Blueprint $table) {
+        Schema::create('formations', function (Blueprint $table) {
             $table->bigIncrements('formationId');
             $table->string('diplome');
             $table->unsignedBigInteger('domaineId');
@@ -21,8 +21,8 @@ class CreateFormationTable extends Migration
             $table->date('dateDebut');
             $table->date('dateFin');
             $table->unsignedBigInteger('cvId');
-            //$table->foreign('domaineId')->references('domaineId')->on('domaine');
-            //$table->foreign('cvId')->references('cvId')->on('cv');
+            $table->foreign('domaineId')->references('domaineId')->on('domaines');
+            $table->foreign('cvId')->references('cvId')->on('cvs');
             $table->timestamps();
         });
     }

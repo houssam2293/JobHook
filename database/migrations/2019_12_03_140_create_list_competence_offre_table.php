@@ -14,10 +14,12 @@ class CreateListCompetenceOffreTable extends Migration
     public function up()
     {
         Schema::create('listCompetencesOffres', function (Blueprint $table) {
-            $table->bigIncrements('competenceId');
+            $table->bigIncrements('listCompetencesOffres');
+            $table->unsignedBigInteger('competenceId');
             $table->foreign('competenceId')->references('competenceId')->on('competences');
             $table->unsignedBigInteger('offreId');
             $table->foreign('offreId')->references('offreId')->on('offres');
+            $table->unique('competenceId', 'offreId');
             $table->timestamps();
         });
     }

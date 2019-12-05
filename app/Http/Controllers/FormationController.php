@@ -1,4 +1,5 @@
 <?php
+// author: Aboura Sid-Ahmed
 
 namespace App\Http\Controllers;
 
@@ -17,7 +18,6 @@ class FormationController extends Controller
             $formation->dateDebut=$request->input('date_debut');
             $formation->dateFin=$request->input('date_fin');
             $formation->domaineId =app('App\Http\Controllers\DomaineController')->store($request->input('domain'));
-
             $formation->cvId=$cv;
 			$formation->save();
 

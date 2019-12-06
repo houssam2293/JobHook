@@ -24,12 +24,26 @@ class CvController extends Controller
 
 			$cv=new Cv();
             $cv->titre=$request->input('titre');
+            $cv->description=$request->input('Resumer');
             $cv->candidatId=1;
 			$cv->save();
+
+            if ($request->input('diplome')) {
             app('App\Http\Controllers\FormationController')->store($request,$cv->id);
-            app('App\Http\Controllers\ExperienceController')->store($request,$cv->id);
-            app('App\Http\Controllers\DiverController')->store($request,$cv->id);
-            app('App\Http\Controllers\ListCompetencesCandidatController')->store($request,$cv->id);
+              }
+
+            if ($request->input('intitule')) {
+                app('App\Http\Controllers\ExperienceController')->store($request,$cv->id);
+            }
+            
+            if ($request->input('intitileDiver')) {
+                app('App\Http\Controllers\DiverController')->store($request,$cv->id);
+            }
+            
+            
+            if ($request->input('competences')) {
+                 app('App\Http\Controllers\ListCompetencesCandidatController')->store($request,$cv->id);
+             } 
 		return redirect('profile_modify');
     }
 /*

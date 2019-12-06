@@ -14,6 +14,9 @@
 						<div class="col-md-12 col-sm-12">
 							<input name="titre" type="text" class="form-control" placeholder="Titre, e.g. Ingenieur civil">
 						</div>
+						<div class="col-md-12 col-sm-12 ">
+								<textarea name="Resumer" class="form-control" style="margin-top: 15px" placeholder="Resumer"></textarea>
+						</div>
 					</div>
 
 					<div class="row row-bottom mrg-0">

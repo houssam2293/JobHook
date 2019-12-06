@@ -13,6 +13,10 @@
 Route::get('create_resume', function(){
     return view('candidate_create-resume');
 });
+Route::get('create_resume/create','CvController@create');
+Route::post('create_resume','CvController@store');
+
+
 Route::get('modify_resume', function(){
     return view('candidate_modify-resume');
 });

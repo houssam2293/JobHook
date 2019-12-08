@@ -25,7 +25,7 @@ class CreateCandidatTable extends Migration
             $table->string('addresse');
             $table->date('dateNaissance');
             $table->string('linkedin');
-            $table->foreign('accountId')->references('accountId')->on('accounts');
+            $table->foreign('accountId')->references('id')->on('users');
             $table->timestamps();
         });
     }

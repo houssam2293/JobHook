@@ -11,9 +11,12 @@
 			</section>
 			<div class="clearfix"></div>
 			<!-- Header Title End -->
+			<form action="{{ url('candidats/'.$candidat->id) }}" method="post" enctype="multipart/form-data">
+											<input type="hidden" name="_method" value="PUT">
+											{{ csrf_field() }}
 
 			<!-- General Detail Start -->
-			<div class="section detail-desc">
+			<section class=" full-detail">
 				<div class="container white-shadow">
 
 					<div class="row">
@@ -29,20 +32,20 @@
 						<form class="add-feild">
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Votre Nom">
+									<input type="text" class="form-control" placeholder="Votre Nom" value="{{ $candidat->nom }}">
 								</div>
 							</div>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Votre prenom">
+									<input type="text" class="form-control" placeholder="Votre prenom" value="{{ $candidat->prenom }}">
 								</div>
 							</div>
 
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
-									<select class="form-control input-lg">
+									<select class="form-control input-lg" selected="{{ $candidat->civilite }}">
 										<option>Civilité</option>
 										<option>M.</option>
 										<option>Mme</option>
@@ -65,7 +68,7 @@
 					</div>
 
 				</div>
-			</div>
+			</section>
 			<!-- General Detail End -->
 
 			<!-- full detail SetionStart-->
@@ -78,14 +81,14 @@
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-									<input type="text" class="form-control" placeholder="Votre Email">
+									<input type="text" class="form-control" placeholder="Votre Email" value="{{ $candidat->email }}">
 								</div>
 							</div>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-phone"></i></span>
-									<input type="text" class="form-control" placeholder="Numero de Tel">
+									<input type="text" class="form-control" placeholder="Numero de Tel" value="{{ $candidat->telephone }}">
 								</div>
 							</div>
 
@@ -93,7 +96,7 @@
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-									<input type="text" class="form-control" placeholder="Adresse: Algeria DZ, Tlemcen..">
+									<input type="text" class="form-control" placeholder="Adresse" value="{{ $candidat->addresse }}">
 								</div>
 							</div>
 
@@ -123,11 +126,11 @@
 					<div class="row bottom-mrg extra-mrg">
 						<form>
 							<h2 class="detail-title">Social Profile</h2>
-{{-- 
+{{--
 							 <div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-facebook"></i></span>
-									<input type="text" class="form-control" placeholder="Profile Link">
+									<input type="text" class="form-control" placeholder="Profile Link" >
 								</div>
 							</div> --}}
 
@@ -135,25 +138,25 @@
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-linkedin"></i></span>
-									<input type="text" class="form-control" placeholder="Profile Link">
+									<input type="text" class="form-control" placeholder="Profile Link" value="{{ $candidat->linkedin }}">
 								</div>
 							</div>
 
-							
+
 
 						</form>
 					</div>
 					<div class="row bottom-mrg extra-mrg">
 						<form>
 							<div class="col-md-12">
-								<button class="btn btn-success btn-primary small-btn">Save Changes</button>
+								<button type="submit" class="btn btn-success btn-primary small-btn">Save Changes</button>
 							</div>
 						</form>
 					</div>
 					<div class="row bottom-mrg extra-mrg" >
 						<form>
 							<h2 class="detail-title">Votre cv</h2>
-							
+
 							<div class="col-md-12 col-sm-12">
 
 							</div>
@@ -204,4 +207,5 @@
 				</div>
 				</div>
 			</section>
+			</form>
       @endsection

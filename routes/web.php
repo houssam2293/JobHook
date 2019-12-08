@@ -22,9 +22,9 @@ Route::get('candidate_signup', function(){
 Route::get('company_signup', function(){
     return view('company_signup');
 });
-Route::get('profile_modify', function(){
-    return view('candidate_modify-profile');
-});
+// Route::get('profile_modify', function(){
+//     return view('candidate_modify-profile');
+// });
 Route::get('company_modify', function(){
     return view('recruiter_modify-company');
 });
@@ -60,6 +60,12 @@ Route::get('/candidats-list','OfferController@index');
 Route::get('/offer-modification','OfferController@modify');
 Route::get('/detail-candidat','OfferController@showDetail');
 
+Route::resource('candidats', 'CandidatController');
+Route::resource('recruteurs', 'RecruteurController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::get('/candidats', 'CandidatController@index')->name('candidats')->middleware('candidat');
+//Route::get('/recruteur', 'RecruteurController@index')->name('recruteur')->middleware('recruteur');

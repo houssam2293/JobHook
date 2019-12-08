@@ -20,22 +20,22 @@
 								<div class="col-md-4 col-sm-5">
 									<div class="filter-form">
 										<div class="input-group">
-											<input type="text" class="form-control" placeholder="Search…">
+											<input type="text" class="form-control" placeholder="Recherche">
 											<span class="input-group-btn">
-												<button type="button" class="btn btn-default">Go</button>
+												<button type="button" class="btn btn-default">Trouver</button>
 											</span>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-8 col-sm-7">
 									<div class="short-by pull-right">
-										Short By
+										Trier par
 										<div class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu déroulant <i class="fa fa-angle-down" aria-hidden="true"></i></a>
 										<ul class="dropdown-menu">
-											<li><a href="#">Short By Date</a></li>
-											<li><a href="#">Short By Views</a></li>
-											<li><a href="#">Short By Popular</a></li>
+											<li><a href="#">Trier par date</a></li>
+											<li><a href="#">Trier par vues</a></li>
+											<li><a href="#">Trier par popularite</a></li>
 										</ul>
 										</div>
 									</div>
@@ -50,18 +50,14 @@
 							<article>
 								<div class="mng-company">
 									<a href="{{ URL::action('OfferController@index') }}">
-									<div class="col-md-2 col-sm-2">
-										<div class="mng-company-pic">
-											<img src="assets/img/com-1.jpg" class="img-responsive" alt="" />
-										</div>
-									</div>
-									<div class="col-md-5 col-sm-5">
+
+									<div class="col-md-6 col-sm-6">
 										<div class="mng-company-name">
 											<h4>Autodesk <span class="cmp-tagline">(Software Company)</span></h4>
-											<span class="cmp-time">10 Hour Ago</span>
+											<span class="cmp-time">Il y a 10 heures</span>
 										</div>
 									</div>
-									<div class="col-md-4 col-sm-4">
+									<div class="col-md-5 col-sm-5">
 										<div class="mng-company-location">
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>
@@ -79,18 +75,14 @@
 							<article>
 								<div class="mng-company">
 									<a href="{{ URL::action('OfferController@index') }}">
-									<div class="col-md-2 col-sm-2">
-										<div class="mng-company-pic">
-											<img src="assets/img/com-2.jpg" class="img-responsive" alt="" />
-										</div>
-									</div>
-									<div class="col-md-5 col-sm-5">
+
+									<div class="col-md-6 col-sm-6">
 										<div class="mng-company-name">
 											<h4>Google <span class="cmp-tagline">(Software Company)</span></h4>
-											<span class="cmp-time">10 Hour Ago</span>
+											<span class="cmp-time">Il y a 10 heures</span>
 										</div>
 									</div>
-									<div class="col-md-4 col-sm-4">
+									<div class="col-md-5 col-sm-5">
 										<div class="mng-company-location">
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>
@@ -108,18 +100,14 @@
 							<article>
 								<div class="mng-company">
 									<a href="{{ URL::action('OfferController@index') }}">
-									<div class="col-md-2 col-sm-2">
-										<div class="mng-company-pic">
-											<img src="assets/img/com-3.jpg" class="img-responsive" alt="" />
-										</div>
-									</div>
-									<div class="col-md-5 col-sm-5">
+
+									<div class="col-md-6 col-sm-6">
 										<div class="mng-company-name">
 											<h4>Honda <span class="cmp-tagline">(Motor Agency)</span></h4>
-											<span class="cmp-time">10 Hour Ago</span>
+											<span class="cmp-time">Il y a 10 heures</span>
 										</div>
 									</div>
-									<div class="col-md-4 col-sm-4">
+									<div class="col-md-5 col-sm-5">
 										<div class="mng-company-location">
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>
@@ -137,18 +125,14 @@
 							<article>
 								<div class="mng-company">
 									<a href="{{ URL::action('OfferController@index') }}">
-									<div class="col-md-2 col-sm-2">
-										<div class="mng-company-pic">
-											<img src="assets/img/com-4.jpg" class="img-responsive" alt="" />
-										</div>
-									</div>
-									<div class="col-md-5 col-sm-5">
+
+									<div class="col-md-6 col-sm-6">
 										<div class="mng-company-name">
 											<h4>Microsoft <span class="cmp-tagline">(Software Company)</span></h4>
-											<span class="cmp-time">10 Hour Ago</span>
+											<span class="cmp-time">Il y a 10 heures</span>
 										</div>
 									</div>
-									<div class="col-md-4 col-sm-4">
+									<div class="col-md-5 col-sm-5">
 										<div class="mng-company-location">
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>
@@ -166,18 +150,14 @@
 							<article>
 								<div class="mng-company">
 									<a href="{{ URL::action('OfferController@index') }}">
-									<div class="col-md-2 col-sm-2">
-										<div class="mng-company-pic">
-											<img src="assets/img/com-5.jpg" class="img-responsive" alt="" />
-										</div>
-									</div>
-									<div class="col-md-5 col-sm-5">
+
+									<div class="col-md-6 col-sm-6">
 										<div class="mng-company-name">
 											<h4>Skype <span class="cmp-tagline">(Software Company)</span></h4>
-											<span class="cmp-time">10 Hour Ago</span>
+											<span class="cmp-time">Il y a 10 heures</span>
 										</div>
 									</div>
-									<div class="col-md-4 col-sm-4">
+									<div class="col-md-5 col-sm-5">
 										<div class="mng-company-location">
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>
@@ -195,18 +175,14 @@
 							<article>
 								<div class="mng-company">
 									<a href="{{ URL::action('OfferController@index') }}">
-									<div class="col-md-2 col-sm-2">
-										<div class="mng-company-pic">
-											<img src="assets/img/com-6.jpg" class="img-responsive" alt="" />
-										</div>
-									</div>
-									<div class="col-md-5 col-sm-5">
+
+									<div class="col-md-6 col-sm-6">
 										<div class="mng-company-name">
 											<h4>Virtue <span class="cmp-tagline">(Development Company)</span></h4>
-											<span class="cmp-time">10 Hour Ago</span>
+											<span class="cmp-time">Il y a 10 heures</span>
 										</div>
 									</div>
-									<div class="col-md-4 col-sm-4">
+									<div class="col-md-5 col-sm-5">
 										<div class="mng-company-location">
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>
@@ -224,18 +200,14 @@
 							<article>
 								<div class="mng-company">
 									<a href="{{ URL::action('OfferController@index') }}">
-									<div class="col-md-2 col-sm-2">
-										<div class="mng-company-pic">
-											<img src="assets/img/com-7.jpg" class="img-responsive" alt="" />
+
+									<div class="col-md-6 col-sm-6">
+										<div class="mng-company-name">
+											<h4>Twitter <span class="cmp-tagline">(Social Media Company)</span></h4>
+											<span class="cmp-time">Il y a 10 heures</span>
 										</div>
 									</div>
 									<div class="col-md-5 col-sm-5">
-										<div class="mng-company-name">
-											<h4>Twitter <span class="cmp-tagline">(Social Media Company)</span></h4>
-											<span class="cmp-time">10 Hour Ago</span>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-4">
 										<div class="mng-company-location">
 											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
 										</div>

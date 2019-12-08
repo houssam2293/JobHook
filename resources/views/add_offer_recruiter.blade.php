@@ -4,7 +4,7 @@
 <!-- Header Title Start -->
 			<section class="inner-header-title blank">
 				<div class="container">
-					<h1>Create Job</h1>
+					<h1>Cree une Offre</h1>
 				</div>
 			</section>
 			<div class="clearfix"></div>
@@ -13,7 +13,6 @@
 			<!-- General Detail Start -->
 			<div class="detail-desc section">
 				<div class="container white-shadow">
-
 					<div class="row">
 						<div class="detail-pic js">
 							<div class="box">
@@ -22,29 +21,35 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="row bottom-mrg">
-						<form class="add-feild">
+						<form action="index.html" method="post" class="add-feild" >
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Job Title">
+									<input type="text" class="form-control" name="intitule" placeholder="Nom de l'offre">
 								</div>
 							</div>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Your Email">
+									<select class="form-control input-lg" name="domaine">
+										<option disabled selected>Domaine</option>
+										@forelse($Domains as $Domaine)
+										<option value="{{$Domaine->domaineId}}">{{$Domaine->name}}</option>
+										@empty
+										<option>No Data</option>
+										@endforelse
+									</select>
 								</div>
 							</div>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<select class="form-control input-lg">
-										<option>Job Type</option>
-										<option>Full Time</option>
-										<option>Part Time</option>
-										<option>Freelancer</option>
-										<option>Internship</option>
+										<option disabled selected>Type d'emploi</option>
+										<option value="CDI">CDI</option>
+										<option value="CDD">CDD</option>
+										<option value="ANEM">ANEM</option>
+										<option value="STAGE">STAGE</option>
 									</select>
 								</div>
 							</div>
@@ -80,7 +85,7 @@
 			<section class="full-detail">
 				<div class="container">
 					<div class="row bottom-mrg extra-mrg">
-						<form>
+						<form action="index.html" method="post">
 							<h2 class="detail-title">Company Information</h2>
 
 							<div class="col-md-6 col-sm-6">
@@ -129,7 +134,7 @@
 					</div>
 
 					<div class="row bottom-mrg extra-mrg">
-						<form>
+						<form action="index.html" method="post">
 							<h2 class="detail-title">Social Profile</h2>
 
 							<div class="col-md-6 col-sm-6">
@@ -177,13 +182,13 @@
 					</div>
 
 					<div class="row bottom-mrg extra-mrg">
-						<form>
+						<form action="index.html" method="post">
 							<h2 class="detail-title">Job Requirement</h2>
 							<div class="col-md-12 col-sm-12">
 								<textarea class="form-control textarea" placeholder="About Company"></textarea>
 							</div>
 							<div class="col-md-12 col-sm-12">
-								<button class="btn btn-success btn-primary small-btn">Submit your job offer</button>	
+								<button class="btn btn-success btn-primary small-btn">Submit your job offer</button>
 							</div>
 						</form>
 					</div>

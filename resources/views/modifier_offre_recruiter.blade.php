@@ -4,7 +4,7 @@
 <!-- Header Title Start -->
 			<section class="inner-header-title blank">
 				<div class="container">
-					<h1>Modify Job</h1>
+					<h1>Modifier Offre</h1>
 				</div>
 			</section>
 			<div class="clearfix"></div>
@@ -37,11 +37,11 @@
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<select class="form-control input-lg">
-										<option>Job Type</option>
-										<option selected>Full Time</option>
-										<option>Part Time</option>
+										<option>Type d'emploi</option>
+										<option selected>À plein temps</option>
+										<option>À temps partiel</option>
 										<option>Freelancer</option>
-										<option>Internship</option>
+										<option>Stage</option>
 									</select>
 								</div>
 							</div>
@@ -65,7 +65,7 @@
 						<div class="detail pannel-footer">
 							<div class="col-md-12 col-sm-12">
 								<div class="detail-pannel-footer-btn pull-right">
-									<a href="#" class="footer-btn choose-cover">Choose Cover Image</a>
+									<a href="#" class="footer-btn choose-cover">Choisissez l'image de couverture</a>
 								</div>
 							</div>
 						</div>
@@ -80,7 +80,7 @@
 				<div class="container">
 					<div class="row bottom-mrg extra-mrg">
 						<form>
-							<h2 class="detail-title">Company Information</h2>
+							<h2 class="detail-title">Informations sur la société</h2>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
@@ -129,7 +129,7 @@
 
 					<div class="row bottom-mrg extra-mrg">
 						<form>
-							<h2 class="detail-title">Social Profile</h2>
+							<h2 class="detail-title">Profil social</h2>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
@@ -177,7 +177,7 @@
 
 					<div class="row bottom-mrg extra-mrg">
 						<form>
-							<h2 class="detail-title">Job Requirement</h2>
+							<h2 class="detail-title">Exigence de travail</h2>
 							<div class="col-md-12 col-sm-12">
 								<textarea class="form-control textarea" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
@@ -191,7 +191,7 @@
 "></textarea>
 							</div>
 							<div class="col-md-12 col-sm-12">
-								<button class="btn btn-success btn-primary small-btn">Submit changes</button>
+								<button class="btn btn-success btn-primary small-btn">Soumettre des changements</button>
 							</div>
 						</form>
 					</div>

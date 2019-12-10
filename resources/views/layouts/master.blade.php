@@ -11,11 +11,11 @@
 
 	<!-- CSS
 	================================================== -->
-	<link rel="stylesheet" href="assets/plugins/css/plugins.css">
+	<link rel="stylesheet" href="{{ asset('assets/plugins/css/plugins.css') }}">
 
     <!-- Custom style -->
-    <link href="assets/css/style.css" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" id="jssDefault" href="assets/css/colors/green-style.css">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" id="jssDefault" href="{{ asset('assets/css/colors/green-style.css') }}">
 
 	</head>
 	<body>

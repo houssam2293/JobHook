@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Auth;
+use App\Candidat;
+use App\Recruteur;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo ;//= '/acceuil';
+    protected $redirectTo = '/acceuil';
     public function redirectTo()
     {
         switch(Auth::user()->type){
@@ -42,7 +45,7 @@ class RegisterController extends Controller
                 break;
             default:
                 $this->redirectTo = '/login';
-                //$this->logout();
+                $this->logout();
                 return $this->redirectTo;
         }
     }
@@ -79,15 +82,34 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
             'type' => $data['type'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        if ($data['type'] == 'C') {
+                  Candidat::create([
+                    'nom' => $data['nom'],
+                    'prenom' => $data['prenom'],
+                    'email' => $data['email'],
+                    'user_id' => $user->id,
+                  ]);
+        }
+        elseif ($data['type'] == 'R') {
+                  Recruteur::create([
+                    'nom' => $data['nom'],
+                    'email' => $data['email'],
+                    'user_id' => $user->id,
+                  ]);
+        }
+        else {
+          $user->delete();
+        }
+        return $user;
     }
     // public function candidatCreate(Request $request, $id) {
     //   // $candidat = new Candidat();
-    //   // $candidat->accountId
+    //   // $candidat->user_id
     //   // $candidat->nom = $data['nom'];
     //   // $candidat->prenom = $data['prenom'];
     //   // $candidat->email = $data['email'];

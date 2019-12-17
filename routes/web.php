@@ -18,10 +18,10 @@ Route::get('modify_resume', function(){
 });
 Route::get('candidate_signup', function(){
     return view('candidate_signup');
-});
+})->middleware('guest');
 Route::get('company_signup', function(){
     return view('company_signup');
-});
+})->middleware('guest');
 // Route::get('profile_modify', function(){
 //     return view('candidate_modify-profile');
 // });
@@ -60,8 +60,15 @@ Route::get('/candidats-list','OfferController@index');
 Route::get('/offer-modification','OfferController@modify');
 Route::get('/detail-candidat','OfferController@showDetail');
 
-Route::resource('candidats', 'CandidatController');
-Route::resource('recruteurs', 'RecruteurController');
+Route::get('/candidats','CandidatController@index');
+Route::put('/candidats/{id}','CandidatController@update');
+
+Route::get('/recruteurs','recruteurController@index');
+Route::put('/recruteurs/{id}','recruteurController@update');
+
+Route::get('logout', 'Auth\LoginController@logout', function () {
+    return abort(404);
+});
 
 Auth::routes();
 

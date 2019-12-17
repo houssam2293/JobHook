@@ -23,20 +23,20 @@
 
 										<fieldset>
 											<div class="form-group">
-												<input type="hidden" value="R" name="type">
-												<!-- <input type="text" value="{{ old('name') }}" name="name"
-															class="form-control @error('name') is-invalid @enderror" placeholder="Nom" required
-															autocomplete="name" autofocus> -->
-													@error('name')
+												<input type="hidden" value="C" name="type">
+												<input type="text" value="{{ old('nom') }}" name="nom"
+															class="form-control @error('nom') is-invalid @enderror" placeholder="Nom" required
+															autocomplete="nom" autofocus>
+													@error('nom')
 															<span class="invalid-feedback" role="alert">
 																	<p>{{ $message }}</p>
 															</span>
 													@enderror
 											</div>
 											<div class="form-group">
-												<!-- <input type="text" value="{{ old('name') }}"  name="prenom"
-															class="form-control @error('name') is-invalid @enderror" placeholder="Prenom" required
-															autocomplete="name" autofocus> -->
+												<input type="text" value="{{ old('prenom') }}"  name="prenom"
+															class="form-control @error('prenom') is-invalid @enderror" placeholder="Prenom" required
+															autocomplete="prenom" autofocus>
 															@error('prenom')
 																	<span class="invalid-feedback" role="alert">
 																			<p>{{ $message }}</p>

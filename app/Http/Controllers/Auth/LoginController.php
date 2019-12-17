@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo; //= '/home';
+    protected $redirectTo = '/acceuil';
     public function redirectTo()
     {
         switch(Auth::user()->type){

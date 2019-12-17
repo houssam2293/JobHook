@@ -18,22 +18,44 @@
 								</div>
 								<div class="panel-body">
 									<img src="assets/img/logo.png" class="img-responsive" />
-									<form role="form">
+									<form method="POST" action="{{ route('register') }}">
+										@csrf
 										<fieldset>
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Nom de compagnie" autofocus>
+												<input type="hidden" value="R" name="type">
+												<input type="text" value="{{ old('nom') }}" name="nom"
+															class="form-control @error('nom') is-invalid @enderror" placeholder="Nom de compagnie" required
+															autocomplete="nom" autofocus>
+													@error('nom')
+															<span class="invalid-feedback" role="alert">
+																	<p>{{ $message }}</p>
+															</span>
+													@enderror
 											</div>
                       <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email">
+												<input id="email" type="email" placeholder="Email"
+																	class="form-control @error('email') is-invalid @enderror" name="email"
+																	value="{{ old('email') }}" required autocomplete="email">
+												@error('email')
+														<span class="invalid-feedback" role="alert">
+															<p>{{ $message }}</p>
+														</span>
+												@enderror
                       </div>
                       <div class="form-group">
-												<input type="password" class="form-control" placeholder="Mot de passe">
+												<input id="password" name="password" type="password" placeholder="Mot de passe" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+												@error('password')
+														<span class="invalid-feedback" role="alert">
+																<p>{{ $message }}</p>
+														</span>
+												@enderror
 											</div>
                       <div class="form-group">
-												<input type="password" class="form-control" placeholder="Confirmer le mot de passe">
+												<input type="password" name="password_confirmation" class="form-control" placeholder="Confirmez le mot de passe" required autocomplete="new-password">
 											</div>
 											<!-- Change this to a button or input when using this as a form -->
-											<a href="company_modify" class="btn btn-login">Inscription</a>
+											<button type="submit" class="btn btn-login">Inscription</a>
 										</fieldset>
 									</form>
 								</div>

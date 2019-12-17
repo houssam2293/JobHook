@@ -22,51 +22,36 @@
 					<div class="row">
 						<div class="detail-pic js">
 							<div class="box">
-								<input type="file" name="upload-pic[]" id="upload-pic" class="inputfile" />
+								<input type="file" name="photo" id="upload-pic" class="inputfile" />
+								<!-- <img src="{{ asset('storage/'.$candidat->photo) }}" class="fa fa-user"> -->
 								<label for="upload-pic"><i class="fa fa-user" aria-hidden="true"></i><span></span></label>
 							</div>
 						</div>
 					</div>
 
 					<div class="row bottom-mrg">
-						<form class="add-feild">
+
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Votre Nom" value="{{ $candidat->nom }}">
+									<input name="nom" type="text" class="form-control" placeholder="Votre Nom" value="{{ $candidat->nom }}">
 								</div>
 							</div>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Votre prenom" value="{{ $candidat->prenom }}">
+									<input name="prenom" type="text" class="form-control" placeholder="Votre prenom" value="{{ $candidat->prenom }}">
 								</div>
 							</div>
-
-
-							<div class="col-md-6 col-sm-6">
+							<div class="col-md-4 col-sm-4">
 								<div class="input-group">
-									<select class="form-control input-lg" selected="{{ $candidat->civilite }}">
-										<option>Civilité</option>
-										<option>M.</option>
-										<option>Mme</option>
-										<option>Mlle</option>
+									<select name="civilite" class="form-control input-lg">
+										<option {{ ($candidat->civilite == 'M.') ? "selected" : "" }}>M.</option>
+										<option {{ ($candidat->civilite == 'Mme') ? "selected" : "" }}>Mme</option>
+										<option {{ ($candidat->civilite == 'Mlle') ? "selected" : "" }}>Mlle</option>
 									</select>
 								</div>
 							</div>
-
-						</form>
 					</div>
-
-					<div class="row no-padd">
-						<div class="detail pannel-footer">
-							<div class="col-md-12 col-sm-12">
-								<div class="detail-pannel-footer-btn pull-right">
-									<a href="#" class="footer-btn choose-cover">Chosire ta photo</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
 				</div>
 			</section>
 			<!-- General Detail End -->
@@ -75,20 +60,20 @@
 			<section class="full-detail">
 				<div class="container">
 					<div class="row bottom-mrg extra-mrg">
-						<form>
+
 							<h2 class="detail-title">Informations General</h2>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-									<input type="text" class="form-control" placeholder="Votre Email" value="{{ $candidat->email }}">
+									<input name="email" type="text" class="form-control" placeholder="Votre Email" value="{{ $candidat->email }}">
 								</div>
 							</div>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-phone"></i></span>
-									<input type="text" class="form-control" placeholder="Numero de Tel" value="{{ $candidat->telephone }}">
+									<input name="telephone" type="text" class="form-control" placeholder="Numero de Tel" value="{{ $candidat->telephone }}">
 								</div>
 							</div>
 
@@ -96,35 +81,19 @@
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-									<input type="text" class="form-control" placeholder="Adresse" value="{{ $candidat->addresse }}">
+									<input name="adresse" type="text" class="form-control" placeholder="Adresse" value="{{ $candidat->adresse }}">
 								</div>
 							</div>
 
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-birthday-cake"></i></span>
-									<input type="text" id="dob" data-lang="en" data-large-mode="true" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" readonly="">{{-- error here --}}
+									<input name="dateNaissance" type="text" id="dob" data-lang="en" data-large-mode="true" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" readonly="">{{-- error here --}}
 								</div>
 							</div>
-
-							<!-- <div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-flag"></i></span>
-									<select class="form-control input-lg">
-										<option>Select Region</option>
-										<option>United Kingdom</option>
-										<option>United State</option>
-										<option>India</option>
-										<option>More Other</option>
-									</select>
-								</div>
-							</div> -->
-
-						</form>
 					</div>
-
 					<div class="row bottom-mrg extra-mrg">
-						<form>
+
 							<h2 class="detail-title">Social Profile</h2>
 {{--
 							 <div class="col-md-6 col-sm-6">
@@ -133,21 +102,16 @@
 									<input type="text" class="form-control" placeholder="Profile Link" >
 								</div>
 							</div> --}}
-
-
 							<div class="col-md-6 col-sm-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-linkedin"></i></span>
-									<input type="text" class="form-control" placeholder="Profile Link" value="{{ $candidat->linkedin }}">
+									<input name="linkedin" type="text" class="form-control" placeholder="Profile Link" value="{{ $candidat->linkedin }}">
 								</div>
 							</div>
 
-
-
-						</form>
 					</div>
 					<div class="row bottom-mrg extra-mrg">
-						<form>
+
 							<div class="col-md-12">
 								<button type="submit" class="btn btn-success btn-primary small-btn">Save Changes</button>
 							</div>
@@ -166,11 +130,6 @@
 						<div class="col-md-12">
 							<article>
 								<div class="mng-resume" style="border-left: 3px solid #07b107;">
-									<!-- <div class="col-md-2 col-sm-2">
-										<div class="mng-resume-pic">
-											<img src="assets/img/client-1.jpg" class="img-responsive" alt="" />
-										</div>
-									</div> -->
 									<div class="col-md-3 col-sm-3">
 										<div class="mng-resume-name">
 											<h4><span class="cand-designation">Master 2, Developeer Web</span></h4>
@@ -179,15 +138,9 @@
 									</div>
 									<div class="col-md-4 col-sm-4">
 										<div class="per-hour-rate">
-											<!-- <p><i class="fa fa-money"></i></p> -->
 											<p>Master2 - Tlemcen</p>
 										</div>
 									</div>
-									<!-- <div class="col-md-2 col-sm-2">
-										<div class="per-hour-rate">
-											 <p><i class="fa fa-money"></i></p>
-										</div>
-									</div> -->
 									<div class="col-md-4 col-sm-4">
 										<div class="mng-employee-skill">
 											<span>html</span><span>css</span><span>laravel</span>

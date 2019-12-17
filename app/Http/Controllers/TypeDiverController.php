@@ -11,6 +11,8 @@ class TypeDiverController extends Controller
     public function store($typeDiver){
 
 			$typedivers = TypeDiver::firstOrCreate(['nom' => $typeDiver]); // insert if not exist! 	
+			$typedivers = TypeDiver::firstOrCreate(['nom' => $typeDiver]); // insert if not exist! 	
+
     return $typedivers->typeDiverId;
 	}
 }

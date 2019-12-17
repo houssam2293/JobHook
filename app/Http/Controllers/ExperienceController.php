@@ -8,16 +8,22 @@ use App\Experience;
 class ExperienceController extends Controller
 {
     public function store(Request $request,$cv){
-
-			$experience =new Experience();
-			$experience->intitule=$request->input('intitule');
-            $experience->lieu=$request->input('exp_lieu');
-            $experience->dateDebut=$request->input('exp_date_debut');
-            $experience->dateFin=$request->input('exp_date_fin');
-            $experience->cvId=$cv;
-            $experience->description=$request->input('description');
-			$experience->save();
-
+           $cmpte=count($request->input('lieu'));
+           $i=0;
+           dd($cmpt);
+            while ($i < $cmpte) {
+                $experience =new Experience();
+                $experience->intitule=$request->input('intitule')[$i];
+                $experience->lieu=$request->input('exp_lieu')[$i];
+                $experience->dateDebut=$request->input('exp_date_debut')[$i];
+                $experience->dateFin=$request->input('exp_date_fin')[$i];
+                $experience->cvId=$cv;
+                $experience->description=$request->input('description')[$i];
+                dd($experience);    
+                $experience->save();   
+                $i++;        
+                 }
+			
 		return ;
     }
 }

@@ -12,16 +12,12 @@
 					<div class="row row-bottom mrg-0">
 						<h2 class="detail-title">Titre du job</h2>
 						<div class="col-md-12 col-sm-12">
-							<input name="titre" type="text" class="form-control" placeholder="Titre, e.g. Ingenieur civil" value="{{old('titre')}}" required>
-						</div>
+							<input name="titre" type="text" class="form-control" placeholder="Titre, e.g. Ingenieur civil" value="{{old('titre') ?? $cv[0]->titre}}" required>
+						</div> 
 						
 						<div class="col-md-12 col-sm-12 ">
-								<textarea name="Resumer" type="text" class="form-control" style="margin-top: 15px" placeholder="Resumer">{{old('Resumer')}}</textarea>
+								<textarea name="Resumer" type="text" class="form-control" style="margin-top: 15px" placeholder="Resumer">{{old('Resumer') ?? $cv[0]->description}}</textarea>
 						</div>
-						@if ($errors->any()) 
-						<h1>rrrrrrr</h1> 
-						@endif
-
 					</div>
 
 					<div class="row row-bottom mrg-0">
@@ -166,5 +162,7 @@
 			</div>
 			</form>
 		</div>
+
 	</section>
 @endsection
+

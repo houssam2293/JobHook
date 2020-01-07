@@ -43,10 +43,10 @@ Route::get('candidats-list', function(){
     return view('list-candidat');
 });
 Route::get('create-job-offer', function(){
-    return view('add_offer_recruiter');
+    return view('offre.add_offer_recruiter');
 });
 Route::get('modify-job-offer', function(){
-    return view('modifier_offre_recruiter');
+    return view('offre.modifier_offre_recruiter');
 });
 Route::get('show-detail', function(){
     return view('candidat_details');
@@ -60,9 +60,10 @@ Route::get('job-details', function () {
 Route::get('/', function () {
     return view('acceuil');
 });
-Route::get('/candidats-list','OfferController@index');
+Route::get('/add-offre','OfferController@index');
 Route::get('/offer-modification','OfferController@modify');
 Route::get('/detail-candidat','OfferController@showDetail');
+Route::post('/add-offre','OfferController@store');
 
 Auth::routes();
 

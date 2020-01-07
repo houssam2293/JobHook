@@ -12,10 +12,11 @@
 					<div class="row row-bottom mrg-0">
 						<h2 class="detail-title">Titre du job</h2>
 						<div class="col-md-12 col-sm-12">
-							<input name="titre" type="text" class="form-control" placeholder="Titre, e.g. Ingenieur civil">
+							<input name="titre" type="text" class="form-control" placeholder="Titre, e.g. Ingenieur civil" value="{{old('titre')}}" required>
 						</div>
+						
 						<div class="col-md-12 col-sm-12 ">
-								<textarea name="Resumer" class="form-control" style="margin-top: 15px" placeholder="Resumer"></textarea>
+								<textarea name="Resumer" type="text" class="form-control" style="margin-top: 15px" placeholder="Resumer" value="{{old('description')}}"></textarea>
 						</div>
 					</div>
 
@@ -25,27 +26,27 @@
 							<div class="multi-box">
 								<div class="dublicat-box">
 									<div class="col-md-12 col-sm-12">
-										<input name="lieu" type="text" class="form-control" placeholder="Nom de l'institu, e.g. Ecole sup de l'informatique">
+										<input name="lieu" type="text" class="form-control" placeholder="Nom de l'institu, e.g. Ecole sup de l'informatique" value="{{old('lieu')}}">
 									</div>
 
 									<div class="col-md-12 col-sm-12">
-										<input name="diplome" type="text" class="form-control" placeholder="diplôme, e.g. Master de Biologiee">
-									</div>
+										<input name="diplome" type="text" class="form-control" placeholder="diplôme, e.g. Master de Biologiee" value="{{old('diplome')}}">
+									</div >
 									<div class="col-md-12 col-sm-12">
-										<input name="domain" type="text" class="form-control" placeholder="domain, e.g. it">
+										<input name="domain" type="text" class="form-control" placeholder="domain, e.g. it" value="{{old('domain')}}">
 									</div>
 
 									<div class="col-xs-6 col-md-6 col-sm-6">
 										<div class="input-group">
 											<span class="input-group-addon">De</span>
-											<input name="date_debut" type="text" id="edu-start" data-lang="en" data-large-mode="true" data-min-year="1990" data-max-year="2020" data-disabled-days="08/17/1990,08/18/2020" data-id="datedropper-0" data-theme="my-style" class="form-control" placeholder="date comme: 2012-12-12">
+											<input name="date_debut" type="text" id="edu-start" data-lang="en" data-large-mode="true" data-min-year="1990" data-max-year="2020" data-disabled-days="08/17/1990,08/18/2020" data-id="datedropper-0" data-theme="my-style" class="form-control" placeholder="date comme: 2012-12-12" value="{{old('date_debut')}}">
 										</div>
 									</div>
 
 									<div class="col-xs-6 col-md-6 col-sm-6">
 										<div class="input-group">
 											<span class="input-group-addon">Jusqu'a</span>
-											<input name="date_fin" type="text" id="edu-end" data-lang="en" data-large-mode="true" data-min-year="1990" data-max-year="2020" data-disabled-days="08/17/1990,08/18/2020"data-id="datedropper-0" data-theme="my-style" class="form-control" placeholder="date comme: 2012-12-12">
+											<input name="date_fin" type="text" id="edu-end" data-lang="en" data-large-mode="true" data-min-year="1990" data-max-year="2020" data-disabled-days="08/17/1990,08/18/2020"data-id="datedropper-0" data-theme="my-style" class="form-control" placeholder="date comme: 2012-12-12" value="{{old('date_fin')}}">
 										</div>
 									</div>
 

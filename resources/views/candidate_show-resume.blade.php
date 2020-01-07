@@ -2,6 +2,9 @@
 @Section('content')
 
 <section id="app">
+	@if(Session::has('message'))
+	<h2 class="alert alert-info" style="align-content: center;">{{ Session::get('message')}}</h2>
+	@endif
 							<!-- Title Header Start -->
 			<section class="inner-header-title" style="background-image:url(assets/img/banner-10.jpg);">
 				<div class="container">

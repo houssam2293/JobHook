@@ -20,8 +20,8 @@ use Carbon\Carbon; # langue français
 use Session;
 class CvController extends Controller
 {
-    public function create(){
-		return view('candidate_create');
+    public function index(){
+		return view('candidate_create-resume');
 	}
 
 	public function store(Request $request){
@@ -80,8 +80,8 @@ class CvController extends Controller
                   app('App\Http\Controllers\ListCompetencesCandidatController')->store($co,$cv->id);
                   }
              } 
-              //Session::put('message','Votre cv a été bien ajouté');
-		return redirect('profile_modify');
+              Session::flash('message','Votre cv a été bien ajouté');
+		return redirect()->action('CvController@show',['id'=>$cv->id]);
     }
 
 	public function edit($id){

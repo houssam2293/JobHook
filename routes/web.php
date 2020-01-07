@@ -10,16 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('create_resume', function(){
-    return view('candidate_create-resume');
-});
+
+
 Route::get('edit-resume/{id}','CvController@edit');
 Route::get('delete-resume/{id}','CvController@destroy');
 
 Route::get('show-resume/{id}','CvController@show');
 
    
-Route::get('create_resume/create','CvController@create');
+Route::get('create_resume','CvController@index');
 Route::post('create_resume','CvController@store');
 
 

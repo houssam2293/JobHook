@@ -49,7 +49,7 @@
 						<div class="col-md-12">
 							<article>
 								<div class="mng-company">
-									<a href="{{ URL::action('OfferController@index') }}">
+									<a href="/job-details">
 
 									<div class="col-md-6 col-sm-6">
 										<div class="mng-company-name">

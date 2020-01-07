@@ -17,7 +17,7 @@ Route::get('show-resume/{id}','CvController@show');
 Route::get('show-resume', function(){
     return view('candidate_show-resume');
  });
-   
+
 Route::get('create_resume/create','CvController@create');
 Route::post('create_resume','CvController@store');
 
@@ -66,9 +66,10 @@ Route::get('/', function () {
     return view('acceuil');
 });
 Route::get('/add-offre','OfferController@index');
-Route::get('/offer-modification','OfferController@modify');
+Route::get('/modification-offre/{offreId}','OfferController@modifyView');
 Route::get('/detail-candidat','OfferController@showDetail');
 Route::post('/add-offre','OfferController@store');
+Route::post('/modification-offre','OfferController@modify');
 
 Auth::routes();
 

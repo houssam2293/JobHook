@@ -29,6 +29,12 @@ class OfferController extends Controller
       $domains = \App\Domaine::all();
       return view('offre.add_offer_recruiter', compact('domains'));
     }
+
+    public function modifyView($offreId){
+      $offers = \App\Offer::where('offreId', $offreId)->first();
+      $domains = \App\Domaine::all();
+      return view('offre.modifier_offre_recruiter', compact('domains','offers'));
+    }
     public function store()
     {
 
@@ -42,9 +48,7 @@ class OfferController extends Controller
          'anneeExperience' => 'required',
          'duree' => 'required',
          'remuneration' => 'required',
-         'status' => 'required',
-         'competenceId' => 'required',
-         'recruteurId' => 'required',
+         'competences' => 'required',
          'dateDebut' =>'required'
 
       ]);
@@ -55,22 +59,23 @@ class OfferController extends Controller
       $offre->lieu=request('lieu');
       $offre->diplomeRequis=request('diplomeRequis');
       $offre->anneeExperience=request('anneeExperience');
-      $offre->remuneration="remuneration1";
+      $offre->remuneration=request('remuneration');
       $offre->duree=request('duree');
       $offre->status="online";
-      $offre->competenceId=1;
+      $offre->competences= request('competences');
       $offre->recruteurId=1;
       $offre->dateDepot=Carbon::now();
-      $offre->dateDebut=request('dateDebut');
+      $offre->dateDebut=Carbon::parse(request('dateDebut'))->format('y-m-d');
       $offre->description=request('description');
       $offre->save();
 
-      return redirect()->back();
+      return redirect('/jobs-list');
     }
 
     public function modify()
     {
-      return view('offre.modifier_offre_recruiter');
+
+      redirect('/jobs-list');
     }
     public function showDetail()
     {

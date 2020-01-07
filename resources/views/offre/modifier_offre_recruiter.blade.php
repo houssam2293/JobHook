@@ -2,201 +2,185 @@
 @Section('content')
 
 <!-- Header Title Start -->
+<div class="wrapper">
 			<section class="inner-header-title blank">
 				<div class="container">
 					<h1>Modifier Offre</h1>
 				</div>
+
 			</section>
 			<div class="clearfix"></div>
 			<!-- Header Title End -->
 
 			<!-- General Detail Start -->
-			<div class="detail-desc section">
-				<div class="container white-shadow">
-
-          <div class="row">
-                    <div class="detail-pic"><img src="assets/img/can-6.png" class="img" alt="" />
-                      <a href="#" class="detail-edit" title="edit"><i class="fa fa-pencil"></i></a>
-                    </div>
-          </div>
-
-					<div class="row bottom-mrg">
-						<form class="add-feild">
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<input type="text" class="form-control" value="Software Developer">
+			<form action="/modification-offre" method="post" class="add-feild" >
+				@csrf
+						<!-- General Detail Start -->
+						<div class="detail-desc section">
+							<div class="container white-shadow">
+								<div class="row">
+													<div class="detail-pic"><img src="assets/img/can-16.png" class="img" onerror="if (this.src != 'assets/img/default.png') this.src = 'assets/img/default.png';" alt="" />
+														<a href="#" class="detail-edit" title="edit"><i class="fa fa-pencil"></i></a>
+													</div>
 								</div>
-							</div>
+								<div class="row bottom-mrg">
 
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<input type="text" class="form-control" value="houssam2293@gmail.com">
+										<div class="col-md-6 col-sm-6">
+											<div class="input-group">
+												<input type="text" class="form-control" name="intitule" placeholder="Nom de l'offre" value="{{old('intitule')}}">
+												<p style="color: red">@error('intitule') {{$message}} @enderror</p>
+												@csrf
+											</div>
+										</div>
+
+										<div class="col-md-6 col-sm-6">
+											<div class="input-group">
+												<select class="form-control input-lg" name="domaine">
+													<option disabled selected>Domaine</option>
+													@forelse($domains as $Domaine)
+													<option value="{{$Domaine->domaineId}}">{{$Domaine->nom}}</option>
+													@empty
+													<option>No Data</option>
+													@endforelse
+												</select>
+												<p style="color: red">@error('domaine') {{$message}} @enderror</p>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-sm-6">
+											<div class="input-group">
+												<input type="text" class="form-control" placeholder="Location,e.g. London Quel Mark" name="lieu" value="{{old('lieu')}}">
+												<p style="color: red">@error('lieu') {{$message}} @enderror</p>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-sm-6">
+											<div class="input-group">
+												<select class="form-control input-lg" name="type">
+													<option disabled selected>Type d'emploi</option>
+													<option value="CDI">CDI</option>
+													<option value="CDD">CDD</option>
+													<option value="ANEM">ANEM</option>
+													<option value="STAGE">STAGE</option>
+												</select>
+												<p style="color: red">@error('type') {{$message}} @enderror</p>
+											</div>
+										</div>
+
+
+
+										<div class="col-md-12 col-sm-12">
+											<textarea class="form-control" placeholder="Job Description" name="description" value="{{old('description')}}"></textarea>
+											<p style="color: red">@error('description') {{$message}} @enderror</p>
+										</div>
+
 								</div>
-							</div>
 
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<select class="form-control input-lg">
-										<option>Type d'emploi</option>
-										<option selected>À plein temps</option>
-										<option>À temps partiel</option>
-										<option>Freelancer</option>
-										<option>Stage</option>
-									</select>
-								</div>
-							</div>
+								<div class="row no-padd">
+										<div class="detail pannel-footer">
+											<div class="col-md-12 col-sm-12">
+												<div class="detail-pannel-footer-btn pull-right">
+													<a href="#" class="footer-btn choose-cover">Choose Cover Image</a>
+												</div>
+											</div>
+										</div>
+									</div>
 
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<input type="text" class="form-control" value="London Quel Mark">
-								</div>
-							</div>
-
-							<div class="col-md-12 col-sm-12">
-								<textarea class="form-control" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></textarea>
-							</div>
-
-						</form>
-					</div>
-
-					<div class="row no-padd">
-						<div class="detail pannel-footer">
-							<div class="col-md-12 col-sm-12">
-								<div class="detail-pannel-footer-btn pull-right">
-									<a href="#" class="footer-btn choose-cover">Choisissez l'image de couverture</a>
-								</div>
 							</div>
 						</div>
-					</div>
+						<!-- General Detail End -->
 
-				</div>
-			</div>
-			<!-- General Detail End -->
 
-			<!-- Basic Full Detail Form Start -->
-			<section class="full-detail">
-				<div class="container">
-					<div class="row bottom-mrg extra-mrg">
-						<form>
-							<h2 class="detail-title">Informations sur la société</h2>
+						<!-- Basic Full Detail Form Start -->
+						<section class="full-detail">
+							<div class="container">
+								<div class="row bottom-mrg extra-mrg">
+									<h2 class="detail-title">Job Details</h2>
+									<div class="col-md-6 col-sm-6">
+										<div class="input-group">
+											<label for="duree">Duree de contrat :</label>
+										</div>
+											<div class="input-group">
+													<input type="number" name="duree" min="1" value="{{old('duree')}}">
+													<p style="color: red">@error('duree') {{$message}} @enderror</p>
+												</div>
+									</div>
 
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-flag"></i></span>
-									<input type="text" class="form-control" value="Google">
+									<div class="col-md-6 col-sm-6">
+										<div class="input-group">
+											<label for="duree">Annee D'experience Requis (Max=15):</label>
+										</div>
+											<div class="input-group">
+													<input type="number" name="anneeExperience" min="0" max="15" value="{{old('anneeExperience')}}">
+													<p style="color: red">@error('anneeExperience') {{$message}} @enderror</p>
+												</div>
+									</div>
+
+									<div class="col-md-6 col-sm-6">
+											<div class="input-group">
+												<label for="dateDebut">Date de Debut:</label>
+											</div>
+											<div class="input-group">
+												<input type="text" name="dateDebut" value="{{old('dateDebut')}}" id="company-dob" data-lang="en" data-large-mode="true" data-min-year="<?php
+			         echo date('Y');
+			     ?>" data-max-year="2030" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" readonly="">
+					 							<p style="color: red">@error('dateDebut') {{$message}} @enderror</p>
+											</div>
+										</div>
+
+								</div>
+								<div class="row bottom-mrg extra-mrg">
+										<h2 class="detail-title">Job Requirement</h2>
+										<div class="col-md-12 col-sm-12">
+											<label for="diplomeRequis">Diplôme requis pour cette offre</label>
+											<input class="form-control" placeholder="Diplôme requis" name="diplomeRequis" value="{{old('diplomeRequis')}}"></input>
+											<p style="color: red">@error('diplomeRequis') {{$message}} @enderror</p>
+										</div>
+										<div class="col-md-12 col-sm-12">
+											<label for="diplomeRequis">Competences requis pour cette offre (separer par des ',')</label>
+											<input class="form-control" placeholder="Compétences requises" name="competences" value="{{old('competences')}}"></input>
+											<p style="color: red">@error('competences') {{$message}} @enderror</p>
+										</div>
+
+										<div class="col-md-12 col-sm-12">
+											<button class="btn btn-success btn-primary small-btn">Submit your job offer</button>
+										</div>
+									</form>
 								</div>
 							</div>
-
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-pencil"></i></span>
-									<input type="text" class="form-control" value="Shearching is a way of living">
-								</div>
-							</div>
-
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-									<input type="text" class="form-control" value="google@google.com">
-								</div>
-							</div>
-
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-									<input type="text" class="form-control" value="It Park New">
-								</div>
-							</div>
-
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-globe"></i></span>
-									<input type="text" class="form-control" value="http://google.com/">
-								</div>
-							</div>
-
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-birthday-cake"></i></span>
-									<input type="text" id="company-dob" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" readonly="">
-								</div>
-							</div>
-
-						</form>
-					</div>
-
-					<div class="row bottom-mrg extra-mrg">
-						<form>
-							<h2 class="detail-title">Profil social</h2>
-
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-facebook"></i></span>
-									<input type="text" class="form-control" value="http://facebook.com/Google">
-								</div>
-							</div>
-
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-google-plus"></i></span>
-									<input type="text" class="form-control" value="http://google.com/Google">
-								</div>
-							</div>
-
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-twitter"></i></span>
-									<input type="text" class="form-control" value="http://twitter.com/Google">
-								</div>
-							</div>
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-instagram"></i></span>
-									<input type="text" class="form-control" value="http://instagram.com/Google">
-								</div>
-							</div>
-
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-linkedin"></i></span>
-									<input type="text" class="form-control" value="http://linkedin.com/Google">
-								</div>
-							</div>
-
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-dribbble"></i></span>
-									<input type="text" class="form-control" value="http://dribbble.com/Google">
-								</div>
-							</div>
-
-						</form>
-					</div>
-
-					<div class="row bottom-mrg extra-mrg">
-						<form>
-							<h2 class="detail-title">Exigence de travail</h2>
-							<div class="col-md-12 col-sm-12">
-								<textarea class="form-control textarea" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-"></textarea>
-							</div>
-							<div class="col-md-12 col-sm-12">
-								<button class="btn btn-success btn-primary small-btn">Soumettre des changements</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</section>
+						</section>
 			<!-- Basic Full Detail Form End -->
+			<!-- Scripts
+				================================================== -->
+				<script type="text/javascript" src="assets/plugins/js/jquery.min.js"></script>
+				<script type="text/javascript" src="assets/plugins/js/viewportchecker.js"></script>
+				<script type="text/javascript" src="assets/plugins/js/bootstrap.min.js"></script>
+				<script type="text/javascript" src="assets/plugins/js/bootsnav.js"></script>
+				<script type="text/javascript" src="assets/plugins/js/select2.min.js"></script>
+				<script type="text/javascript" src="assets/plugins/js/wysihtml5-0.3.0.js"></script>
+				<script type="text/javascript" src="assets/plugins/js/bootstrap-wysihtml5.js"></script>
+				<script type="text/javascript" src="assets/plugins/js/datedropper.min.js"></script>
+				<script type="text/javascript" src="assets/plugins/js/dropzone.js"></script>
+				<script type="text/javascript" src="assets/plugins/js/loader.js"></script>
+				<script type="text/javascript" src="assets/plugins/js/owl.carousel.min.js"></script>
+				<script type="text/javascript" src="assets/plugins/js/slick.min.js"></script>
+				<script type="text/javascript" src="assets/plugins/js/gmap3.min.js"></script>
+				<script type="text/javascript" src="assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
+				<!-- Date dropper js-->
+				<script src="#"></script>
+
+				<!-- Custom Js -->
+				<script src="assets/js/custom.js"></script>
+
+				<script>
+					$('#company-dob').dateDropper();
+				</script>
+				<script src="assets/js/jQuery.style.switcher.js"></script>
+				<script type="text/javascript">
+					$(document).ready(function() {
+						$('#styleOptions').styleSwitcher();
+					});
+				</script>
+</div>
 
 @endsection

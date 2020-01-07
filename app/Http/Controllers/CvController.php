@@ -41,25 +41,7 @@ class CvController extends Controller
             $experienceExist = false;
             $competenceExist = false;
             if ($request->input('lieu')[0]) {
-              $data = $request->validate([
-    "diplome"    => "required|array",
-    "diplome.*"  => "required|string|",
-    "domain"    => "required|array",
-    "domain.*"  => "required|string",
-     "lieu"    => "required|array",
-    "lieu.*"  => "required|string",
-     "domain"    => "required|array",
-    "domain.*"  => "required|string",
-     "date_debut"    => "required|array",
-    "date_fin.*"  => "required|string",
-]);
-                // $data = $request->validate([
-                // 'diplome'=>'required',
-                // 'domain'=>'required',
-                // 'lieu'=>'required',
-                // 'date_debut'=>'required',
-                // 'date_fin'=>'required',
-                // ]);
+              
                 $formationExist = true;               }
 
             if ($request->input('intitule')[0]) {
@@ -108,7 +90,7 @@ class CvController extends Controller
        $experiences = Experience::where('cvId',$id)->get(); 
        $divers = Diver::where('cvId',$id)->join('typedivers', 'typedivers.typeDiverId', '=', 'divers.typeDiverId')->get();
        $competences = ListCompetencesCandidats::where('cvId',$id)->join('competences', 'listCompetencesCandidats.competenceId', '=', 'competences.competenceId')->get();
-  
+        
       return view('candidate_edit-resume',['formations' => $formations,'cv'=>$cv,'experiences' =>$experiences,'divers'=>$divers,'competences' =>$competences]);
     }
 /*

@@ -22,28 +22,60 @@ class CvController extends Controller
 
 	public function store(Request $request){
 
+            // $data = $request->validate([
+            //     'titre'=>'required'
+            // ]);
 			$cv=new Cv();
             $cv->titre=$request->input('titre');
             $cv->description=$request->input('Resumer');
-            $cv->candidatId=1;
-			$cv->save();
+            $cv->candidatId=1;//a récupéré
 
-            if ($request->input('diplome')) {
-            app('App\Http\Controllers\FormationController')->store($request,$cv->id);
-              }
+            $formationExist = false;
+            $diverExist = false;
+            $experienceExist = false;
+            $competenceExist = false;
+            if ($request->input('lieu')) {
+                $data = $request->validate([
+                'diplome'=>'required',
+                'domain'=>'required',
+                'lieu'=>'required',
+
+                ]);
+                $formationExist = true;
+               }
 
             if ($request->input('intitule')) {
-                app('App\Http\Controllers\ExperienceController')->store($request,$cv->id);
+                //TO DO validate data input
+                $diverExist = true;
             }
             
             if ($request->input('intitileDiver')) {
-                app('App\Http\Controllers\DiverController')->store($request,$cv->id);
+                //TO DO validate data input
+                $diver = true;
             }
             
             
             if ($request->input('competences')) {
+                //TO DO validate data input
+                 $competenceExist = true;
+             } 
+
+            $cv->save();
+            if ($formationExist) {
+                app('App\Http\Controllers\FormationController')->store($request,$cv->id);
+            }
+             if ($experienceExist) {
+                 app('App\Http\Controllers\ExperienceController')->store($request,$cv->id);
+             }
+             
+             if ($diverExist) {
+                app('App\Http\Controllers\DiverController')->store($request,$cv->id);
+            }
+            
+            if ($competenceExist) {
                  app('App\Http\Controllers\ListCompetencesCandidatController')->store($request,$cv->id);
              } 
+
 		return redirect('profile_modify');
     }
 /*
@@ -64,10 +96,13 @@ class CvController extends Controller
     	$cv->delete();
     	return redirect('cvs');
     }
-
-	public function show($id){
-        return view('cv.show',['id' => $id]);
-
-    }
 */
+	public function show($id){
+
+       $cv = Cv::find(['cvId' => $id]);   
+       //dd($cv[0]->titre);
+      return view('candidate_show-resume',compact('cv'));
+// {{ $cv[0]->id }}
+    }
+
 }

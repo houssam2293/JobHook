@@ -19,7 +19,7 @@ All custom js files contents are below
 		bgColor:"#1c2733",
 		spinner:"spinner2"
 	});
-	 
+
 	 /*---Company Brand Carousel --*/
 	 $("#company-brands").owlCarousel({
 		items:5,
@@ -33,7 +33,7 @@ All custom js files contents are below
 		navigationText:["",""],
 		autoPlay:true
 	});
-	
+
 	/*--- Client Story testimonial --*/
 	$("#client-testimonial-slider").owlCarousel({
 		items:3,
@@ -45,10 +45,10 @@ All custom js files contents are below
 		navigationText:["",""],
 		autoPlay:true
 	});
-	
-	/*---Bootstrap wysihtml5 editor --*/	
+
+	/*---Bootstrap wysihtml5 editor --*/
 	$('.textarea').wysihtml5();
-	
+
 	/*------ Grid Slider ----*/
 	$('.grid-slide').slick({
 	  slidesToShow:3,
@@ -74,7 +74,7 @@ All custom js files contents are below
 		}
 	  ]
 	});
-	
+
 	/*------ Grid Slider ----*/
 	$('.grid-slide-2').slick({
 	  slidesToShow:2,
@@ -100,16 +100,16 @@ All custom js files contents are below
 		}
 	  ]
 	});
-	
+
 	// City Select
 	$('#choose-city').select2();
-	
+
 	/*---Tab Js --*/
 	$("#simple-design-tab a").on('click', function(e){
 		e.preventDefault();
 		$(this).tab('show');
 	});
-	
+
 	/*-----Add field Script------*/
 	$('.extra-field-box').each(function() {
     var $wrapp = $('.multi-box', this);
@@ -121,13 +121,13 @@ All custom js files contents are below
             $(this).parent('.dublicat-box').remove();
 		});
 	});
-	
+
 	//   Background image ------------------
 		var a = $(".bg");
 		a.each(function (a) {
 			if ($(this).attr("data-bg")) $(this).css("background-image", "url(" + $(this).data("bg") + ")");
 		});
-		
+
 		$('.slideshow-container').slick({
         slidesToShow: 1,
         autoplay: true,
@@ -138,8 +138,8 @@ All custom js files contents are below
         infinite: true,
         speed:2000
     });
-	
-	
+
+
 	// --------- Job List --------
 	var options = {
 		url: "./assets/js/resources/joblist.json",
@@ -168,7 +168,7 @@ All custom js files contents are below
 	};
 
 	$("#companies").easyAutocomplete(options);
-	
+
 	// --------- Location --------
 	var options = {
 		url: "./assets/js/resources/location.json",
@@ -183,7 +183,7 @@ All custom js files contents are below
 	};
 
 	$("#location").easyAutocomplete(options);
-		
+
 	// Styles ------------------
     function csselem() {
         $(".slideshow-container .slideshow-item").css({
@@ -193,8 +193,8 @@ All custom js files contents are below
             height: $(".slider-container").outerHeight(true)
         });
     }
-    csselem();	
-	
+    csselem();
 
-			
+
+
 })(jQuery);

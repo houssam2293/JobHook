@@ -15,12 +15,12 @@
 					<div class="row">
 					
 						<div class="detail-pic">
-							<img src="assets/img/com-2.jpg" class="img" alt="" />
-							<a href="#" class="detail-edit" title="edit" ><i class="fa fa-pencil"></i></a>
+							<img src="{{$offer->logo}}" class="img" alt="" />
+							
 						</div>
 						
 						<div class="detail-status">
-							<span>2 jour restant</span>
+							<span>{{ucfirst($offer->updated_at->diffForHumans())}}</span>
 						</div>
 						
 					</div>
@@ -28,12 +28,12 @@
 					<div class="row bottom-mrg">
 						<div class="col-md-8 col-sm-8">
 							<div class="detail-desc-caption">
-								<h4>Google</h4>
-								<span class="designation">Software Development Company</span>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+								<h4>{{$offer->nom}}</h4>
+								<span class="designation">{{$offer->comptype}}</span>
+								<p>NO DESCRIPTION</p>
 								<ul>
-									<li><i class="fa fa-briefcase"></i><span>Temps complet</span></li>
-									<li><i class="fa fa-flask"></i><span>3 Anné d'xperience</span></li>
+									<li><i class="fa fa-briefcase"></i><span>{{$offer->type}}</span></li>
+									<li><i class="fa fa-flask"></i><span>{{$offer->anneeExperience}} Anné d'xperience</span></li>
 								</ul>
 							</div>
 						</div>
@@ -42,11 +42,11 @@
 							<div class="get-touch">
 								<h4>Infos</h4>
 								<ul>
-									<li><i class="fa fa-map-marker"></i><span>Menlo Park, CA</span></li>
-									<li><i class="fa fa-envelope"></i><span>danieldax704@gmail.com</span></li>
-									<li><i class="fa fa-globe"></i><span>google.com</span></li>
-									<li><i class="fa fa-phone"></i><span>0 123 456 7859</span></li>
-									<li><i class="fa fa-money"></i><span>$1000 -$1200/Month</span></li>
+									<li><i class="fa fa-map-marker"></i><span>{{$offer->adresse}}</span></li>
+									<li><i class="fa fa-envelope"></i><span>{{$offer->email}}</span></li>
+									<li><i class="fa fa-globe"></i><span>{{$offer->siteWeb}}</span></li>
+									<li><i class="fa fa-phone"></i><span>{{$offer->telephone}}</span></li>
+									<li><i class="fa fa-money"></i><span>${{$offer->remuneration}}/Month</span></li>
 								</ul>
 							</div>
 						</div>
@@ -55,7 +55,7 @@
 					
 					<div class="row no-padd">
 						<div class="detail pannel-footer">
-							<div class="col-md-5 col-sm-5">
+							{{-- <div class="col-md-5 col-sm-5">
 								<ul class="detail-footer-social">
 									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -63,7 +63,7 @@
 									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
 									<li><a href="#"><i class="fa fa-instagram"></i></a></li>
 								</ul>
-							</div>
+							</div> --}}
 							
 							<div class="col-md-7 col-sm-7">
 								<div class="detail-pannel-footer-btn pull-right">
@@ -82,7 +82,6 @@
 				<div class="container">
 					<div class="row row-bottom">
 						<h2 class="detail-title">Responsibilité du poste</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 					</div>
 					

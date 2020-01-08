@@ -50,7 +50,7 @@
 								</div>
 								<div class="col-md-6 col-sm-5">
 									<div class="brows-job-position">
-										<a href="{{('job-details')}}">
+										<a href="{{('job-details/'.$offer->offreId)}}">
 											<h3 style="float: left">{{$offer->intitule}}</h3><br>
 											<h5 style="float: center">&nbsp;&nbsp; {{$offer->domain}}</h5>
 											<hr/></a>

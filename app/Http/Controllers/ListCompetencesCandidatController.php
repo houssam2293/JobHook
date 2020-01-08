@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use app\Http\Controllers\CompetenceController;
 use App\ListCompetenceCandidat;
-use app\Http\Controllers\CompetenceControListCompetencesCandidatControllerller;
+use app\Http\Controllers\ListCompetencesCandidatController;
 
 class ListCompetencesCandidatController extends Controller
 {

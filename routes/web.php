@@ -12,6 +12,9 @@
 */
 
 
+Route::get('search-job','OfferController@searchJob'); //recherche tous les offres
+Route::get('job-details', 'OfferController@searchJobDetaille');//recherche offre avec detaille
+
 Route::get('edit-resume/{id}','CvController@edit');
 Route::get('delete-resume/{id}','CvController@destroy');
 
@@ -56,9 +59,7 @@ Route::get('modify-job-offer', function(){
 Route::get('show-detail', function(){
     return view('candidat_details');
 });
-Route::get('search-job', function(){
-    return view('candidate_search-job');
-});
+
 Route::get('job-details', function () {
     return view('candidate_search-job-details');
 });

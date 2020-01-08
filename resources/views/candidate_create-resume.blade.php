@@ -19,7 +19,7 @@
 								<textarea name="Resumer" type="text" class="form-control" style="margin-top: 15px" placeholder="Resumer">{{old('Resumer')}}</textarea>
 						</div>
 						@if ($errors->any()) 
-						<h1>rrrrrrr</h1> 
+						<h1>Inexpected error</h1> 
 						@endif
 
 					</div>
@@ -148,7 +148,7 @@
 								<div class="dublicat-box">
 
 									<div class="col-md-12 col-sm-12">
-										<input name="competences" type="text" class="form-control" placeholder="Competence, e.g. Css, Html...">
+										<input id="tags" name="competences" type="text" class="form-control" placeholder="Competence, e.g. Css, Html...">
 									</div>
 									<input type="Reset" class="btn btn-success btn-primary small-btn" ></input>
 								</div>
@@ -167,4 +167,67 @@
 			</form>
 		</div>
 	</section>
+	
+@endsection
+
+@section('javascripts')
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script> 
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script> 
+  <meta charset="utf-8">
+      <script>
+$(function() {
+    var availableTags = [
+    @foreach ($competences as $competence)
+		"{{$competence->nom}}",
+	@endforeach
+        
+    ];
+    function split( val ) {
+        return val.split( / \s*/ );
+    }
+    function extractLast( term ) {
+        return split( term ).pop();
+    }
+
+    $( "#tags" )
+        // don't navigate away from the field on tab when selecting an item
+        .bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                    $( this ).data("autocomplete" 
+
+         ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 0,
+            source: function( request, response ) {
+
+                response( $.ui.autocomplete.filter(
+                    availableTags, extractLast( request.term ) 
+
+                        ) );
+            },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+            select: function( event, ui ) {
+                var terms = split( this.value );
+                // remove the current input
+                terms.pop();
+                // add the selected item
+                terms.push( ui.item.value );
+
+                terms.push( "" );
+                this.value = terms.join( ", " );
+                return false;
+            }
+        });
+});
+</script>
+
+
 @endsection

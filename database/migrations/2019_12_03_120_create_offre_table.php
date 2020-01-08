@@ -13,7 +13,7 @@ class CreateOffreTable extends Migration
      */
     public function up()
     {
-        Schema::create('offres', function (Blueprint $table) {
+        Schema::create('offers', function (Blueprint $table) {
             $table->bigIncrements('offreId');
             $table->string('intitule');
             $table->string('type');
@@ -27,7 +27,6 @@ class CreateOffreTable extends Migration
             $table->date('dateDebut');
             $table->string('duree');
             $table->string('status');
-            $table->unsignedBigInteger('competenceId');
             $table->foreign('competenceId')->references('competenceId')->on('competences');
             $table->string('description');
             $table->unsignedBigInteger('recruteurId');

@@ -3,7 +3,7 @@
 
 <section id="app">
 	@if(Session::has('message'))
-	<h2 class="alert alert-info" style="align-content: center;">{{ Session::get('message')}}</h2>
+	<h2 class="alert-info" style="align-content: center;">{{ Session::get('message')}}</h2>
 	@endif
 							<!-- Title Header Start -->
 			<section class="inner-header-title" style="background-image:url(assets/img/banner-10.jpg);">
@@ -59,7 +59,7 @@
 						@foreach ($formations as $formation)
 							<ul class="detail-list">
 								<div class="pull-right">
-									<button class="btn btn-sm"><i class="fa fa-close" style="font-size:30px;color:red"></i></button>
+									<button class="btn btn-sm"><i class="fa fa-trash-o" style="font-size:30px;color:red"></i></button>
 								</div>
 								<div class="pull-right">
 									<button class="btn btn-sm"><i class="fa fa-edit" style="font-size:30px;color:red"></i></button>
@@ -94,7 +94,7 @@
 						@foreach ($experiences as $experience)
 							<ul class="detail-list">
 								<div class="pull-right">
-									<button class="btn btn-sm"><i class="fa fa-close" style="font-size:30px;color:red"></i></button>
+									<button class="btn btn-sm"><i class="fa fa-trash-o" style="font-size:30px;color:red"></i></button>
 								</div>
 								<div class="pull-right">
 									<button class="btn btn-sm"><i class="fa fa-edit" style="font-size:30px;color:red"></i></button>
@@ -128,7 +128,7 @@
 						@foreach ($divers as $diver)
 							<ul class="detail-list">
 								<div class="pull-right">
-									<button class="btn btn-sm"><i class="fa fa-close" style="font-size:30px;color:red"></i></button>
+									<button class="btn btn-sm"><i class="fa fa-trash-o" style="font-size:30px;color:red"></i></button>
 								</div>
 								<div class="pull-right">
 									<button class="btn btn-sm"><i class="fa fa-edit" style="font-size:30px;color:red"></i></button>

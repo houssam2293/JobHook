@@ -21,7 +21,9 @@ use Session;
 class CvController extends Controller
 {
     public function index(){
-		return view('candidate_create-resume');
+      $competences = Competence::get();
+
+		return view('candidate_create-resume',['competences' =>$competences]);
 	}
 
 	public function store(Request $request){

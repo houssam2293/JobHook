@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\offer;
 class OfferController extends Controller
 {
     /**
@@ -29,8 +29,20 @@ class OfferController extends Controller
     {
       return view('modifier_offre_recruiter');
     }
-    public function showDetail()
+    
+    public function searchJob()
     {
-      return view('candidat_details');
+        $offers = Offer::join('recruteurs', 'offres.recruteurId', '=', 'recruteurs.recruteurId')
+        ->join('domaines', 'offres.domaineId', '=', 'domaines.domaineId')
+        ->skip(0)->take(7)// to show onnly 7 reslut in first page
+        ->select('offres.offreId','offres.intitule','offres.remuneration','offres.lieu','domaines.nom as domain','offres.type','recruteurs.logo', 'recruteurs.nom')
+        ->get();
+        //dd($offers);
+      return view('candidate_search-job',['offers' => $offers]);
+    }
+
+    public function searchJobDetaille(){
+
+        return view('candidate_search-job-details');
     }
 }

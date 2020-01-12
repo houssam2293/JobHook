@@ -24,12 +24,12 @@
 									<input type="text" class="form-control" placeholder="Location: City, State, Zip">
 								</div>
 								<div class="col-md-3 col-sm-6">
-							<select class="form-control">
+							{{-- <select class="form-control">
 							  <option>By Category</option>
 							  <option>Information Technology</option>
 							  <option>Mechanical</option>
 							  <option>Hardware</option>
-							</select>
+							</select> --}}
 						</div>
 								<div class="col-md-2 col-sm-2">
 									<button type="submit" class="btn btn-primary">Filtrer</button>
@@ -85,7 +85,7 @@
 									</div>
 								</div>
 							</div>
-							<span class="tg-themetag tg-featuretag">Premium</span>
+							{{-- <span class="tg-themetag tg-featuretag">Premium</span> --}}
 						</article>
 					</div>
 
@@ -96,13 +96,13 @@
 					<!--/.row-->
 					<div class="row">
 						<ul class="pagination">
-							<li><a href="#">&laquo;</a></li>
+							<li><a href="#" style="pointer-events: none; cursor: default;">&laquo;</a></li>
 							<li class="active"><a href="#">1</a></li>
 							<li><a href="#">2</a></li>
 							<li><a href="#">3</a></li> 
 							<li><a href="#">4</a></li> 
 							<li><a href="#"><i class="fa fa-ellipsis-h"></i></a></li> 
-							<li><a href="#">&raquo;</a></li> 
+							<li><a href="#" style="">&raquo;</a></li> 
 						</ul>
 					</div>
 					

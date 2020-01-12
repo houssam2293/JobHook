@@ -38,8 +38,10 @@ class OfferController extends Controller
         ->skip(0)->take(7)// to show onnly 7 reslut in first page
         ->select('offres.offreId','offres.intitule','offres.remuneration','offres.lieu','domaines.nom as domain','offres.type','recruteurs.logo', 'recruteurs.nom')
         ->get();
-        //dd($offers);
-      return view('candidate_search-job',['offers' => $offers]);
+        $count =  Offer::all()->count();
+
+        //dd($count);
+      return view('candidate_search-job',['offers' => $offers,'count' => $count]);
     }
 
     public function searchJobDetaille($id){
@@ -48,10 +50,10 @@ class OfferController extends Controller
         ->join('recruteurs', 'offres.recruteurId', '=', 'recruteurs.recruteurId')
         ->join('domaines', 'offres.domaineId', '=', 'domaines.domaineId')
         ->skip(0)->take(7)// to show onnly 7 reslut in first page
-        ->select('offres.offreId','offres.intitule','offres.remuneration','offres.lieu','domaines.nom as domain','offres.type','recruteurs.logo', 'recruteurs.nom','offres.updated_at','offres.anneeExperience','recruteurs.type as comptype','recruteurs.adresse','recruteurs.telephone','recruteurs.email','recruteurs.siteWeb')
+        ->select('offres.offreId','offres.intitule','offres.diplomeRequis','offres.remuneration','offres.lieu','offres.description','domaines.nom as domain','offres.type','recruteurs.logo', 'recruteurs.nom','offres.updated_at','offres.anneeExperience','recruteurs.type as comptype','recruteurs.adresse','recruteurs.telephone','recruteurs.email','recruteurs.siteWeb')
         ->get();
         $offer = $offer[0];
-       
+       // $competences = ListCompetencesCandidats::where('cvId',$id)->join('competences', 'listCompetencesCandidats.competenceId', '=', 'competences.competenceId')->get();
 
         Carbon::setlocale('fr');
      return view('candidate_search-job-details',['offer' => $offer]);

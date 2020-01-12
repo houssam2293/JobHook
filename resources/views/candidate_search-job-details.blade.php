@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @Section('content')
 			<!-- Title Header Start -->
-			<section class="inner-header-title" style="background-image:url(assets/img/banner-10.jpg);">
+			<section class="inner-header-title" style="background-image:url({{ URL::to('assets/img/banner-10.jpg') }});">
 				<div class="container">
 					<h1>Detail d'emploie</h1>
 				</div>
@@ -15,7 +15,7 @@
 					<div class="row">
 					
 						<div class="detail-pic">
-							<img src="{{$offer->logo}}" class="img" alt="" />
+							<img src="{{URL::to($offer->logo)}}" class="img-responsive" alt="" />
 							
 						</div>
 						
@@ -32,8 +32,9 @@
 								<span class="designation">{{$offer->comptype}}</span>
 								<p>NO DESCRIPTION</p>
 								<ul>
-									<li><i class="fa fa-briefcase"></i><span>{{$offer->type}}</span></li>
+									<li><i class="fa fa-graduation-cap"></i><span>{{$offer->diplomeRequis}}</span></li>
 									<li><i class="fa fa-flask"></i><span>{{$offer->anneeExperience}} Anné d'xperience</span></li>
+									<li><i class="fa fa-briefcase"></i><span>{{$offer->type}}</span></li>
 								</ul>
 							</div>
 						</div>
@@ -82,7 +83,7 @@
 				<div class="container">
 					<div class="row row-bottom">
 						<h2 class="detail-title">Responsibilité du poste</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<p>{{$offer->description}}</p>
 					</div>
 					
 					<div class="row row-bottom">
@@ -97,16 +98,7 @@
 						</ul>
 					</div>
 					
-					<div class="row row-bottom">
-						<h2 class="detail-title">Diplôme requis</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						<ul class="detail-list">
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
-							
-						</ul>
-					</div>
+					
 					
 				</div>
 			</section>

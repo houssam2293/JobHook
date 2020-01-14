@@ -60,7 +60,7 @@ Route::get('search-job', function(){
     return view('candidate_search-job');
 });
 Route::get('job-details', function () {
-    return view('candidate_search-job-details');
+    return view('recruter_job_detail');
 });
 Route::get('/', function () {
     return view('acceuil');

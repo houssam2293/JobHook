@@ -19,7 +19,6 @@ class CreateListCompetenceOffreTable extends Migration
             $table->foreign('competenceId')->references('competenceId')->on('competences');
             $table->unsignedBigInteger('offreId');
             $table->foreign('offreId')->references('offreId')->on('offers');
-            $table->unique('competenceId', 'offreId');
             $table->timestamps();
         });
     }

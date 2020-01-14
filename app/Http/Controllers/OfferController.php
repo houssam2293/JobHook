@@ -68,7 +68,7 @@ class OfferController extends Controller
       $offre->dateDebut=Carbon::parse(request('dateDebut'))->format('y-m-d');
       $offre->description=request('description');
       $offre->save();
-
+      app('App\Http\Controllers\ListeCompetencesRecruteurController')->store($offre->competences,$offre->id);
       return redirect('/jobs-list');
     }
 

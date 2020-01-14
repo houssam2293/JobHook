@@ -20,7 +20,7 @@
 						</div>
 
 						<div class="detail-status">
-							<span>2 jour restant</span>
+							<span>il y a 2 jour </span>
 						</div>
 
 					</div>

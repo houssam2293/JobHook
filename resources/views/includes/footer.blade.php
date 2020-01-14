@@ -148,7 +148,8 @@
     <script type="text/javascript" src="assets/plugins/js/gmap3.min.js"></script>
     <script type="text/javascript" src="assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
     <script src="assets/js/custom.js"></script>
-
+     <script src="assets/js/vue.js"></script>
+@yield('javascripts')
 </body>
 
 <!-- new-job-detail41:45-->

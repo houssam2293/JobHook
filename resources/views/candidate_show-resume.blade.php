@@ -81,10 +81,10 @@
 						</h2>
 					@endif
 
-					@if($experiences->count()>0)
+					
 
 
-						<div class="row row-bottom mrg-0">
+						<div class="row row-bottom mrg-0" v-if="experiences.length > 0">
 							
 							<div class="row">
 								<div class="col-md-10"><h2 class="detail-title">Experience
@@ -151,11 +151,11 @@
 							</ul>
 						
 					</div>
-					@else
-					<div class="row row-bottom mrg-0">
+					
+					<div class="row row-bottom mrg-0" v-else>
 						<h2 class="detail-title">Aucun experience.
 						</h2>
-					@endif
+					</div>
 					
 					@if($divers->count()>0)
 					
@@ -197,13 +197,15 @@
 			</section>
 			 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
      		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
      <script type="text/javascript">
      		
      		window.Laravel={!! json_encode([
            	'csrfToken' 	=> csrf_token(),
             'idCv'  => $cv[0]->cvId,
             'url' 			=>url('/')]) !!} ;
-     </script>
+     </script> 
 
 <script>
 
@@ -230,6 +232,8 @@
        		axios.get(window.Laravel.url+'/getExperiences/'+window.Laravel.idCv)
 	       		.then(response => {
 	       			this.experiences = response.data;
+	       			console.log(this.experiences);
+
 	       		})
 	       		.catch(error => {
 	       			console.log("error");
@@ -243,7 +247,7 @@
 	       			console.log(response.data);
 	       			if(response.data.etat){
 	       				this.open=false;
-	       				this.experience.id = response.data.id;
+	       				this.experience.id = response.data.experienceId;
 	       				this.experiences.unshift(this.experience);
 	       				this.experience = {
 	       					id: 0,
@@ -266,13 +270,12 @@
 	    	this.experience = experience;
 		},
 		updateExperiences: function(){
-			
 	    	axios.put(window.Laravel.url+'/updateExperiences',this.experience)
 	       		.then(response => {
 	       			console.log(response.data);
 	       			if(response.data.etat){
 	       				this.open=false;
-	       				this.experiences = {
+	       				this.experience = {
 	       					id: 0,
 				       	 	cvId: window.Laravel.idCv,
 				       	 	intitule: '',
@@ -289,17 +292,35 @@
 	       		})
 	       	},
 	    deleteExperience: function(experience){
-	    	console.log("id est:"+this.experience.id);
-	    	axios.delete(window.Laravel.url+'/deleteExperiences/'+experience.id)
-	       		.then(response => {
-	       			if(response.data.etat){
-	       				var Position = this.experiences.indexOf(experience);
-	       				this.experiences.splice(Position,1);
-	       			}
-	       		})
-	       		.catch(error => {
-	       			console.log(error);
-	       		})
+	    	this.experience = experience;
+	    	Swal.fire({
+				  title: 'Etes-vous sur?',
+				  text: "Vous ne pourrez pas revenir sur cela!",
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  cancelButtonText: 'Annuler',
+				  confirmButtonText: 'Oui, Supprimer!'
+				}).then((result) => {
+				  if (result.value) {
+				  	axios.delete(window.Laravel.url+'/deleteExperiences/'+this.experience.experienceId)
+					       		.then(response => {
+					       			if(response.data.etat){
+					       				var Position = this.experiences.indexOf(experience);
+					       				this.experiences.splice(Position,1);
+					       			}
+					       		})
+					       		.catch(error => {
+					       			console.log(error);
+					       		})
+				    Swal.fire(
+				      'Suprimmer!',
+				      'success'
+				    )
+				  }
+				})
+	    	
 		}
 	    
        },

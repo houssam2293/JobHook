@@ -40,27 +40,24 @@ class ExperienceController extends Controller
                 $experience->dateFin=$request->datefin;
                 $experience->cvId=$request->cvId;
                 $experience->description=$request->description;
-                  //return   $experience;
-                 $experience->save();           
-                 return Response()->json(['etat'=> true, 'id'=>$experience->id]);
+                $experience->save();           
+                 return Response()->json(['etat'=> true, 'id'=>$experience->experienceId]);
     }
    public function updateExperiences(Request $request){
-    $experience = Experience::where('experienceId',$request->id)->get();
-    $experience = $experience[0];
-                $experience->experienceId=$request->id;
+                $experience = Experience::find($request->experienceId);
+                $experience->experienceId=$request->experienceId;
                 $experience->intitule=$request->intitule;
                 $experience->lieu=$request->lieu;
                 $experience->dateDebut=$request->dateDebut;
                 $experience->dateFin=$request->datefin;
                 $experience->description=$request->description;
-                  //return   $experience;
-                 $experience->where('experienceId',$request->id)->save();           
+                 $experience->save();           
                  return Response()->json(['etat'=> true]);
 
    }
   public function deleteExperiences($id){
-        $experience = Experience::where('experienceId',$id)->get();
-        dd($experience);
+
+        $experience = Experience::find($id);
         $experience->delete();
         return Response()->json(['etat'=> true]);
   }

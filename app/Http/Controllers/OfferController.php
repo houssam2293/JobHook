@@ -100,4 +100,8 @@ class OfferController extends Controller
      return view('candidate_search-job-details',['offer' => $offer]);
     }
 
+    public function showDetail(){
+      return View('candidat_details');
+    }
+
 }

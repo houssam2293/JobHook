@@ -19,8 +19,13 @@ Route::get('edit-resume/{id}','CvController@edit');
 Route::get('delete-resume/{id}','CvController@destroy');
 
 Route::get('show-resume/{id}','CvController@show');
+Route::get('getExperiences/{id}','ExperienceController@getExperiences'); //vu js show cv
 
-   
+Route::POST('/addExperiences','ExperienceController@addExperiences'); //vu js add experience in show cv blade
+
+Route::put('/updateExperiences','ExperienceController@updateExperiences'); //vu js edit experience in show cv blade
+Route::delete('deleteExperiences/{id}','ExperienceController@deleteExperiences'); //vu js suprimer experience in show cv blade
+
 Route::get('create_resume','CvController@index');
 Route::post('create_resume','CvController@store');
 

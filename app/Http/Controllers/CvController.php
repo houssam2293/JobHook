@@ -48,12 +48,12 @@ class CvController extends Controller
 
             if ($request->input('intitule')[0]) {
                 //TO DO validate data input
-                $diverExist = true;
+                $experienceExist = true;
             }
             
-            if ($request->input('intitileDiver')) {
+            if ($request->input('intitileDiver')[0]) {
                 //TO DO validate data input
-                $diver = true;
+                $diverExist = true;
             }
             
             

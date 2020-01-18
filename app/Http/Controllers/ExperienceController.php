@@ -44,13 +44,16 @@ class ExperienceController extends Controller
                  return Response()->json(['etat'=> true, 'id'=>$experience->experienceId]);
     }
    public function updateExperiences(Request $request){
-                $experience = Experience::find($request->experienceId);
+          $id =  $request->experienceId;
+                $experience = Experience::find($id);
+             // dd($id);
                 $experience->experienceId=$request->experienceId;
                 $experience->intitule=$request->intitule;
                 $experience->lieu=$request->lieu;
                 $experience->dateDebut=$request->dateDebut;
                 $experience->dateFin=$request->datefin;
                 $experience->description=$request->description;
+              //  dd($experience);
                  $experience->save();           
                  return Response()->json(['etat'=> true]);
 

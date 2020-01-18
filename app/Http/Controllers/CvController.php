@@ -36,7 +36,7 @@ class CvController extends Controller
             
             $cv->titre=$request->input('titre');
             $cv->description=$request->input('Resumer');
-            $cv->candidatId=1;//a récupéré
+            $cv->candidatId=1;//a récupéré TODO
 
             $formationExist = false;
             $diverExist = false;
@@ -113,13 +113,10 @@ class CvController extends Controller
 	public function show($id){
 
        $cv = Cv::where('cvId',$id)->get();   
-       $formations = Formation::where('cvId',$id)->join('domaines', 'domaines.domaineId', '=', 'formations.domaineId')->get(); 
-       $experiences = Experience::where('cvId',$id)->get(); 
-       $divers = Diver::where('cvId',$id)->join('typedivers', 'typedivers.typeDiverId', '=', 'divers.typeDiverId')->get();
        $competences = ListCompetencesCandidats::where('cvId',$id)->join('competences', 'listCompetencesCandidats.competenceId', '=', 'competences.competenceId')->get();
       
        Carbon::setlocale('fr');
-      return view('candidate_show-resume',['formations' => $formations,'cv'=>$cv,'experiences' =>$experiences,'divers'=>$divers,'competences' =>$competences]);
+      return view('candidate_show-resume',['cv'=>$cv,'competences' =>$competences]);
 
     }
     

@@ -19,13 +19,27 @@ Route::get('edit-resume/{id}','CvController@edit');
 Route::get('delete-resume/{id}','CvController@destroy');
 
 Route::get('show-resume/{id}','CvController@show');
-Route::get('getExperiences/{id}','ExperienceController@getExperiences'); //vu js show cv
-
+// EXPERIENCE
+Route::get('getExperiences/{id}','ExperienceController@getExperiences'); //vu js show cv affich experience
 Route::POST('/addExperiences','ExperienceController@addExperiences'); //vu js add experience in show cv blade
-
 Route::put('/updateExperiences','ExperienceController@updateExperiences'); //vu js edit experience in show cv blade
 Route::delete('deleteExperiences/{id}','ExperienceController@deleteExperiences'); //vu js suprimer experience in show cv blade
 
+//FORMATION
+Route::get('getFormations/{id}','FormationController@getFormations'); //vu js show cv affich Formations
+Route::POST('/addFormations','FormationController@addFormations'); //vu js add Formations in show cv blade
+Route::put('/updateFormations','FormationController@updateFormations'); //vu js edit Formations in show cv blade
+Route::delete('deleteFormation/{id}','FormationController@deleteFormation'); //vu js suprimer experience in show cv blade
+
+//Divers
+Route::get('getDivers/{id}','DiverController@getDivers'); //vu js show cv affich Divers
+Route::POST('/addDivers','DiverController@addDivers'); //vu js add Divers in show cv blade
+Route::put('/updateDiver','DiverController@updateDiver'); //vu js edit Divers in show cv blade
+Route::delete('deleteDiver/{id}','DiverController@deleteDiver'); //vu js suprimer Divers in show cv blade
+
+
+
+//ADD CV
 Route::get('create_resume','CvController@index');
 Route::post('create_resume','CvController@store');
 
@@ -33,6 +47,10 @@ Route::post('create_resume','CvController@store');
 Route::get('modify_resume', function(){
     return view('candidate_modify-resume');
 });
+
+
+
+
 Route::get('candidate_signup', function(){
     return view('candidate_signup');
 });

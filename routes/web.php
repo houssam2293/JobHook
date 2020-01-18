@@ -40,9 +40,7 @@ Route::get('company_modify', function(){
 Route::get('acceuil', function(){
     return view('acceuil');
 });
-Route::get('jobs-list', function(){
-    return view('recruiter_jobs-list');
-});
+
 
 Route::get('candidats-list', function(){
     return view('list-candidat');
@@ -53,23 +51,21 @@ Route::get('create-job-offer', function(){
 Route::get('modify-job-offer', function(){
     return view('offre.modifier_offre_recruiter');
 });
-Route::get('show-detail', function(){
-    return view('candidat_details');
-});
 Route::get('search-job', function(){
     return view('candidate_search-job');
 });
-Route::get('job-details', function () {
-    return view('recruter_job_detail');
-});
+
 Route::get('/', function () {
     return view('acceuil');
 });
 Route::get('/add-offre','OfferController@index');
-Route::get('/modification-offre/{offreId}','OfferController@modifyView');
-Route::get('/detail-candidat','OfferController@showDetail');
 Route::post('/add-offre','OfferController@store');
-Route::post('/modification-offre','OfferController@modify');
+Route::get('/jobs-list','OfferController@index_offer_list');
+Route::get('/job-details/{offreID}','OfferController@showJobDetail');
+Route::get('/job-details/{offreID}/edit','OfferController@edit');
+Route::patch('/job-details/{offreID}','OfferController@update');
+Route::get('/job-details/{offreID}/delete','OfferController@destroy');
+Route::get('/detail-candidat','OfferController@showDetail');
 
 Auth::routes();
 

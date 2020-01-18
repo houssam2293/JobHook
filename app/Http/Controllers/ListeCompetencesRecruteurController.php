@@ -20,6 +20,20 @@ class ListeCompetencesRecruteurController extends Controller
       }
 
 
-  return ;
+  return;
 }
+
+  public function update($competence,$offreId)
+  {
+
+    $this->destroy($offreId);
+    $this->store($competence,$offreId);
+    return;
+  }
+
+  public function destroy($id)
+  {
+    $listCompetence = \App\ListCompetencesOffre::where('offreId', $id)->delete();
+    return;
+  }
 }

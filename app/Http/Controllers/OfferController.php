@@ -16,7 +16,7 @@ class OfferController extends Controller
      */
     public function __construct()
     {
-      //code
+      Carbon::now()->locale('fr_FR');
     }
 
     /**
@@ -30,10 +30,16 @@ class OfferController extends Controller
       return view('offre.add_offer_recruiter', compact('domains'));
     }
 
-    public function modifyView($offreId){
-      $offers = \App\Offer::where('offreId', $offreId)->first();
+    public function index_offer_list()
+    {
+      $offers = \App\Offer::all();
+      return view('recruiter_jobs-list', compact('offers'));
+    }
+
+    public function showJobDetail($offreID){
+      $offer = \App\Offer::where('id', $offreID)->firstOrFail();
       $domains = \App\Domaine::all();
-      return view('offre.modifier_offre_recruiter', compact('domains','offers'));
+      return view('recruter_job_detail', compact('offer','domains'));
     }
     public function store()
     {
@@ -72,14 +78,62 @@ class OfferController extends Controller
       return redirect('/jobs-list');
     }
 
-    public function modify()
+    public function edit($offreID)
     {
-
-      redirect('/jobs-list');
+      $offer = \App\Offer::where('id', $offreID)->firstOrFail();
+      $domains = \App\Domaine::all();
+      return view('offre.modifier_offre_recruiter', compact('domains','offer'));
     }
+
+
+    public function update($offreID)
+    {
+      $offre = \App\Offer::where('id', $offreID)->firstOrFail();
+      $data = request()->validate([
+        'intitule' => 'required',
+        'domaine' => 'required',
+        'type' => 'required',
+        'lieu' => 'required',
+        'description' => 'required',
+        'diplomeRequis' => 'required',
+        'anneeExperience' => 'required',
+        'duree' => 'required',
+        'remuneration' => 'required',
+        'competences' => 'required',
+        'dateDebut' =>'required'
+
+     ]);
+     $offre->intitule=request('intitule');
+     $offre->type=request('type');
+     $offre->domaineId=request('domaine');
+     $offre->lieu=request('lieu');
+     $offre->diplomeRequis=request('diplomeRequis');
+     $offre->anneeExperience=request('anneeExperience');
+     $offre->remuneration=request('remuneration');
+     $offre->duree=request('duree');
+     $offre->status="online";
+     $offre->competences= request('competences');
+     $offre->recruteurId=1;
+     $offre->dateDepot=Carbon::now();
+     $offre->dateDebut=Carbon::parse(request('dateDebut'))->format('y-m-d');
+     $offre->description=request('description');
+     $offre->save();
+     app('App\Http\Controllers\ListeCompetencesRecruteurController')->update($offre->competences,$offre->id);
+     return redirect('/jobs-list');
+    }
+
     public function showDetail()
     {
       return view('candidat_details');
+    }
+
+
+
+    public function destroy($id)
+    {
+      \App\Offer::destroy($id);
+      app('App\Http\Controllers\ListeCompetencesRecruteurController')->destroy($id);
+      return redirect('/jobs-list');
     }
 
 }

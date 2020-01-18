@@ -47,180 +47,33 @@
 
 					<div class="row">
 						<div class="col-md-12">
+							@forelse($offers as $Offre)
 							<article>
 								<div class="mng-company">
-									<a href="/job-details">
+									<a href="/job-details/{{$Offre->id}}">
 
 									<div class="col-md-6 col-sm-6">
 										<div class="mng-company-name">
-											<h4>Autodesk <span class="cmp-tagline">(Software Company)</span></h4>
-											<span class="cmp-time">Il y a 10 heures</span>
+											<h4>{{$Offre->intitule}} <span class="cmp-tagline">({{$Offre->type}})</span></h4>
+											<span class="cmp-time">{{$Offre->updated_at->diffForHumans()}}</span>
 										</div>
 									</div>
 									<div class="col-md-5 col-sm-5">
 										<div class="mng-company-location">
-											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
+											<p><i class="fa fa-map-marker"></i> {{$Offre->lieu}}</p>
 										</div>
 									</div>
 									</a>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-company-action">
-											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
-											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
+											<a href="/job-details/{{$Offre->id}}/edit" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
 										</div>
 									</div>
 								</div>
 							</article>
-
-							<article>
-								<div class="mng-company">
-									<a href="{{ URL::action('OfferController@index') }}">
-
-									<div class="col-md-6 col-sm-6">
-										<div class="mng-company-name">
-											<h4>Google <span class="cmp-tagline">(Software Company)</span></h4>
-											<span class="cmp-time">Il y a 10 heures</span>
-										</div>
-									</div>
-									<div class="col-md-5 col-sm-5">
-										<div class="mng-company-location">
-											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
-										</div>
-									</div>
-									</a>
-									<div class="col-md-1 col-sm-1">
-										<div class="mng-company-action">
-											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
-											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</article>
-
-							<article>
-								<div class="mng-company">
-									<a href="{{ URL::action('OfferController@index') }}">
-
-									<div class="col-md-6 col-sm-6">
-										<div class="mng-company-name">
-											<h4>Honda <span class="cmp-tagline">(Motor Agency)</span></h4>
-											<span class="cmp-time">Il y a 10 heures</span>
-										</div>
-									</div>
-									<div class="col-md-5 col-sm-5">
-										<div class="mng-company-location">
-											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
-										</div>
-									</div>
-									</a>
-									<div class="col-md-1 col-sm-1">
-										<div class="mng-company-action">
-											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
-											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</article>
-
-							<article>
-								<div class="mng-company">
-									<a href="{{ URL::action('OfferController@index') }}">
-
-									<div class="col-md-6 col-sm-6">
-										<div class="mng-company-name">
-											<h4>Microsoft <span class="cmp-tagline">(Software Company)</span></h4>
-											<span class="cmp-time">Il y a 10 heures</span>
-										</div>
-									</div>
-									<div class="col-md-5 col-sm-5">
-										<div class="mng-company-location">
-											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
-										</div>
-									</div>
-									</a>
-									<div class="col-md-1 col-sm-1">
-										<div class="mng-company-action">
-											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
-											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</article>
-
-							<article>
-								<div class="mng-company">
-									<a href="{{ URL::action('OfferController@index') }}">
-
-									<div class="col-md-6 col-sm-6">
-										<div class="mng-company-name">
-											<h4>Skype <span class="cmp-tagline">(Software Company)</span></h4>
-											<span class="cmp-time">Il y a 10 heures</span>
-										</div>
-									</div>
-									<div class="col-md-5 col-sm-5">
-										<div class="mng-company-location">
-											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
-										</div>
-									</div>
-									</a>
-									<div class="col-md-1 col-sm-1">
-										<div class="mng-company-action">
-											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
-											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</article>
-
-							<article>
-								<div class="mng-company">
-									<a href="{{ URL::action('OfferController@index') }}">
-
-									<div class="col-md-6 col-sm-6">
-										<div class="mng-company-name">
-											<h4>Virtue <span class="cmp-tagline">(Development Company)</span></h4>
-											<span class="cmp-time">Il y a 10 heures</span>
-										</div>
-									</div>
-									<div class="col-md-5 col-sm-5">
-										<div class="mng-company-location">
-											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
-										</div>
-									</div>
-									</a>
-									<div class="col-md-1 col-sm-1">
-										<div class="mng-company-action">
-											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
-											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</article>
-
-							<article>
-								<div class="mng-company">
-									<a href="{{ URL::action('OfferController@index') }}">
-
-									<div class="col-md-6 col-sm-6">
-										<div class="mng-company-name">
-											<h4>Twitter <span class="cmp-tagline">(Social Media Company)</span></h4>
-											<span class="cmp-time">Il y a 10 heures</span>
-										</div>
-									</div>
-									<div class="col-md-5 col-sm-5">
-										<div class="mng-company-location">
-											<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
-										</div>
-									</div>
-									</a>
-									<div class="col-md-1 col-sm-1">
-										<div class="mng-company-action">
-											<a href="{{ URL::action('OfferController@modify') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
-											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</article>
+							@empty
+							<p>Aucun donnee dans la base de donnee</p>
+							@endforelse
 
 						</div>
 					</div>

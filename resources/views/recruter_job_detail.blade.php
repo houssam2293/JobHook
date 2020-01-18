@@ -15,8 +15,7 @@
 					<div class="row">
 
 						<div class="detail-pic">
-							<img src="assets/img/com-2.jpg" class="img" alt="" />
-							<a href="#" class="detail-edit" title="edit" ><i class="fa fa-pencil"></i></a>
+							<img src="{{URL::asset('assets/img/com-2.jpg')}}" class="img" alt="" />
 						</div>
 
 						<div class="detail-status">
@@ -66,10 +65,17 @@
 							</div>
 
 							<div class="col-md-7 col-sm-7">
-								<div class="detail-pannel-footer-btn pull-right">
-									<a href="#" class="footer-btn grn-btn" title="">Modifier</a>
+								<form class="" action="{{url('/job-details/'.$offer->id)}}" method="post">
+									@csrf
+									@method('DELETE')
+									<div class="detail-pannel-footer-btn pull-right">
+											<a href="{{url('/job-details/'.$offer->id.'/delete')}}" class="footer-btn red-btn" title="">Supprimer </a>
+									</div>
 
+								<div class="detail-pannel-footer-btn pull-right">
+									<a href="/job-details/{{$offer->id}}/edit" class="footer-btn grn-btn" title="">Modifier</a>
 								</div>
+									</form>
 							</div>
 						</div>
 					</div>

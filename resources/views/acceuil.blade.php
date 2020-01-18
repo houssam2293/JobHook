@@ -434,8 +434,7 @@
 
                     <p>Aliquam vestibulum cursus felis. In iaculis iaculis sapien ac condimentum. Vestibulum congue
                         posuere lacus, id tincidunt nisi porta sit amet. Suspendisse et sapien varius, pellentesque dui
-                        non, semper orci. Curabitur blandit, diam ut ornare ultricies.</p>
-                    <a href="#" class="btn call-btn"><i class="fa fa-apple"></i>Telechargez</a><a href="#"
+                        non, semper orci. Curabitur blandit, diam ut ornare ultricies.</p><a href="#"
                                                                                                class="btn call-btn"><i
                         class="fa fa-android"></i>Telechargez</a>
                 </div>

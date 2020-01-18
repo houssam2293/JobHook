@@ -15,12 +15,12 @@ class CreatePostulerTable extends Migration
     {
         Schema::create('postulers', function (Blueprint $table) {
             $table->bigIncrements('postulerId');
-            $table->unsignedBigInteger('offreId');
+            $table->unsignedBigInteger('id');
             $table->unsignedBigInteger('cvId');
             $table->date('datePostuler');
-            $table->foreign('offreId')->references('offreId')->on('offers');
+            $table->foreign('id')->references('id')->on('offers')->onDelete('cascade');
             $table->foreign('cvId')->references('cvId')->on('cvs');
-            $table->unique('offreId','cvId');
+            $table->unique('id','cvId');
             $table->timestamps();
         });
     }

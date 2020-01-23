@@ -27,8 +27,8 @@ class CreateOffreTable extends Migration
             $table->date('dateDebut');
             $table->string('duree');
             $table->string('status');
-            $table->unsignedBigInteger('competenceId');
-            $table->foreign('competenceId')->references('competenceId')->on('competences');
+            // $table->unsignedBigInteger('competenceId');
+            // $table->foreign('competenceId')->references('competenceId')->on('competences');
             $table->string('description');
             $table->unsignedBigInteger('recruteurId');
             $table->foreign('recruteurId')->references('recruteurId')->on('recruteurs');

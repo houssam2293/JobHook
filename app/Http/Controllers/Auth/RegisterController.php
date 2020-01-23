@@ -92,7 +92,7 @@ class RegisterController extends Controller
                     'nom' => $data['nom'],
                     'prenom' => $data['prenom'],
                     'email' => $data['email'],
-                    'user_id' => $user->id,
+                    'user_id' => $user->id
                   ]);
         }
         elseif ($data['type'] == 'R') {

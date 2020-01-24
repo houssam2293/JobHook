@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
+use App\Offre;
 
 class SearchController extends Controller
 {
@@ -14,10 +15,9 @@ class SearchController extends Controller
       $lieu = $request->input('lieu');
       if($lieu == "Choisissez la ville")
         $lieu = '';
-      //$lieu = $request->input('lieu');
-      echo $term;
-      echo $lieu;
+      $offres = Offre::where('intitule', 'like', '%informatique%')->get();
 
-      // do things with them...
+
+      return view('cv.index', ['offres' => $offres]);
   }
 }

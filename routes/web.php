@@ -31,9 +31,7 @@ Route::get('company_modify', function(){
 Route::get('acceuil', function(){
     return view('acceuil');
 });
-Route::get('jobs-list', function(){
-    return view('recruiter_jobs-list');
-});
+Route::get('search', 'SearchController@search');
 
 Route::get('candidats-list', function(){
     return view('list-candidat');

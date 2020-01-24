@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Offre;
+use App\Domaine;
 
 class SearchController extends Controller
 {
@@ -15,9 +16,24 @@ class SearchController extends Controller
       $lieu = $request->input('lieu');
       if($lieu == "Choisissez la ville")
         $lieu = '';
-      $offres = Offre::where('intitule', 'like', '%informatique%')->get();
+      $offres = Offre::where('intitule', 'like', '%'.$term.'%')->get();
+      $domaines = Domaine::where('nom', 'like', '%'.$term.'%')->get();
 
+      // echo $result1;
+      // echo "\n\n";
 
-      return view('cv.index', ['offres' => $offres]);
+      foreach ($domaines as $d => $domaine) {
+        foreach ($domaine->offres as $o => $offre) {
+          if (!($offres->contains($offre))) {
+            $offres->push($offre);
+          }
+        }
+        //$temp->push($dom->offres);
+      }
+      //echo $result2->offres;
+
+      //$offres = $result1->union($result2);
+
+      return view('search', ['offres' => $offres]);
   }
 }

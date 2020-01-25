@@ -16,19 +16,22 @@
 					<!-- Company Searrch Filter Start -->
 					<div class="row extra-mrg">
 						<div class="wrap-search-filter">
-							<form>
+							<form method="get" action="{{ url('search')}}">
 								<div class="col-md-4 col-sm-4">
-									<input type="text" class="form-control" placeholder="Domaine, Companie, Competence">
+									<input name="term" type="text" class="form-control" placeholder="Domaine, Companie, Competence">
 								</div>
-								<div class="col-md-3 col-sm-3">
-									<input type="text" class="form-control" placeholder="Adresse: Ville, Pays">
-								</div>
-								<div class="col-md-3 col-sm-3">
-									<select class="selectpicker form-control" multiple title="All Categories">
-									  <option>Information Technology</option>
-									  <option>Mechanical</option>
-									  <option>Hardware</option>
+								<div class="col-md-3 col-sm-3" >
+									<select placeholder="ville" name="lieu" id="choose-city" class="form-control">
+											<option>Choisissez la ville</option>
+											<option>Alger</option>
+											<option>Tlemcen</option>
+											<option>Oran</option>
+											<option>Temouchent</option>
+											<option>Adrar</option>
+											<option>Batna</option>
 									</select>
+								</div>
+								<div class="col-md-3 col-sm-3">
 
 								</div>
 								<div class="col-md-2 col-sm-2">
@@ -43,7 +46,7 @@
 							<div class="brows-job-list">
 								<div class="col-md-1 col-sm-2 small-padding">
 									<div class="brows-job-company-img">
-										<a href="job-detail.html"><img src="assets/img/com-2.jpg" class="img-responsive" alt="" /></a>
+										<a href="job-detail.html"><img src="{{ asset($offre->recruteur->logo) }}" class="img-responsive" alt="" /></a>
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-5">

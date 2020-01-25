@@ -10,6 +10,10 @@ class Offre extends Model
     return $this->belongsTo('App\Recruteur');
   }
 
+  public function listcompetencesoffres(){
+    return $this->hasMany('App\Listcompetencesoffre');
+  }
+
   public function domaine()
     {
         return $this->hasOne('App\Domaine');

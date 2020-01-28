@@ -54,17 +54,23 @@
 
 					<div class="row no-padd">
 						<div class="detail pannel-footer">
-							<div class="col-md-5 col-sm-5">
-								<ul class="detail-footer-social">
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-								</ul>
+							<div class="col-sm-2 col-md-2">
+									<div class="row">
+										<div class="col-sm-5 col-md-5">
+										 <div class="input-group">
+										 	<label for="switch">Status</label>
+										 </div>
+										</div>
+									  <div class="col-sm-3 col-md-3">
+											<label class="switch">
+											<input type="checkbox" name="switch">
+											<span class="slider round"></span>
+											</label>
+									  </div>
+									</div>
 							</div>
 
-							<div class="col-md-7 col-sm-7">
+							<div class="col-md-10 col-sm-10">
 								<form class="" action="{{url('/job-details/'.$offer->id)}}" method="post">
 									@csrf
 									@method('DELETE')

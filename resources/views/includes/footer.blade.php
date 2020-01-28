@@ -103,7 +103,7 @@
 
                     <div class="tab-content" id="myModalLabel2">
                         <div role="tabpanel" class="tab-pane fade in active" id="login">
-                            <img src="assets/img/logo.png" class="img-responsive" alt=""/>
+                            <img src="{{ URL::to('assets/img/logo.png') }}" class="img-responsive" alt=""/>
 
                             <div class="subscribe wow fadeInUp">
                                 <form class="form-inline" method="post">
@@ -133,7 +133,7 @@
 </div>
 <!-- Scripts
     ================================================== -->
-    <script type="text/javascript" src="assets/plugins/js/jquery.min.js"></script>
+   {{--  <script type="text/javascript" src="assets/plugins/js/jquery.min.js"></script>
     <script type="text/javascript" src="assets/plugins/js/viewportchecker.js"></script>
     <script type="text/javascript" src="assets/plugins/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/plugins/js/bootsnav.js"></script>
@@ -148,7 +148,8 @@
     <script type="text/javascript" src="assets/plugins/js/gmap3.min.js"></script>
     <script type="text/javascript" src="assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
     <script src="assets/js/custom.js"></script>
-     <script src="assets/js/vue.js"></script>
+     <script src="assets/js/vue.js"></script> --}}
+             
 @yield('javascripts')
 </body>
 

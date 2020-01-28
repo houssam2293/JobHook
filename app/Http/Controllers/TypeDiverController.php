@@ -15,4 +15,8 @@ class TypeDiverController extends Controller
 
     return $typedivers->typeDiverId;
 	}
+	// public function show(){
+	// 	$typedivers = TypeDiver::all();
+	// 	dd($typedivers->divers());
+	// }
 }

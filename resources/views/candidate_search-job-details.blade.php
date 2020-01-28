@@ -1,9 +1,10 @@
 @extends('layouts.master')
 @Section('content')
+<section id="app">
 			<!-- Title Header Start -->
 			<section class="inner-header-title" style="background-image:url({{ URL::to('assets/img/banner-10.jpg') }});">
 				<div class="container">
-					<h1>Detail d'emploie</h1>
+					<h1>@{{ message }}</h1>
 				</div>
 			</section>
 			<div class="clearfix"></div>
@@ -68,8 +69,7 @@
 							
 							<div class="col-md-7 col-sm-7">
 								<div class="detail-pannel-footer-btn pull-right">
-									<a href="#" class="footer-btn grn-btn" title="">Appliquer mtn</a>
-									
+									<button class="add-field" v-on:click="postuler">Appliquer mtn</button>
 								</div>
 							</div>
 						</div>
@@ -100,9 +100,67 @@
 					
 					
 					
-				</div>
+				</div>	
+				</section>
+
 			</section>
 			<!-- Job full detail End -->
 
+				 <script src="{{ asset('js/vue.js') }}"></script>
+             <script src="{{ asset('js/axios.js') }}"></script>
+             <script src="{{ asset('js/sweetalert.js') }}"></script>
 
+     <script type="text/javascript">
+     		
+     		window.Laravel={!! json_encode([
+           	'csrfToken' 	=> csrf_token(),
+            'url' 			=>url('/')]) !!} ;
+     </script> 
+
+<script>
+
+
+	var app = new Vue({
+       el: '#app',
+       data: {
+       	 message: "Detail d'emploie",
+  	}, 
+    methods:{
+    	postuler: function(){
+    		(async () => {
+
+				/* inputOptions can be an object or Promise */
+				const inputOptions = new Promise((resolve) => {
+				  setTimeout(() => {
+				    resolve({
+				      'Cv 1': 'Cv 1',
+				      'Cv 2': 'Cv 2',
+				      'Cv 3': 'Cv 3'
+				    })
+				  }, 1000)
+				})
+
+				const { value: cv } = await Swal.fire({
+				  title: 'Selectionner le cv que vous vouler postuler avec',
+				  input: 'radio',
+				  inputOptions: inputOptions,
+				  inputValidator: (value) => {
+				    if (!value) {
+				      return 'Tu dois selectionner un cv!'
+				    }
+				  }
+				})
+				//axios postule
+				if (cv) {
+				  Swal.fire({ html: `<b>Vous aver postuler avec</b>: ${cv}` })
+				}
+
+				})()
+		}
+
+    }
+})
+
+</script>
+ 			
 @endsection

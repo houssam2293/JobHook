@@ -16,7 +16,7 @@ class CreateRecruteurTable extends Migration
         Schema::create('recruteurs', function (Blueprint $table) {
             $table->bigIncrements('recruteurId');
             $table->unsignedBigInteger('accountId');
-            $table->foreign('accountId')->references('accountId')->on('accounts');
+            $table->foreign('accountId')->references('id')->on('users');
             $table->string('type');
             $table->string('nom');
             $table->string('adresse');

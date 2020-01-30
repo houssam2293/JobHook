@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Candidat;
+use Auth;
+
+class CandidatController extends Controller
+{
+  public function __construct() {
+       $this->middleware('candidat');
+       $this->middleware('auth');
+  }
+
+//afficher profile
+  public function index() {
+      $id = Auth::user()->id;
+      $candidats = Candidat::where('user_id', $id)->get();
+      return view('candidat.edit', ['candidat' => $candidats[0]]);
+  }
+  //permet de modifier un candidat
+  public function update(Request $request, $id) {
+      $candidat = Candidat::find($id);
+      //$this->authorize('update', $cv);
+      $candidat->nom = $request->input('nom');
+      $candidat->prenom = $request->input('prenom');
+      $candidat->civilite = $request->input('civilite');
+      $candidat->email = $request->input('email');
+      $candidat->telephone = $request->input('telephone');
+      $candidat->adresse = $request->input('adresse');
+      //$candidat->dateNaissance = $request->input('dateNaissance');
+      $candidat->linkedin = $request->input('linkedin');
+       if($request->hasFile('photo')) {
+        $candidat->photo = $request->photo->store('image');
+      }
+      $candidat->save();
+      return redirect('candidats');
+  }
+}

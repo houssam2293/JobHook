@@ -60,13 +60,13 @@ Route::get('modify_resume', function(){
 
 Route::get('candidate_signup', function(){
     return view('candidate_signup');
-});
+})->middleware('guest');
 Route::get('company_signup', function(){
     return view('company_signup');
-});
-Route::get('profile_modify', function(){
-    return view('candidate_modify-profile');
-});
+})->middleware('guest');
+// Route::get('profile_modify', function(){
+//     return view('candidate_modify-profile');
+// });
 Route::get('company_modify', function(){
     return view('recruiter_modify-company');
 });
@@ -102,6 +102,19 @@ Route::patch('/job-details/{offreID}','OfferController@update');
 Route::get('/job-details/{offreID}/delete','OfferController@destroy');
 Route::get('/detail-candidat','OfferController@showDetail');
 
+Route::get('/candidats','CandidatController@index');
+Route::put('/candidats/{id}','CandidatController@update');
+
+Route::get('/recruteurs','recruteurController@index');
+Route::put('/recruteurs/{id}','recruteurController@update');
+
+Route::get('logout', 'Auth\LoginController@logout', function () {
+    return abort(404);
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::get('/candidats', 'CandidatController@index')->name('candidats')->middleware('candidat');
+//Route::get('/recruteur', 'RecruteurController@index')->name('recruteur')->middleware('recruteur');

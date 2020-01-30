@@ -103,22 +103,42 @@
 
                     <div class="tab-content" id="myModalLabel2">
                         <div role="tabpanel" class="tab-pane fade in active" id="login">
-                            <img src="{{ URL::to('assets/img/logo.png') }}" class="img-responsive" alt=""/>
+                            <img src="{{ asset('assets/img/logo.png')}}" class="img-responsive" alt=""/>
 
                             <div class="subscribe wow fadeInUp">
-                                <form class="form-inline" method="post">
+                                <form class="form-inline" method="post" action="{{ route('login') }}">
+                                    @csrf
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <input type="email" name="email" class="form-control"
-                                                   placeholder="Adresse email" required=""><input type="password"
-                                                                                             name="password"
-                                                                                             class="form-control"
-                                                                                             placeholder="Mot de passe"
-                                                                                             required="">
+                                          <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
+                                          @error('email')
+                                              <span class="invalid-feedback" role="alert">
+                                                  <strong>{{ $message }}</strong>
+                                              </span>
+                                          @enderror
+                                          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                          @error('password')
+                                              <span class="invalid-feedback" role="alert">
+                                                  <strong>{{ $message }}</strong>
+                                              </span>
+                                          @enderror
+                                          <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                          <label class="form-check-label" for="remember">
+                                              {{ __('Remember Me') }}
+                                          </label>
+                                          <br>
+                                          @if (Route::has('password.request'))
+                                              <a class="form-check-label right" href="{{ route('password.request') }}">
+                                                  {{ __('Forgot Your Password?') }}
+                                              </a>
+                                          @endif
                                             <div class="center">
                                                 <button type="submit" id="login-btn" class="submit-btn"> Se Connecter
                                                 </button>
+
                                             </div>
                                         </div>
                                     </div>
@@ -133,24 +153,22 @@
 </div>
 <!-- Scripts
     ================================================== -->
-   {{--  <script type="text/javascript" src="assets/plugins/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/viewportchecker.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/bootsnav.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/select2.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/wysihtml5-0.3.0.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/bootstrap-wysihtml5.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/datedropper.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/dropzone.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/loader.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/slick.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/gmap3.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
-    <script src="assets/js/custom.js"></script>
-     <script src="assets/js/vue.js"></script> --}}
-             
-@yield('javascripts')
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/viewportchecker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/bootsnav.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/wysihtml5-0.3.0.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/bootstrap-wysihtml5.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/datedropper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/dropzone.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/loader.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/owl.carousel.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/slick.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/gmap3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/js/jquery.easy-autocomplete.min.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+
 </body>
 
 <!-- new-job-detail41:45-->

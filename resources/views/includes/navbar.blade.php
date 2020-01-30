@@ -7,7 +7,7 @@
     <!-- Start Header Navigation -->
     <div class="navbar-header">
       <a class="navbar-brand" href="acceuil">
-        <img src="{{ URL::asset('assets/img/logo-white.png') }}" class="logo logo-scrolled" alt="">
+        <img src="{{ URL::to('assets/img/logo-white.png') }}" class="logo logo-scrolled" alt="">
       </a>
     </div>
 

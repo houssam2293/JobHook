@@ -1,9 +1,10 @@
 @extends('layouts.master')
 @Section('content')
+<section id="app">
 			<!-- Title Header Start -->
-			<section class="inner-header-title" style="background-image:url(assets/img/banner-10.jpg);">
+			<section class="inner-header-title" style="background-image:url({{ URL::to('assets/img/banner-10.jpg') }});">
 				<div class="container">
-					<h1>Detail d'emploie</h1>
+					<h1>@{{ message }}</h1>
 				</div>
 			</section>
 			<div class="clearfix"></div>
@@ -15,12 +16,12 @@
 					<div class="row">
 					
 						<div class="detail-pic">
-							<img src="assets/img/com-2.jpg" class="img" alt="" />
-							<a href="#" class="detail-edit" title="edit" ><i class="fa fa-pencil"></i></a>
+							<img src="{{URL::to($offer->logo)}}" class="img-responsive" alt="" />
+							
 						</div>
 						
 						<div class="detail-status">
-							<span>2 jour restant</span>
+							<span>{{ucfirst($offer->updated_at->diffForHumans())}}</span>
 						</div>
 						
 					</div>
@@ -28,12 +29,13 @@
 					<div class="row bottom-mrg">
 						<div class="col-md-8 col-sm-8">
 							<div class="detail-desc-caption">
-								<h4>Google</h4>
-								<span class="designation">Software Development Company</span>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+								<h4>{{$offer->nom}}</h4>
+								<span class="designation">{{$offer->comptype}}</span>
+								<p>NO DESCRIPTION</p>
 								<ul>
-									<li><i class="fa fa-briefcase"></i><span>Temps complet</span></li>
-									<li><i class="fa fa-flask"></i><span>3 Anné d'xperience</span></li>
+									<li><i class="fa fa-graduation-cap"></i><span>{{$offer->diplomeRequis}}</span></li>
+									<li><i class="fa fa-flask"></i><span>{{$offer->anneeExperience}} Anné d'xperience</span></li>
+									<li><i class="fa fa-briefcase"></i><span>{{$offer->type}}</span></li>
 								</ul>
 							</div>
 						</div>
@@ -42,11 +44,11 @@
 							<div class="get-touch">
 								<h4>Infos</h4>
 								<ul>
-									<li><i class="fa fa-map-marker"></i><span>Menlo Park, CA</span></li>
-									<li><i class="fa fa-envelope"></i><span>danieldax704@gmail.com</span></li>
-									<li><i class="fa fa-globe"></i><span>google.com</span></li>
-									<li><i class="fa fa-phone"></i><span>0 123 456 7859</span></li>
-									<li><i class="fa fa-money"></i><span>$1000 -$1200/Month</span></li>
+									<li><i class="fa fa-map-marker"></i><span>{{$offer->adresse}}</span></li>
+									<li><i class="fa fa-envelope"></i><span>{{$offer->email}}</span></li>
+									<li><i class="fa fa-globe"></i><span>{{$offer->siteWeb}}</span></li>
+									<li><i class="fa fa-phone"></i><span>{{$offer->telephone}}</span></li>
+									<li><i class="fa fa-money"></i><span>${{$offer->remuneration}}/Month</span></li>
 								</ul>
 							</div>
 						</div>
@@ -55,7 +57,7 @@
 					
 					<div class="row no-padd">
 						<div class="detail pannel-footer">
-							<div class="col-md-5 col-sm-5">
+							{{-- <div class="col-md-5 col-sm-5">
 								<ul class="detail-footer-social">
 									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -63,12 +65,11 @@
 									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
 									<li><a href="#"><i class="fa fa-instagram"></i></a></li>
 								</ul>
-							</div>
+							</div> --}}
 							
 							<div class="col-md-7 col-sm-7">
 								<div class="detail-pannel-footer-btn pull-right">
-									<a href="#" class="footer-btn grn-btn" title="">Appliquer mtn</a>
-									
+									<button class="add-field" v-on:click="postuler">Appliquer mtn</button>
 								</div>
 							</div>
 						</div>
@@ -82,8 +83,7 @@
 				<div class="container">
 					<div class="row row-bottom">
 						<h2 class="detail-title">Responsibilité du poste</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<p>{{$offer->description}}</p>
 					</div>
 					
 					<div class="row row-bottom">
@@ -98,20 +98,69 @@
 						</ul>
 					</div>
 					
-					<div class="row row-bottom">
-						<h2 class="detail-title">Diplôme requis</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						<ul class="detail-list">
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
-							
-						</ul>
-					</div>
 					
-				</div>
+					
+				</div>	
+				</section>
+
 			</section>
 			<!-- Job full detail End -->
 
+				 <script src="{{ asset('js/vue.js') }}"></script>
+             <script src="{{ asset('js/axios.js') }}"></script>
+             <script src="{{ asset('js/sweetalert.js') }}"></script>
 
+     <script type="text/javascript">
+     		
+     		window.Laravel={!! json_encode([
+           	'csrfToken' 	=> csrf_token(),
+            'url' 			=>url('/')]) !!} ;
+     </script> 
+
+<script>
+
+
+	var app = new Vue({
+       el: '#app',
+       data: {
+       	 message: "Detail d'emploie",
+  	}, 
+    methods:{
+    	postuler: function(){
+    		(async () => {
+
+				/* inputOptions can be an object or Promise */
+				const inputOptions = new Promise((resolve) => {
+				  setTimeout(() => {
+				    resolve({
+				      'Cv 1': 'Cv 1',
+				      'Cv 2': 'Cv 2',
+				      'Cv 3': 'Cv 3'
+				    })
+				  }, 1000)
+				})
+
+				const { value: cv } = await Swal.fire({
+				  title: 'Selectionner le cv que vous vouler postuler avec',
+				  input: 'radio',
+				  inputOptions: inputOptions,
+				  inputValidator: (value) => {
+				    if (!value) {
+				      return 'Tu dois selectionner un cv!'
+				    }
+				  }
+				})
+				//axios postule
+				if (cv) {
+				  Swal.fire({ html: `<b>Vous aver postuler avec</b>: ${cv}` })
+				}
+
+				})()
+		}
+
+    }
+})
+
+</script>
+ 			
 @endsection

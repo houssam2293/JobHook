@@ -8,4 +8,7 @@ class Domaine extends Model
 {
     protected $fillable = ['nom'];
 
+		public function formation(){
+    		return $this->hasOne('App\Formation');
+    	}
 }

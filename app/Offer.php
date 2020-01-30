@@ -9,8 +9,5 @@ class Offer extends Model
     //
     protected $guarded=[];
 
-    public function localizedDiffForHumans() {
-    Carbon::setLocale(App::getLocale());
-    return $this->created_at->diffForHumans();
-}
+    protected $table = 'offres';
 }

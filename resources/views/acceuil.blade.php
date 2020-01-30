@@ -54,14 +54,14 @@
                 <div class="col-md-12 col-sm-12 banner-text">
                     <h1>Plus de 8,000 Offres</h1>
 
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="get" action="{{ url('search')}}">
                         <div class="col-md-5 no-padd">
-                            <div class="input-group"><input type="text" class="form-control right-bor" id="joblist"
+                            <div class="input-group"><input value="{{ old('term') }}" name="term" type="text" class="form-control right-bor" id="joblist"
                                                             placeholder="Domaine, Competences, Companies"></div>
                         </div>
                         <div class="col-md-5 no-padd">
                             <div class="input-group">
-                                <select id="choose-city" class="form-control">
+                                <select placeholder="ville" name="lieu" id="choose-city" class="form-control">
                                     <option>Choisissez la ville</option>
                                     <option>Alger</option>
                                     <option>Tlemcen</option>

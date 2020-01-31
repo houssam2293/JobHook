@@ -45,7 +45,9 @@
 
 							<div class="detail-desc-skill" style="padding-bottom: 15px">
 								
-								<span v-for="competence in competences">@{{competence.nom}}</span>
+								<span v-for="competence in competences">@{{competence.nom}}
+									{{-- &nbsp;<i class="fa fa-trash-o" style="font-size:20px;color:red"></i> --}}
+								</span>
 								
 							</div>
 						</div>	

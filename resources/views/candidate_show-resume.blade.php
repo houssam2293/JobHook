@@ -10,20 +10,20 @@
 				<div class="container">
 					<h1>Cv Detaillé</h1><h1>@{{ message }}</h1>
 				</div>
-				
+
 			</section>
 			<div class="clearfix"></div>
 			<!-- Title Header End -->
-			
+
 			<!-- Resume Detail Start -->
 			<section class="detail-desc">
 				<div class="container white-shadow">
 					<div class="row mrg-0">
-						
+
 						<div class="detail-status">
                            <button v-if="edittitre" class="btn btn-sm" v-on:click="updateTitre"><i class="fa fa-check" style="font-size:30px;"></i></button>
 
-							<span>{{ucfirst($cv->created_at->diffForHumans())}}</span> 
+							<span>{{ucfirst($cv->created_at->diffForHumans())}}</span>
 							<br>
 							<button v-if="editdescription" class="btn btn-sm" v-on:click="updateDescription"><i class="fa fa-check" style="font-size:30px;"></i></button>
 						</div> {{-- derniére fois le cv est mis a jours --}}
@@ -32,34 +32,34 @@
 						<div class="col-md-8 col-sm-8">
 							<div class="detail-desc-caption">
 								<h3 v-if="!edittitre" class="designation" @click="editTitre">@{{titre}}</h3>
-								
+
 								<input v-if="edittitre" name="titre" type="text" class="form-control" v-model="titre" required style="margin-top: 10px">
-								
+
 
 
 								<p v-if="!editdescription" @click="editDescription">@{{description}}</p>
 								<textarea v-if="editdescription" type="text" class="form-control" style="margin-top: 15px" v-model="description"></textarea>
 
-                           
+
 							</div>
 
 							<div class="detail-desc-skill" style="padding-bottom: 15px">
-								
+
 								<span v-for="competence in competences">@{{competence.nom}}
 									{{-- &nbsp;<i class="fa fa-trash-o" style="font-size:20px;color:red"></i> --}}
 								</span>
-								
+
 							</div>
-						</div>	
+						</div>
 					</div>
 				</div>
 			</section>
 
 			<!-- Resume Detail End -->
-			
+
 			<section class="full-detail-description full-detail">
 				<div class="container">
-					
+
 						<div class="row row-bottom mrg-0">
 							<div class="row">
 								<div class="col-md-10">
@@ -84,7 +84,7 @@
 										<input name="lieu" type="text" class="form-control" placeholder="Nom de l'institu, e.g. Ecole sup de l'informatique" v-model="formation.lieu">
 									</div>
 
-									
+
 									<div class="col-md-12 col-sm-12">
 										<input name="domain" type="text" class="form-control" placeholder="domain, e.g. Informatique" v-model="formation.nom">
 									</div>
@@ -103,8 +103,8 @@
 										</div>
 									</div>
 
-									
-									<button type="button" class="btn remove-field" @click="openformation = false">Supprimer </button>
+
+									<button type="button" class="btn remove-field" @click="reglageFormation">Annuler </button>
 
 									<button v-if="editformation" type="button" class="add-field" style="background-color: red;" v-on:click="updateFormation(formation)">Modifier</button>
 
@@ -124,20 +124,20 @@
 								<div class="pull-right">
 									<button class="btn btn-sm" v-on:click="editFormation(formation)"><i class="fa fa-edit" style="font-size:30px;color:green"></i></button>
 								</div>
-								
+
 								<li><strong>@{{formation.diplome}} @{{formation.nom}}</strong></li>
 								<ul>
 									<li>Lieu: @{{formation.lieu}}</li>
 									<li>Date: @{{formation.dateDebut}}/@{{formation.dateFin}}</li>
-								</ul> 
-								
+								</ul>
+
 							</ul>
-						
+
 						</div>
-					
-					
+
+
 						<div class="row row-bottom mrg-0" >
-							
+
 							<div class="row">
 								<div class="col-md-10">
 									<h2 class="detail-title" v-if="experiences.length > 0">Experience</h2>
@@ -157,7 +157,7 @@
 										<input name="intitule" type="text" class="form-control" placeholder="Position, e.g. Designeur du WEB" v-model="experience.intitule">
 									</div>
 									<div class="col-md-12 col-sm-12">
-										<input name="exp_lieu" type="text" class="form-control" placeholder="Lieu, eg Sonelgaz" v-model="experience.lieu"> 
+										<input name="exp_lieu" type="text" class="form-control" placeholder="Lieu, eg Sonelgaz" v-model="experience.lieu">
 									</div>
 
 									<div class="col-md-6 col-sm-6">
@@ -203,15 +203,15 @@
 									<li>"Description: " @{{experience.description}}.</li>
 								</ul>
 							</ul>
-						
+
 					</div>
-					
-					
-					
-					
-					
+
+
+
+
+
 						<div class="row row-bottom mrg-0">
-							
+
 							<div class="row">
 								<div class="col-md-10">
 									<h2 class="detail-title" v-if="divers.length > 0">Divers</h2>
@@ -222,7 +222,7 @@
 								</div>
 							</div>
 
-						
+
 						{{-- debut div d'ajout diver--}}
 
 						<div class="row row-bottom mrg-0" v-if="opendivers">
@@ -252,9 +252,9 @@
 											<input name="diver_date_fin" type="text" id="exp-end" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" v-model="diver.datefin">
 										</div>
 									</div>
-									{{-- 
+									{{--
 									<div class="col-md-12 col-sm-12 ">
-										<textarea name="diver_description" class="form-control " placeholder="Remarques" style="margin-top: 15px 
+										<textarea name="diver_description" class="form-control " placeholder="Remarques" style="margin-top: 15px
 										"></textarea>
 									</div> --}}
 
@@ -288,10 +288,10 @@
 									</li>
 								</ul>
 							</ul>
-						
+
 					</div>
-					
-					
+
+
 				</div>
 			</section>
 			</section>
@@ -301,15 +301,15 @@
 	<script src="{{ asset('js/sweetalert.js') }}"></script>
 
      <script type="text/javascript">
-     		
+
      		window.Laravel={!! json_encode([
            	'csrfToken' 	=> csrf_token(),
             'idCv'  => $cv->id,
-            'description' => $cv->description, 
-            'titre' => $cv->titre, 
+            'description' => $cv->description,
+            'titre' => $cv->titre,
             'competences'  => $competences,
             'url' 			=>url('/')]) !!} ;
-     </script> 
+     </script>
 
 <script>
 
@@ -367,11 +367,11 @@
 	       		.then(response => {
 	       			this.experiences = response.data;
 	       			//console.log(this.experiences);
-	       	
+
 	       		})
 	       		.catch(error => {
 	       			console.log("error");
-	       			
+
 	       		})
 	       	},
 	    addExperiences: function(){
@@ -382,7 +382,7 @@
 	       			//console.log(response.data);
 	       			if(response.data.etat){
 	       				this.open=false;
-	       				this.experience.id = response.data.experienceId;
+	       				this.experience.id = response.data.id;
 	       				this.experiences.unshift(this.experience);
 	       				this.experience = {
 	       					id: 0,
@@ -439,7 +439,7 @@
 				  confirmButtonText: 'Oui, Supprimer!'
 				}).then((result) => {
 				  if (result.value) {
-				  	axios.delete(window.Laravel.url+'/deleteExperiences/'+this.experience.experienceId)
+				  	axios.delete(window.Laravel.url+'/deleteExperiences/'+this.experience.id)
 					       		.then(response => {
 					       			if(response.data.etat){
 					       				var Position = this.experiences.indexOf(experience);
@@ -464,13 +464,14 @@
 	       					}
 				  }
 				})
-	    	
+
 		},
 		getFormations: function(){
        		axios.get(window.Laravel.url+'/getFormations/'+window.Laravel.idCv)
 	       		.then(response => {
 	       			this.formations = response.data;
-	       			console.log(this.formations);
+							console.log("mes formations:");
+							console.log(this.formations);
 	       		})
 	       		.catch(error => {
 	       			console.log("error");
@@ -483,7 +484,8 @@
 	       			console.log(response.data);
 	       			if(response.data.etat){
 	       				this.openformation=false;
-	       				this.formation.id = response.data.formationId;
+	       				this.formation.id = response.data.id;
+								console.log(response.data.id);
 	       				this.formations.unshift(this.formation);
 	       				this.formation= {
 				       	 	id: 0,
@@ -568,9 +570,9 @@
 
 				  }
 				})
-	    	
+
 		},
-       
+
 		getDivers: function(){
        		axios.get(window.Laravel.url+'/getDivers/'+window.Laravel.idCv)
 	       		.then(response => {
@@ -587,7 +589,7 @@
 	       			console.log(response.data);
 	       			if(response.data.etat){
 	       				this.opendivers=false;
-	       				this.diver.id = response.data.diverID;
+	       				this.diver.id = response.data.id;
 	       				this.divers.unshift(this.diver);
 	       				this.diver= {
 				       	 	id: 0,
@@ -647,7 +649,7 @@
 				  confirmButtonText: 'Oui, Supprimer!'
 				}).then((result) => {
 				  if (result.value) {
-				  	axios.delete(window.Laravel.url+'/deleteDiver/'+this.diver.diverId)
+				  	axios.delete(window.Laravel.url+'/deleteDiver/'+this.diver.id)
 					       		.then(response => {
 					       			if(response.data.etat){
 					       				var Position = this.divers.indexOf(diver);
@@ -672,7 +674,7 @@
        						 }
 				  }
 				})
-	    	
+
 		},
 	    editTitre: function(){
 	    	this.edittitre = true;
@@ -681,7 +683,7 @@
 	    	axios.put(window.Laravel.url+'/updateTitre/'+this.titre+'/'+this.cvId)
 	       		.then(response => {
 	       			console.log(response.data);
-	       			
+
 	       		})
 	       		.catch(error => {
 	       			console.log(error);
@@ -696,16 +698,29 @@
 	    	axios.put(window.Laravel.url+'/updateDescription/'+this.description+'/'+this.cvId)
 	       		.then(response => {
 	       			console.log(response.data);
-	       			
+
 	       		})
 	       		.catch(error => {
 	       			console.log(error);
 	       		})
 	    	this.editdescription = false;
 	    },
+			reglageFormation: function(){
+				this.openformation = false;
+				this.editformation =false;
+				this.experience = {
+					id: 0,
+					cvId: window.Laravel.idCv,
+					intitule: '',
+					lieu: '',
+					dateDebut: '',
+					datefin: '',
+					description: ''
+				}
+			},
 
        },
-       
+
        mounted:function(){
        	this.getExperiences();
        	this.getFormations();
@@ -717,10 +732,10 @@
 	});
 
 </script>
-	
+
 @endsection
 
 @section('javascripts')
-    
+
 
 @endsection

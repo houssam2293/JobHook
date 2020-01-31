@@ -16,7 +16,7 @@ class DiverController extends Controller
             while ($i < $cmpte) {
 
 			$diver =new Diver();
-			$diver->intitule=$request->input('intitileDiver')[$i];			
+			$diver->intitule=$request->input('intitileDiver')[$i];
             $diver->lieu=$request->input('diver_lieu')[$i];
             $diver->dateDebut=$request->input('diver_date_debut')[$i];
             $diver->dateFin=$request->input('diver_date_fin')[$i];
@@ -29,7 +29,7 @@ class DiverController extends Controller
 		return ;
     }
     public function getDivers($id){
-        $divers = Diver::where('cv_id',$id)->join('typedivers', 'typedivers.id', '=', 'divers.typeDiver_id')->get(); 
+        $divers = Diver::where('cv_id',$id)->join('typedivers', 'typedivers.id', '=', 'divers.typeDiver_id')->get();
         return $divers;
     }
     public function addDivers(Request $request){
@@ -41,20 +41,19 @@ class DiverController extends Controller
                 $diver->datefin=$request->datefin;
                 $diver->typeDiver_id =app('App\Http\Controllers\TypeDiverController')->store($request->nom);
                 $diver->cv_id=$request->cvId;;
-                $diver->save();           
+                $diver->save();
                  return Response()->json(['etat'=> true, 'id'=>$diver->id]);
     }
       public function updateDiver(Request $request){
-          
-                $diver = Diver::find($request->diverId);
-               // $diver->experienceId=$request->diverId;
+
+                $diver = Diver::find($request->id);
                 $diver->intitule=$request->intitule;
                 $diver->lieu=$request->lieu;
                 $diver->dateDebut=$request->dateDebut;
                 $diver->datefin=$request->datefin;
                 $diver->typeDiver_id=app('App\Http\Controllers\TypeDiverController')->store($request->nom);
 
-                $diver->save();           
+                $diver->save();
                  return Response()->json(['etat'=> true]);
    }
    public function deleteDiver($id){

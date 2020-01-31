@@ -24,15 +24,15 @@ class FormationController extends Controller
                 $formation->cv_id=$cv;
     			$formation->save();
                     $i++;
-                    
+
             }
-        
+
 		return ;
     }
     public function getFormations($id){
-        $formations = Formation::where('cv_id',$id)->join('domaines', 'domaines.id', '=', 'formations.domaine_id')->get(); 
-        dd($formations);
-        return $formations;
+        $formations = Formation::where('cv_id',$id)->join('domaines', 'domaines.id', '=', 'formations.domaine_id')->get();
+
+          return $formations;
     }
     public function addFormations(Request $request){
 
@@ -43,19 +43,17 @@ class FormationController extends Controller
                 $formation->dateFin=$request->dateFin;
                 $formation->domaine_id =app('App\Http\Controllers\DomaineController')->store($request->nom);
                 $formation->cv_id=$request->cvId;
-                
-                $formation->save();           
+                $formation->save();
                  return Response()->json(['etat'=> true, 'id'=>$formation->id]);
     }
       public function updateFormations(Request $request){
-                dd($request);
                 $formation = Formation::find( $request->id);
                 $formation->diplome=$request->diplome;
                 $formation->lieu=$request->lieu;
                 $formation->dateDebut=$request->dateDebut;
                 $formation->dateFin=$request->dateFin;
                 $formation->domaine_id =app('App\Http\Controllers\DomaineController')->store($request->nom);
-                $formation->save();           
+                $formation->save();
                  return Response()->json(['etat'=> true]);
    }
    public function deleteFormation($id){

@@ -14,12 +14,12 @@ class CreateDocumentTable extends Migration
     public function up()
     {
         Schema::create('documents', function (Blueprint $table) {
-          $table->bigIncrements('documentId');
+          $table->bigIncrements('id');
           $table->string('type');
           $table->string('nom');
           $table->string('url');
-          $table->unsignedBigInteger('cvId');
-          $table->foreign('cvId')->references('cvId')->on('cvs');
+          $table->unsignedBigInteger('cv_id');
+          $table->foreign('cv_id')->references('id')->on('cvs');
           $table->timestamps();
         });
     }

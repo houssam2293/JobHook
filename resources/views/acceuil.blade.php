@@ -22,28 +22,58 @@
                                                                                         alt=""><img
                     src="assets/img/logo-white.png" class="logo logo-scrolled" alt=""></a></div>
             <div class="collapse navbar-collapse" id="navbar-menu">
-                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="left-br"><a href="javascript:void(0)" data-toggle="modal" data-target="#signup"
-                                           class="signin">Se Connecter</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="dropdown megamenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inscription</a>
-                        <ul class="dropdown-menu megamenu-content" role="menu">
-                            <li>
-                                <div class="row ">
-                                    <div class="col-menu ">
-                                        <!-- <h6 class="title">Candidat</h6> -->
-                                        <a class="title" href="candidate_signup">Candidat</a>
-                                    </div><br>
-                                    <div class="col-menu ">
-                                        <a class="title" href="company_signup">Recruteur</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+              @if (Auth::guest())
+              <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                <li class="left-br"><a href="javascript:void(0)" data-toggle="modal" data-target="#signup"
+                                       class="signin">Se Connecter</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                <li class="dropdown megamenu">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inscription</a>
+                  <ul class="dropdown-menu megamenu-content" role="menu">
+                    <li>
+                      <div class="row ">
+                        <div class="col-menu ">
+                          <!-- <h6 class="title">Candidat</h6> -->
+                          <a class="title" href="candidate_signup">Candidat</a>
+                        </div><br>
+                        <div class="col-menu ">
+                          <a class="title" href="company_signup">Recruteur</a>
+                        </div>
+                      </div>
                     </li>
-                </ul>
+                  </ul>
+                </li>
+              </ul>
+              @elseif (Auth::user()->type == 'R')
+              <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                <li class="left-br"><a class="signin" href="{{ route('logout') }}"
+                ="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Se deconnecter </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                </form></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                <li class="dropdown megamenu">
+                  <a href="{{ url('recruteurs')}}" class="dropdown-toggle" data-toggle="dropdown">Bienvenue {{ Auth::user()->recruteur->nom }}</a>
+                </li>
+              </ul>
+              @elseif (Auth::user()->type == 'C')
+              <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                <li class="left-br"><a class="signin" href="{{ route('logout') }}"
+                ="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Se deconnecter </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                </form></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                <li class="dropdown megamenu">
+                  <a href="{{ url('candidats')}}" class="dropdown-toggle" data-toggle="dropdown">Bienvenue {{ Auth::user()->candidat->nom }}</a>
+                </li>
+              </ul>
+              @endif
             </div>
         </div>
     </nav>
@@ -54,14 +84,14 @@
                 <div class="col-md-12 col-sm-12 banner-text">
                     <h1>Plus de 8,000 Offres</h1>
 
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="get" action="{{ url('search')}}">
                         <div class="col-md-5 no-padd">
-                            <div class="input-group"><input type="text" class="form-control right-bor" id="joblist"
+                            <div class="input-group"><input value="{{ old('term') }}" name="term" type="text" class="form-control right-bor" id="joblist"
                                                             placeholder="Domaine, Competences, Companies"></div>
                         </div>
                         <div class="col-md-5 no-padd">
                             <div class="input-group">
-                                <select id="choose-city" class="form-control">
+                                <select placeholder="ville" name="lieu" id="choose-city" class="form-control">
                                     <option>Choisissez la ville</option>
                                     <option>Alger</option>
                                     <option>Tlemcen</option>

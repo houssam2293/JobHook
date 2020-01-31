@@ -14,14 +14,14 @@ class CreateExperiencesTable extends Migration
     public function up()
     {
         Schema::create('experiences', function (Blueprint $table) {
-          $table->bigIncrements('experienceId');
+          $table->bigIncrements('id');
           $table->string('intitule');
           $table->string('lieu');
           $table->date('dateDebut');
           $table->date('datefin');
           $table->string('description');
-          $table->unsignedBigInteger('cvId');
-          $table->foreign('cvId')->references('cvId')->on('cvs');
+          $table->unsignedBigInteger('cv_id');
+          $table->foreign('cv_id')->references('id')->on('cvs');
           $table->timestamps();
         });
     }

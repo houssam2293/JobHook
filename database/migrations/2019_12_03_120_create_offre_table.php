@@ -14,11 +14,11 @@ class CreateOffreTable extends Migration
     public function up()
     {
         Schema::create('offres', function (Blueprint $table) {
-            $table->bigIncrements('offreId');
+            $table->bigIncrements('id');
             $table->string('intitule');
             $table->string('type');
-            $table->unsignedBigInteger('domaineId');
-            $table->foreign('domaineId')->references('domaineId')->on('domaines');
+            $table->unsignedBigInteger('domaine_id');
+            $table->foreign('domaine_id')->references('id')->on('domaines');
             $table->string('diplomeRequis');
             $table->integer('anneeExperience');
             $table->string('lieu');
@@ -27,10 +27,12 @@ class CreateOffreTable extends Migration
             $table->date('dateDebut');
             $table->string('duree');
             $table->string('status');
-            $table->foreign('competenceId')->references('competenceId')->on('competences');
+
+            $table->string('competences');
+
             $table->string('description');
-            $table->unsignedBigInteger('recruteurId');
-            $table->foreign('recruteurId')->references('recruteurId')->on('recruteurs');
+            $table->unsignedBigInteger('recruteur_id');
+            $table->foreign('recruteur_id')->references('id')->on('recruteurs');
             $table->timestamps();
         });
     }
@@ -42,6 +44,6 @@ class CreateOffreTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offre');
+        Schema::dropIfExists('offers');
     }
 }

@@ -18,7 +18,7 @@ class ExperienceController extends Controller
                 $experience->lieu=$request->input('exp_lieu')[$i];
                 $experience->dateDebut=$request->input('exp_date_debut')[$i];
                 $experience->dateFin=$request->input('ex_date_fin')[$i];
-                $experience->cvId=$cv;
+                $experience->cv_id=$cv;
                 $experience->description=$request->input('description')[$i];
                 //dd($experience);    
                 $experience->save();   
@@ -28,7 +28,7 @@ class ExperienceController extends Controller
 		return ;
     }
     public function getExperiences($id){
-        $experiences = Experience::where('cvId',$id)->get(); 
+        $experiences = Experience::where('cv_id',$id)->get(); 
         return $experiences;
     }
     public function addExperiences(Request $request){
@@ -38,10 +38,10 @@ class ExperienceController extends Controller
                 $experience->lieu=$request->lieu;
                 $experience->dateDebut=$request->dateDebut;
                 $experience->dateFin=$request->datefin;
-                $experience->cvId=$request->cvId;
+                $experience->cv_id=$request->cvId;
                 $experience->description=$request->description;
                 $experience->save();           
-                 return Response()->json(['etat'=> true, 'id'=>$experience->experienceId]);
+                 return Response()->json(['etat'=> true, 'id'=>$experience->id]);
     }
    public function updateExperiences(Request $request){
           $id =  $request->experienceId;

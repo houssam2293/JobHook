@@ -15,8 +15,7 @@
 				<div class="container white-shadow">
 					<div class="row mrg-0">
 						<div class="detail-pic">
-							<img src="assets/img/client-1.jpg" class="img" alt="" />
-							<a href="#" class="detail-edit" title="edit" ><i class="fa fa-pencil"></i></a>
+							<img src="assets/img/client-1.jpg" class="img" onerror="if (this.src != 'assets/img/default.png') this.src = 'assets/img/default.png';" alt="" />
 						</div>
 						<div class="detail-status">
 							<span>7 Hour Days Ago</span>

@@ -11,7 +11,7 @@ use App\Formation;
 use app\Http\Controllers\FormationController;
 use App\Experience;
 use App\Diver;
-use App\ListCompetencesCandidats;
+use App\ListCompetenceCandidat;
 use App\Competence;
 use app\Http\Controllers\ExperienceController;
 use app\Http\Controllers\DiverController;
@@ -36,7 +36,7 @@ class CvController extends Controller
             
             $cv->titre=$request->input('titre');
             $cv->description=$request->input('Resumer');
-            $cv->candidatId=1;//a récupéré TODO
+            $cv->candidat_id=1;//a récupéré TODO
 
             $formationExist = false;
             $diverExist = false;
@@ -63,6 +63,7 @@ class CvController extends Controller
              } 
 
             $cv->save();
+            //dd($cv);
             if ($formationExist) {
                 app('App\Http\Controllers\FormationController')->store($request,$cv->id);
             }
@@ -104,7 +105,7 @@ class CvController extends Controller
     }
 */
     public function destroy($id){
-         $cv = Cv::where('cvId',$id)->delete();; 
+         $cv = Cv::where('cv_id',$id)->delete();; 
         //Session::put('messageDelete','Votre cv a été bien suprimé');
    
     	return redirect('profile_modify');
@@ -112,9 +113,8 @@ class CvController extends Controller
 
 	public function show($id){
 
-       $cv = Cv::where('cvId',$id)->get();   
-       $competences = ListCompetencesCandidats::where('cvId',$id)->join('competences', 'listCompetencesCandidats.competenceId', '=', 'competences.competenceId')->get();
-      
+       $cv = Cv::find($id);
+       $competences = ListCompetenceCandidat::where('cv_id',$id)->join('competences', 'listCompetencesCandidats.competence_id', '=', 'competences.id')->get();
        Carbon::setlocale('fr');
       return view('candidate_show-resume',['cv'=>$cv,'competences' =>$competences]);
 

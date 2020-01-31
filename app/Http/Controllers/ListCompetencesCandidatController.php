@@ -12,8 +12,8 @@ class ListCompetencesCandidatController extends Controller
 {
     public function store($competence,$cv){
     		$lcc=new ListCompetenceCandidat();
-            $lcc->competenceId =app('App\Http\Controllers\CompetenceController')->store($competence);
-            $lcc->cvId=$cv;
+            $lcc->competence_id =app('App\Http\Controllers\CompetenceController')->store($competence);
+            $lcc->cv_id=$cv;
             $lcc->save(); 
     		
 

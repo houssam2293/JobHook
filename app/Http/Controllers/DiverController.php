@@ -20,8 +20,8 @@ class DiverController extends Controller
             $diver->lieu=$request->input('diver_lieu')[$i];
             $diver->dateDebut=$request->input('diver_date_debut')[$i];
             $diver->dateFin=$request->input('diver_date_fin')[$i];
-            $diver->cvId=$cv;
-            $diver->typeDiverId =app('App\Http\Controllers\TypeDiverController')->store($request->input('typeDiver')[$i]);
+            $diver->cv_id=$cv;
+            $diver->typeDiver_id =app('App\Http\Controllers\TypeDiverController')->store($request->input('typeDiver')[$i]);
 			$diver->save();
              $i++;
             }
@@ -29,7 +29,7 @@ class DiverController extends Controller
 		return ;
     }
     public function getDivers($id){
-        $divers = Diver::where('cvId',$id)->join('typedivers', 'typedivers.typeDiverId', '=', 'divers.typeDiverId')->get(); 
+        $divers = Diver::where('cv_id',$id)->join('typedivers', 'typedivers.id', '=', 'divers.typeDiver_id')->get(); 
         return $divers;
     }
     public function addDivers(Request $request){
@@ -39,10 +39,10 @@ class DiverController extends Controller
                 $diver->lieu=$request->lieu;
                 $diver->dateDebut=$request->dateDebut;
                 $diver->datefin=$request->datefin;
-                $diver->typeDiverId =app('App\Http\Controllers\TypeDiverController')->store($request->nom);
-                $diver->cvId=$request->cvId;;
+                $diver->typeDiver_id =app('App\Http\Controllers\TypeDiverController')->store($request->nom);
+                $diver->cv_id=$request->cvId;;
                 $diver->save();           
-                 return Response()->json(['etat'=> true, 'id'=>$diver->diverId]);
+                 return Response()->json(['etat'=> true, 'id'=>$diver->id]);
     }
       public function updateDiver(Request $request){
           
@@ -52,7 +52,7 @@ class DiverController extends Controller
                 $diver->lieu=$request->lieu;
                 $diver->dateDebut=$request->dateDebut;
                 $diver->datefin=$request->datefin;
-                $diver->typeDiverId=app('App\Http\Controllers\TypeDiverController')->store($request->nom);
+                $diver->typeDiver_id=app('App\Http\Controllers\TypeDiverController')->store($request->nom);
 
                 $diver->save();           
                  return Response()->json(['etat'=> true]);

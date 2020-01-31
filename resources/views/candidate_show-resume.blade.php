@@ -23,7 +23,7 @@
 						<div class="detail-status">
                            <button v-if="edittitre" class="btn btn-sm" v-on:click="updateTitre"><i class="fa fa-check" style="font-size:30px;"></i></button>
 
-							<span>{{ucfirst($cv[0]->created_at->diffForHumans())}}</span> 
+							<span>{{ucfirst($cv->created_at->diffForHumans())}}</span> 
 							<br>
 							<button v-if="editdescription" class="btn btn-sm" v-on:click="updateDescription"><i class="fa fa-check" style="font-size:30px;"></i></button>
 						</div> {{-- derniére fois le cv est mis a jours --}}
@@ -304,9 +304,9 @@
      		
      		window.Laravel={!! json_encode([
            	'csrfToken' 	=> csrf_token(),
-            'idCv'  => $cv[0]->cvId,
-            'description' => $cv[0]->description, 
-            'titre' => $cv[0]->titre, 
+            'idCv'  => $cv->id,
+            'description' => $cv->description, 
+            'titre' => $cv->titre, 
             'competences'  => $competences,
             'url' 			=>url('/')]) !!} ;
      </script> 
@@ -470,6 +470,7 @@
        		axios.get(window.Laravel.url+'/getFormations/'+window.Laravel.idCv)
 	       		.then(response => {
 	       			this.formations = response.data;
+	       			console.log(this.formations);
 	       		})
 	       		.catch(error => {
 	       			console.log("error");
@@ -541,7 +542,7 @@
 				  confirmButtonText: 'Oui, Supprimer!'
 				}).then((result) => {
 				  if (result.value) {
-				  	axios.delete(window.Laravel.url+'/deleteFormation/'+this.formation.formationId)
+				  	axios.delete(window.Laravel.url+'/deleteFormation/'+this.formation.id)
 					       		.then(response => {
 					       			if(response.data.etat){
 					       				var Position = this.formations.indexOf(formation);

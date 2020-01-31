@@ -14,7 +14,7 @@ class CreateRecruteurTable extends Migration
     public function up()
     {
         Schema::create('recruteurs', function (Blueprint $table) {
-            $table->bigIncrements('recruteurId');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('type')->nullable();
@@ -24,8 +24,8 @@ class CreateRecruteurTable extends Migration
             $table->string('logo')->nullable();
             $table->string('email');
             $table->string('siteWeb')->nullable();
-            $table->unsignedBigInteger('contactId')->nullable();
-            $table->foreign('contactId')->references('contactId')->on('contacts');
+            $table->unsignedBigInteger('contact_id')->nullable();
+            $table->foreign('contact_id')->references('id')->on('contacts');
             $table->timestamps();
         });
     }

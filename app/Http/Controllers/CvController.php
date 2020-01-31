@@ -120,4 +120,20 @@ class CvController extends Controller
 
     }
     
+    public function updateTitre(String $titre,$id){
+  
+        $cv = Cv::find($id);
+        $cv->titre=$titre;
+        $cv->save();
+
+        return Response()->json(['etat'=> true]);
+    }
+    public function updateDescription(String $description,$id){
+  
+        $cv = Cv::find($id);
+        $cv->description=$description;
+        $cv->save();
+
+        return Response()->json(['etat'=> true]);
+    }
 }

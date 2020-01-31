@@ -21,22 +21,32 @@
 					<div class="row mrg-0">
 						
 						<div class="detail-status">
+                           <button v-if="edittitre" class="btn btn-sm" v-on:click="updateTitre"><i class="fa fa-check" style="font-size:30px;"></i></button>
+
 							<span>{{ucfirst($cv[0]->created_at->diffForHumans())}}</span> 
+							<br>
+							<button v-if="editdescription" class="btn btn-sm" v-on:click="updateDescription"><i class="fa fa-check" style="font-size:30px;"></i></button>
 						</div> {{-- derniére fois le cv est mis a jours --}}
 					</div>
 					<div class="row bottom-mrg mrg-0">
 						<div class="col-md-8 col-sm-8">
 							<div class="detail-desc-caption">
-								<h3 class="designation">{{$cv[0]->titre}}</h3>
-								<p>{{$cv[0]->description}}</p>
+								<h3 v-if="!edittitre" class="designation" @click="editTitre">@{{titre}}</h3>
+								
+								<input v-if="edittitre" name="titre" type="text" class="form-control" v-model="titre" required style="margin-top: 10px">
+								
+
+
+								<p v-if="!editdescription" @click="editDescription">@{{description}}</p>
+								<textarea v-if="editdescription" type="text" class="form-control" style="margin-top: 15px" v-model="description"></textarea>
+
+                           
 							</div>
 
 							<div class="detail-desc-skill" style="padding-bottom: 15px">
-								@foreach ($competences as $competence)
-									<span>{{$competence->nom}}</span>
-								@endforeach
 								
-
+								<span v-for="competence in competences">@{{competence.nom}}</span>
+								
 							</div>
 						</div>	
 					</div>
@@ -293,6 +303,9 @@
      		window.Laravel={!! json_encode([
            	'csrfToken' 	=> csrf_token(),
             'idCv'  => $cv[0]->cvId,
+            'description' => $cv[0]->description, 
+            'titre' => $cv[0]->titre, 
+            'competences'  => $competences,
             'url' 			=>url('/')]) !!} ;
      </script> 
 
@@ -302,6 +315,10 @@
 	var app = new Vue({
        el: '#app',
        data: {
+       	 competences: window.Laravel.competences,
+       	 titre: window.Laravel.titre,
+       	 description: window.Laravel.description,
+       	 cvId: window.Laravel.idCv,
        	 message: 'Vue JS',
        	 experiences: [],
        	 formations: [],
@@ -338,7 +355,9 @@
        	 },
        	 edit: false,
        	 editdivers: false,
-       	 editformation: false
+       	 editformation: false,
+       	 edittitre: false,
+       	 editdescription: false
        },
        methods:{
        	getExperiences: function(){
@@ -346,10 +365,11 @@
 	       		.then(response => {
 	       			this.experiences = response.data;
 	       			//console.log(this.experiences);
-
+	       	
 	       		})
 	       		.catch(error => {
 	       			console.log("error");
+	       			
 	       		})
 	       	},
 	    addExperiences: function(){
@@ -604,6 +624,7 @@
 				       	 	nom: ''
        						 }
 	       				this.editdivers = false;
+	       				this.opendivers = false;
 	       			}
 	       		})
 	       		.catch(error => {
@@ -650,7 +671,35 @@
 				})
 	    	
 		},
-
+	    editTitre: function(){
+	    	this.edittitre = true;
+		},
+		updateTitre: function(){
+	    	axios.put(window.Laravel.url+'/updateTitre/'+this.titre+'/'+this.cvId)
+	       		.then(response => {
+	       			console.log(response.data);
+	       			
+	       		})
+	       		.catch(error => {
+	       			console.log(error);
+	       		})
+	    	this.edittitre = false;
+	    },
+		editDescription: function(){
+	    	this.editdescription = true;
+	    	console.log("description clicker");
+		},
+		updateDescription: function(){
+	    	axios.put(window.Laravel.url+'/updateDescription/'+this.description+'/'+this.cvId)
+	       		.then(response => {
+	       			console.log(response.data);
+	       			
+	       		})
+	       		.catch(error => {
+	       			console.log(error);
+	       		})
+	    	this.editdescription = false;
+	    },
 
        },
        
@@ -658,6 +707,8 @@
        	this.getExperiences();
        	this.getFormations();
        	this.getDivers();
+       	// console.log(this.competences);
+
        }
 
 	});

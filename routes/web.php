@@ -37,6 +37,9 @@ Route::POST('/addDivers','DiverController@addDivers'); //vu js add Divers in sho
 Route::put('/updateDiver','DiverController@updateDiver'); //vu js edit Divers in show cv blade
 Route::delete('deleteDiver/{id}','DiverController@deleteDiver'); //vu js suprimer Divers in show cv blade
 
+//titre et desc
+Route::put('updateTitre/{titre}/{cv}','CvController@updateTitre');
+Route::put('updateDescription/{description}/{cv}','CvController@updateTitre');
 
 
 //ADD CV

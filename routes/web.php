@@ -39,7 +39,7 @@ Route::delete('deleteDiver/{id}','DiverController@deleteDiver'); //vu js suprime
 
 //titre et desc
 Route::put('updateTitre/{titre}/{cv}','CvController@updateTitre');
-Route::put('updateDescription/{description}/{cv}','CvController@updateTitre');
+Route::put('updateDescription/{description}/{cv}','CvController@updateDescription');
 
 
 //ADD CV

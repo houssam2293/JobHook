@@ -46,7 +46,7 @@ class DiverController extends Controller
     }
       public function updateDiver(Request $request){
           
-                $diver = Diver::find( $request->diverId);
+                $diver = Diver::find($request->diverId);
                // $diver->experienceId=$request->diverId;
                 $diver->intitule=$request->intitule;
                 $diver->lieu=$request->lieu;

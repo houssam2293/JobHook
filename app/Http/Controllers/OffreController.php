@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 
-class OfferController extends Controller
+class OffreController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -32,12 +32,12 @@ class OfferController extends Controller
 
     public function index_offer_list()
     {
-      $offers = \App\Offer::all();
+      $offers = \App\Offre::all();
       return view('recruiter_jobs-list', compact('offers'));
     }
 
     public function showJobDetail($offreID){
-      $offer = \App\Offer::where('id', $offreID)->firstOrFail();
+      $offer = \App\Offre::where('id', $offreID)->firstOrFail();
       $domains = \App\Domaine::all();
       return view('recruter_job_detail', compact('offer','domains'));
     }
@@ -58,10 +58,10 @@ class OfferController extends Controller
          'dateDebut' =>'required'
 
       ]);
-      $offre = new \App\Offer();
+      $offre = new \App\Offre();
       $offre->intitule=request('intitule');
       $offre->type=request('type');
-      $offre->domaineId=request('domaine');
+      $offre->domaine_id=request('domaine');
       $offre->lieu=request('lieu');
       $offre->diplomeRequis=request('diplomeRequis');
       $offre->anneeExperience=request('anneeExperience');
@@ -69,7 +69,7 @@ class OfferController extends Controller
       $offre->duree=request('duree');
       $offre->status="online";
       $offre->competences= request('competences');
-      $offre->recruteurId=1;
+      $offre->recruteur_id=1;
       $offre->dateDepot=Carbon::now();
       $offre->dateDebut=Carbon::parse(request('dateDebut'))->format('y-m-d');
       $offre->description=request('description');
@@ -80,13 +80,13 @@ class OfferController extends Controller
 
     public function edit($offreID)
     {
-      $offer = \App\Offer::where('id', $offreID)->firstOrFail();
+      $offer = \App\Offre::where('id', $offreID)->firstOrFail();
       $domains = \App\Domaine::all();
       return view('offre.modifier_offre_recruiter', compact('domains','offer'));
     }
     public function update($offreID)
     {
-      $offre = \App\Offer::where('id', $offreID)->firstOrFail();
+      $offre = \App\Offre::where('id', $offreID)->firstOrFail();
       $data = request()->validate([
         'intitule' => 'required',
         'domaine' => 'required',
@@ -103,7 +103,7 @@ class OfferController extends Controller
      ]);
      $offre->intitule=request('intitule');
      $offre->type=request('type');
-     $offre->domaineId=request('domaine');
+     $offre->domaine_id=request('domaine');
      $offre->lieu=request('lieu');
      $offre->diplomeRequis=request('diplomeRequis');
      $offre->anneeExperience=request('anneeExperience');
@@ -111,7 +111,7 @@ class OfferController extends Controller
      $offre->duree=request('duree');
      $offre->status="online";
      $offre->competences= request('competences');
-     $offre->recruteurId=1;
+     $offre->recruteur_id=1;
      $offre->dateDepot=Carbon::now();
      $offre->dateDebut=Carbon::parse(request('dateDebut'))->format('y-m-d');
      $offre->description=request('description');
@@ -123,12 +123,12 @@ class OfferController extends Controller
     public function showDetail()
     {
       return view('candidat_details');
-
+    }
     public function searchJobDetaille($id){
 
-        $offer = Offer::where('offreId', $id)
-        ->join('recruteurs', 'offres.recruteurId', '=', 'recruteurs.recruteurId')
-        ->join('domaines', 'offres.domaineId', '=', 'domaines.domaineId')
+        $offer = \App\Offre::where('id', $id)
+        ->join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.recruteur_id')
+        ->join('domaines', 'offres.domaine_id', '=', 'domaines.domaine_id')
         ->select('offres.offreId','offres.intitule','offres.diplomeRequis','offres.remuneration','offres.lieu','offres.description','domaines.nom as domain','offres.type','recruteurs.logo', 'recruteurs.nom','offres.updated_at','offres.anneeExperience','recruteurs.type as comptype','recruteurs.adresse','recruteurs.telephone','recruteurs.email','recruteurs.siteWeb')
         ->get();
         $offer = $offer[0];
@@ -136,10 +136,10 @@ class OfferController extends Controller
 
         Carbon::setlocale('fr');
      return view('candidate_search-job-details',['offer' => $offer]);
-    }
+   }
     public function destroy($id)
     {
-      \App\Offer::destroy($id);
+      \App\Offre::destroy($id);
       app('App\Http\Controllers\ListeCompetencesRecruteurController')->destroy($id);
       return redirect('/jobs-list');
     }

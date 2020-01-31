@@ -63,7 +63,7 @@
 									</div>
 								</div>
 								<div class="employee-caption">
-                  <a href="{{ URL::action('OfferController@showDetail') }}">
+                  <a href="{{ URL::action('OffreController@showDetail') }}">
 									<div class="employee-caption-pic">
 										<img src="assets/img/client-1.jpg" class="img-responsive" alt="" />
 									</div>
@@ -98,7 +98,7 @@
 									</div>
 								</div>
 								<div class="employee-caption">
-                  <a href="{{ URL::action('OfferController@showDetail') }}">
+                  <a href="{{ URL::action('OffreController@showDetail') }}">
 									<div class="employee-caption-pic">
 										<img src="assets/img/client-2.jpg" class="img-responsive" alt="" />
 									</div>
@@ -133,7 +133,7 @@
 									</div>
 								</div>
 								<div class="employee-caption">
-                  <a href="{{ URL::action('OfferController@showDetail') }}">
+                  <a href="{{ URL::action('OffreController@showDetail') }}">
 									<div class="employee-caption-pic">
 										<img src="assets/img/client-3.jpg" class="img-responsive" alt="" />
 									</div>
@@ -168,7 +168,7 @@
 									</div>
 								</div>
 								<div class="employee-caption">
-                  <a href="{{ URL::action('OfferController@showDetail') }}">
+                  <a href="{{ URL::action('OffreController@showDetail') }}">
 									<div class="employee-caption-pic">
 										<img src="assets/img/client-4.jpg" class="img-responsive" alt="" />
 									</div>
@@ -203,7 +203,7 @@
 									</div>
 								</div>
 								<div class="employee-caption">
-                  <a href="{{ URL::action('OfferController@showDetail') }}">
+                  <a href="{{ URL::action('OffreController@showDetail') }}">
 									<div class="employee-caption-pic">
 										<img src="assets/img/client-5.jpg" class="img-responsive" alt="" />
 									</div>
@@ -238,7 +238,7 @@
 									</div>
 								</div>
 								<div class="employee-caption">
-                  <a href="{{ URL::action('OfferController@showDetail') }}">
+                  <a href="{{ URL::action('OffreController@showDetail') }}">
 									<div class="employee-caption-pic">
 										<img src="assets/img/client-1.jpg" class="img-responsive" alt="" />
 									</div>
@@ -273,7 +273,7 @@
 									</div>
 								</div>
 								<div class="employee-caption">
-                  <a href="{{ URL::action('OfferController@showDetail') }}">
+                  <a href="{{ URL::action('OffreController@showDetail') }}">
 									<div class="employee-caption-pic">
 										<img src="assets/img/client-1.jpg" class="img-responsive" alt="" />
 									</div>
@@ -308,7 +308,7 @@
 									</div>
 								</div>
 								<div class="employee-caption">
-                  <a href="{{ URL::action('OfferController@showDetail') }}">
+                  <a href="{{ URL::action('OffreController@showDetail') }}">
 									<div class="employee-caption-pic">
 										<img src="assets/img/client-2.jpg" class="img-responsive" alt="" />
 									</div>
@@ -343,7 +343,7 @@
 									</div>
 								</div>
 								<div class="employee-caption">
-                  <a href="{{ URL::action('OfferController@showDetail') }}">
+                  <a href="{{ URL::action('OffreController@showDetail') }}">
 									<div class="employee-caption-pic">
 										<img src="assets/img/client-5.jpg" class="img-responsive" alt="" />
 									</div>

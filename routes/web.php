@@ -12,8 +12,8 @@
 */
 
 
-Route::get('search-job','OfferController@searchJob'); //recherche tous les offres
-Route::get('job-details/{id}','OfferController@searchJobDetaille');//recherche offre avec detaille
+Route::get('search-job','OffreController@searchJob'); //recherche tous les offres
+Route::get('jobs-details/{id}','OffreController@searchJobDetaille');//recherche offre avec detaille
 
 Route::get('edit-resume/{id}','CvController@edit');
 Route::get('delete-resume/{id}','CvController@destroy');
@@ -87,14 +87,14 @@ Route::get('job-details', function () {
 Route::get('/', function () {
     return view('acceuil');
 });
-Route::get('/add-offre','OfferController@index');
-Route::post('/add-offre','OfferController@store');
-Route::get('/jobs-list','OfferController@index_offer_list');
-Route::get('/job-details/{offreID}','OfferController@showJobDetail');
-Route::get('/job-details/{offreID}/edit','OfferController@edit');
-Route::patch('/job-details/{offreID}','OfferController@update');
-Route::get('/job-details/{offreID}/delete','OfferController@destroy');
-Route::get('/detail-candidat','OfferController@showDetail');
+Route::get('/add-offre','OffreController@index');
+Route::post('/add-offre','OffreController@store');
+Route::get('/jobs-list','OffreController@index_offer_list');
+Route::get('/job-details/{offreID}','OffreController@showJobDetail');
+Route::get('/job-details/{offreID}/edit','OffreController@edit');
+Route::patch('/job-details/{offreID}','OffreController@update');
+Route::get('/job-details/{offreID}/delete','OffreController@destroy');
+Route::get('/detail-candidat','OffreController@showDetail');
 
 Route::get('/candidats','CandidatController@index');
 Route::put('/candidats/{id}','CandidatController@update');

@@ -16,8 +16,8 @@ class CreateListCompetenceOffreTable extends Migration
         Schema::create('listCompetencesOffres', function (Blueprint $table) {
             $table->unsignedBigInteger('competence_id');
             $table->unsignedBigInteger('offre_id');
-            $table->foreign('competence_id')->references('id')->on('competences');
-            $table->foreign('offre_id')->references('id')->on('offres');
+            $table->foreign('competence_id')->references('id')->on('competences')->onDelete('cascade');
+            $table->foreign('offre_id')->references('id')->on('offres')->onDelete('cascade');
             $table->primary(['competence_id', 'offre_id']);
             $table->timestamps();
         });

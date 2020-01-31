@@ -45,12 +45,6 @@ Route::get('acceuil', function(){
 Route::get('candidats-list', function(){
     return view('list-candidat');
 });
-Route::get('create-job-offer', function(){
-    return view('offre.add_offer_recruiter');
-});
-Route::get('modify-job-offer', function(){
-    return view('offre.modifier_offre_recruiter');
-});
 Route::get('search-job', function(){
     return view('candidate_search-job');
 });

@@ -81,6 +81,9 @@
 								<div class="detail-pannel-footer-btn pull-right">
 									<a href="/job-details/{{$offer->id}}/edit" class="footer-btn grn-btn" title="">Modifier</a>
 								</div>
+								<div class="detail-pannel-footer-btn pull-right">
+									<a href="/candidats-list" class="footer-btn blu-btn" title="">Candidats</a>
+								</div>
 									</form>
 							</div>
 						</div>

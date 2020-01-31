@@ -75,9 +75,7 @@ Route::get('acceuil', function(){
 });
 Route::get('search', 'SearchController@search');
 
-Route::get('candidats-list', function(){
-    return view('list-candidat');
-});
+
 Route::get('search-job', function(){
     return view('candidate_search-job');
 });
@@ -95,6 +93,7 @@ Route::get('/job-details/{offreID}/edit','OffreController@edit');
 Route::patch('/job-details/{offreID}','OffreController@update');
 Route::get('/job-details/{offreID}/delete','OffreController@destroy');
 Route::get('/detail-candidat','OffreController@showDetail');
+Route::get('/candidats-list','OffreController@showCandidatsList');
 
 Route::get('/candidats','CandidatController@index');
 Route::put('/candidats/{id}','CandidatController@update');

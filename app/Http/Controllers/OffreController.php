@@ -122,7 +122,11 @@ class OffreController extends Controller
 
     public function showDetail()
     {
-      return view('candidat_details');
+      return view('offre.candidat_details');
+    }
+    public function showCandidatsList()
+    {
+      return view('offre.list-candidat');
     }
     public function searchJobDetaille($id){
 

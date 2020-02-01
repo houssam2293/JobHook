@@ -24,14 +24,15 @@ class FormationController extends Controller
                 $formation->cv_id=$cv;
     			$formation->save();
                     $i++;
-
             }
 
 		return ;
     }
     public function getFormations($id){
-        $formations = Formation::where('cv_id',$id)->join('domaines', 'domaines.id', '=', 'formations.domaine_id')->get();
 
+        $formations = Formation::where('cv_id',$id)->join('domaines', 'domaines.id', '=', 'formations.domaine_id')
+            ->select('formations.id','formations.diplome','formations.lieu','domaines.nom','formations.dateDebut','formations.dateFin')
+            ->get();
           return $formations;
     }
     public function addFormations(Request $request){
@@ -47,6 +48,7 @@ class FormationController extends Controller
                  return Response()->json(['etat'=> true, 'id'=>$formation->id]);
     }
       public function updateFormations(Request $request){
+       
                 $formation = Formation::find( $request->id);
                 $formation->diplome=$request->diplome;
                 $formation->lieu=$request->lieu;
@@ -57,7 +59,6 @@ class FormationController extends Controller
                  return Response()->json(['etat'=> true]);
    }
    public function deleteFormation($id){
-
         $formation = Formation::find($id);
         $formation->delete();
         return Response()->json(['etat'=> true]);

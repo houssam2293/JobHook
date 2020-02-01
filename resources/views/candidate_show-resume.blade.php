@@ -10,56 +10,62 @@
 				<div class="container">
 					<h1>Cv Detaillé</h1><h1>@{{ message }}</h1>
 				</div>
-
+				
 			</section>
 			<div class="clearfix"></div>
 			<!-- Title Header End -->
-
+			
 			<!-- Resume Detail Start -->
 			<section class="detail-desc">
 				<div class="container white-shadow">
 					<div class="row mrg-0">
-
+						
 						<div class="detail-status">
                            <button v-if="edittitre" class="btn btn-sm" v-on:click="updateTitre"><i class="fa fa-check" style="font-size:30px;"></i></button>
 
-							<span>{{ucfirst($cv->created_at->diffForHumans())}}</span>
+							<span>{{ucfirst($cv->created_at->diffForHumans())}}</span> 
 							<br>
 							<button v-if="editdescription" class="btn btn-sm" v-on:click="updateDescription"><i class="fa fa-check" style="font-size:30px;"></i></button>
+
+							<br>
+							<button v-if="editcompetences" class="btn btn-sm" v-on:click="updateCompetences"><i class="fa fa-check" style="font-size:30px;"></i></button>
 						</div> {{-- derniére fois le cv est mis a jours --}}
 					</div>
 					<div class="row bottom-mrg mrg-0">
 						<div class="col-md-8 col-sm-8">
 							<div class="detail-desc-caption">
 								<h3 v-if="!edittitre" class="designation" @click="editTitre">@{{titre}}</h3>
-
-								<input v-if="edittitre" name="titre" type="text" class="form-control" v-model="titre" required style="margin-top: 10px">
-
+								
+								<input v-if="edittitre" name="titre" type="text" class="form-control" v-model="titre" required style="margin-top: 10px" required>
+								
 
 
 								<p v-if="!editdescription" @click="editDescription">@{{description}}</p>
 								<textarea v-if="editdescription" type="text" class="form-control" style="margin-top: 15px" v-model="description"></textarea>
 
-
+                           
 							</div>
 
 							<div class="detail-desc-skill" style="padding-bottom: 15px">
-
+								<div v-if="!editcompetences" @click="editCompetences">
 								<span v-for="competence in competences">@{{competence.nom}}
 									{{-- &nbsp;<i class="fa fa-trash-o" style="font-size:20px;color:red"></i> --}}
 								</span>
-
+								</div>
+								<div v-if="editcompetences">
+								<input  id="tags" name="competences" type="text" class="form-control" v-model="mesCompetences" placeholder="Competence, e.g. Css, Html...">
+								</div>
 							</div>
-						</div>
+						</div>	
 					</div>
 				</div>
 			</section>
 
 			<!-- Resume Detail End -->
-
+			
 			<section class="full-detail-description full-detail">
 				<div class="container">
-
+					
 						<div class="row row-bottom mrg-0">
 							<div class="row">
 								<div class="col-md-10">
@@ -84,7 +90,7 @@
 										<input name="lieu" type="text" class="form-control" placeholder="Nom de l'institu, e.g. Ecole sup de l'informatique" v-model="formation.lieu">
 									</div>
 
-
+									
 									<div class="col-md-12 col-sm-12">
 										<input name="domain" type="text" class="form-control" placeholder="domain, e.g. Informatique" v-model="formation.nom">
 									</div>
@@ -103,8 +109,8 @@
 										</div>
 									</div>
 
-
-									<button type="button" class="btn remove-field" @click="reglageFormation">Annuler </button>
+									
+									<button type="button" class="btn remove-field" @click="openformation = false">Supprimer </button>
 
 									<button v-if="editformation" type="button" class="add-field" style="background-color: red;" v-on:click="updateFormation(formation)">Modifier</button>
 
@@ -124,20 +130,20 @@
 								<div class="pull-right">
 									<button class="btn btn-sm" v-on:click="editFormation(formation)"><i class="fa fa-edit" style="font-size:30px;color:green"></i></button>
 								</div>
-
+								
 								<li><strong>@{{formation.diplome}} @{{formation.nom}}</strong></li>
 								<ul>
 									<li>Lieu: @{{formation.lieu}}</li>
 									<li>Date: @{{formation.dateDebut}}/@{{formation.dateFin}}</li>
-								</ul>
-
+								</ul> 
+								
 							</ul>
-
+						
 						</div>
-
-
+					
+					
 						<div class="row row-bottom mrg-0" >
-
+							
 							<div class="row">
 								<div class="col-md-10">
 									<h2 class="detail-title" v-if="experiences.length > 0">Experience</h2>
@@ -157,7 +163,7 @@
 										<input name="intitule" type="text" class="form-control" placeholder="Position, e.g. Designeur du WEB" v-model="experience.intitule">
 									</div>
 									<div class="col-md-12 col-sm-12">
-										<input name="exp_lieu" type="text" class="form-control" placeholder="Lieu, eg Sonelgaz" v-model="experience.lieu">
+										<input name="exp_lieu" type="text" class="form-control" placeholder="Lieu, eg Sonelgaz" v-model="experience.lieu"> 
 									</div>
 
 									<div class="col-md-6 col-sm-6">
@@ -203,15 +209,15 @@
 									<li>"Description: " @{{experience.description}}.</li>
 								</ul>
 							</ul>
-
+						
 					</div>
-
-
-
-
-
+					
+					
+					
+					
+					
 						<div class="row row-bottom mrg-0">
-
+							
 							<div class="row">
 								<div class="col-md-10">
 									<h2 class="detail-title" v-if="divers.length > 0">Divers</h2>
@@ -222,7 +228,7 @@
 								</div>
 							</div>
 
-
+						
 						{{-- debut div d'ajout diver--}}
 
 						<div class="row row-bottom mrg-0" v-if="opendivers">
@@ -252,9 +258,9 @@
 											<input name="diver_date_fin" type="text" id="exp-end" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" v-model="diver.datefin">
 										</div>
 									</div>
-									{{--
+									{{-- 
 									<div class="col-md-12 col-sm-12 ">
-										<textarea name="diver_description" class="form-control " placeholder="Remarques" style="margin-top: 15px
+										<textarea name="diver_description" class="form-control " placeholder="Remarques" style="margin-top: 15px 
 										"></textarea>
 									</div> --}}
 
@@ -288,10 +294,10 @@
 									</li>
 								</ul>
 							</ul>
-
+						
 					</div>
-
-
+					
+					
 				</div>
 			</section>
 			</section>
@@ -301,15 +307,15 @@
 	<script src="{{ asset('js/sweetalert.js') }}"></script>
 
      <script type="text/javascript">
-
+     		
      		window.Laravel={!! json_encode([
            	'csrfToken' 	=> csrf_token(),
             'idCv'  => $cv->id,
-            'description' => $cv->description,
-            'titre' => $cv->titre,
+            'description' => $cv->description, 
+            'titre' => $cv->titre, 
             'competences'  => $competences,
             'url' 			=>url('/')]) !!} ;
-     </script>
+     </script> 
 
 <script>
 
@@ -322,6 +328,7 @@
        	 description: window.Laravel.description,
        	 cvId: window.Laravel.idCv,
        	 message: 'Vue JS',
+       	 mesCompetences: '',
        	 experiences: [],
        	 formations: [],
        	 divers: [],
@@ -359,7 +366,8 @@
        	 editdivers: false,
        	 editformation: false,
        	 edittitre: false,
-       	 editdescription: false
+       	 editdescription: false,
+       	 editcompetences: false
        },
        methods:{
        	getExperiences: function(){
@@ -367,11 +375,11 @@
 	       		.then(response => {
 	       			this.experiences = response.data;
 	       			//console.log(this.experiences);
-
+	       	
 	       		})
 	       		.catch(error => {
 	       			console.log("error");
-
+	       			
 	       		})
 	       	},
 	    addExperiences: function(){
@@ -464,14 +472,13 @@
 	       					}
 				  }
 				})
-
+	    	
 		},
 		getFormations: function(){
        		axios.get(window.Laravel.url+'/getFormations/'+window.Laravel.idCv)
 	       		.then(response => {
 	       			this.formations = response.data;
-							console.log("mes formations:");
-							console.log(this.formations);
+	       			
 	       		})
 	       		.catch(error => {
 	       			console.log("error");
@@ -485,7 +492,6 @@
 	       			if(response.data.etat){
 	       				this.openformation=false;
 	       				this.formation.id = response.data.id;
-								console.log(response.data.id);
 	       				this.formations.unshift(this.formation);
 	       				this.formation= {
 				       	 	id: 0,
@@ -570,9 +576,9 @@
 
 				  }
 				})
-
+	    	
 		},
-
+       
 		getDivers: function(){
        		axios.get(window.Laravel.url+'/getDivers/'+window.Laravel.idCv)
 	       		.then(response => {
@@ -638,6 +644,7 @@
 	       	},
 	     deleteDiver: function(diver){
 	    	this.diver = diver;
+
 	    	Swal.fire({
 				  title: 'Etes-vous sur?',
 				  text: "Vous ne pourrez pas revenir sur cela!",
@@ -674,7 +681,7 @@
        						 }
 				  }
 				})
-
+	    	
 		},
 	    editTitre: function(){
 	    	this.edittitre = true;
@@ -683,7 +690,7 @@
 	    	axios.put(window.Laravel.url+'/updateTitre/'+this.titre+'/'+this.cvId)
 	       		.then(response => {
 	       			console.log(response.data);
-
+	       			
 	       		})
 	       		.catch(error => {
 	       			console.log(error);
@@ -698,44 +705,56 @@
 	    	axios.put(window.Laravel.url+'/updateDescription/'+this.description+'/'+this.cvId)
 	       		.then(response => {
 	       			console.log(response.data);
-
+	       			
 	       		})
 	       		.catch(error => {
 	       			console.log(error);
 	       		})
 	    	this.editdescription = false;
 	    },
-			reglageFormation: function(){
-				this.openformation = false;
-				this.editformation =false;
-				this.experience = {
-					id: 0,
-					cvId: window.Laravel.idCv,
-					intitule: '',
-					lieu: '',
-					dateDebut: '',
-					datefin: '',
-					description: ''
-				}
-			},
+
+		editCompetences: function(){
+	    	this.editcompetences = true;
+	    	console.log("editcompetences clicker");
+		},
+		updateCompetences: function(){
+			console.log("test");
+	    	axios.put(window.Laravel.url+'/updateCompetences/'+this.mesCompetences+'/'+this.cvId)
+	       		.then(response => {
+	       			console.log(response.data.competences);
+	       			this.competences=response.data.competences;
+	       			this.editcompetences = false;
+	       			
+	       		})
+	       		.catch(error => {
+	       			console.log(error);
+	       		})
+	       		//console.log(this.mesCompetences);appel to get comp
+	       		// this.mesCompetences.forEach(competence => this.mesCompetences +=competence.nom + ",");
+	       		
+	    	
+	    },
 
        },
-
+       
        mounted:function(){
        	this.getExperiences();
        	this.getFormations();
        	this.getDivers();
-       	// console.log(this.competences);
-
+        this.competences.forEach(competence => this.mesCompetences +=competence.nom + ",");
+        console.log(this.mesCompetences);
+        if(this.mesCompetences == ''){
+        	this.editcompetences = true;
+        }
        }
 
 	});
 
 </script>
-
+	
 @endsection
 
 @section('javascripts')
-
+    
 
 @endsection

@@ -29,7 +29,10 @@ class DiverController extends Controller
 		return ;
     }
     public function getDivers($id){
-        $divers = Diver::where('cv_id',$id)->join('typedivers', 'typedivers.id', '=', 'divers.typeDiver_id')->get();
+        $divers = Diver::where('cv_id',$id)->join('typedivers', 'typedivers.id', '=', 'divers.typeDiver_id')
+            ->select('divers.id','divers.intitule','divers.lieu','typedivers.nom','divers.dateDebut','divers.datefin')
+            ->get();
+           // dd($divers);
         return $divers;
     }
     public function addDivers(Request $request){

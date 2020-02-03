@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use App\Offre;
+use App\Cv;
 
 class OffreController extends Controller
 {
@@ -16,7 +17,7 @@ class OffreController extends Controller
      */
     public function __construct()
     {
-      Carbon::now()->locale('fr_FR');
+      Carbon::setlocale('fr');
     }
 
     /**
@@ -67,7 +68,7 @@ class OffreController extends Controller
       $offre->anneeExperience=request('anneeExperience');
       $offre->remuneration=request('remuneration');
       $offre->duree=request('duree');
-      $offre->status="online";
+      $offre->status="1";
       $offre->competences= request('competences');
       $offre->recruteur_id=1;
       $offre->dateDepot=Carbon::now();
@@ -76,6 +77,17 @@ class OffreController extends Controller
       $offre->save();
       app('App\Http\Controllers\ListeCompetencesRecruteurController')->store($offre->competences,$offre->id);
       return redirect('/jobs-list');
+    }
+    static function updateStatus($offreID)
+    {
+      $offre = \App\Offre::where('id', $offreID)->firstOrFail();
+
+        if(request('sw'))
+          $offre->status="1";
+        else
+          $offre->status="0";
+        $offre->save();
+        return redirect()->back();
     }
 
     public function edit($offreID)
@@ -109,7 +121,7 @@ class OffreController extends Controller
      $offre->anneeExperience=request('anneeExperience');
      $offre->remuneration=request('remuneration');
      $offre->duree=request('duree');
-     $offre->status="online";
+     $offre->status="1";
      $offre->competences= request('competences');
      $offre->recruteur_id=1;
      $offre->dateDepot=Carbon::now();
@@ -124,9 +136,12 @@ class OffreController extends Controller
     {
       return view('offre.candidat_details');
     }
-    public function showCandidatsList()
+    public function showCandidatsList($offreID)
     {
-      return view('offre.list-candidat');
+        $offre = Offre::find($offreID);
+        //dd($offre->postulers);
+        $postulers=$offre->postulers;
+      return view('offre.list-candidat',compact('postulers'));
     }
     public function searchJobDetaille($id){
 

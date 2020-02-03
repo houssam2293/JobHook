@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @Section('content')
-
 <section class="inner-header-title" style="background-image:url(assets/img/banner-2.jpg);">
   <div class="container">
   <h1> </h1>
@@ -46,6 +45,7 @@
 
 					<!-- Manage Employee -->
 					<div class="row">
+            @forelse($postulers as $postuler)
 						<div class="col-md-4 col-sm-6">
 							<div class="jn-employee">
 								<a href="#" class="mail-form"><i class="fa fa-envelope"></i></a>
@@ -65,10 +65,10 @@
 								<div class="employee-caption">
                   <a href="{{ URL::action('OffreController@showDetail') }}">
 									<div class="employee-caption-pic">
-										<img src="assets/img/client-1.jpg" class="img-responsive" alt="" />
+										<img src="{{URL::asset($postuler->cv->candidat->photo)}}" class="img-responsive" alt="" />
 									</div>
-									<h4>Anna Hoysted</h4>
-									<span class="designation">Web Designer</span>
+									<h4>{{$postuler->cv->candidat->nom}} {{$postuler->cv->candidat->prenom}}</h4>
+									<span class="designation">{{$postuler->cv->titre}}</span>
                 </a>
 									<ul class="employee-social">
 										<li><a href="#" title=""><i class="fa fa-facebook"></i></a></li>
@@ -80,8 +80,11 @@
 								</div>
 							</div>
 						</div>
+            @empty
+            <h4>No Data</h4>
+            @endforelse
 
-						<div class="col-md-4 col-sm-6">
+						<!-- <div class="col-md-4 col-sm-6">
 							<div class="jn-employee">
 								<a href="#" class="mail-form"><i class="fa fa-envelope"></i></a>
 								<div class="pull-right">
@@ -359,7 +362,7 @@
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<div class="row">
 						<ul class="pagination">

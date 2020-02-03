@@ -93,7 +93,11 @@ Route::get('/job-details/{offreID}/edit','OffreController@edit');
 Route::patch('/job-details/{offreID}','OffreController@update');
 Route::get('/job-details/{offreID}/delete','OffreController@destroy');
 Route::get('/detail-candidat','OffreController@showDetail');
-Route::get('/candidats-list','OffreController@showCandidatsList');
+Route::get('/candidats-list/{offreID}','OffreController@showCandidatsList');
+Route::patch('/update-status/{offreID}','OffreController@updateStatus');
+Route::get('/candidats-list', function () {
+    return view('offre.list-candidat');
+});
 
 Route::get('/candidats','CandidatController@index');
 Route::put('/candidats/{id}','CandidatController@update');

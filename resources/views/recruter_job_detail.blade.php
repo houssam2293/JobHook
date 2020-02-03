@@ -15,8 +15,12 @@
 					<div class="row">
 
 						<div class="detail-pic">
+<<<<<<< HEAD
 							<img src="assets/img/com-2.jpg" class="img" alt="" />
 							<a href="#" class="detail-edit" title="edit" ><i class="fa fa-pencil"></i></a>
+=======
+							<img src="{{URL::asset('assets/img/com-2.jpg')}}" class="img" alt="" />
+>>>>>>> f1033ee7e93760fe79efccd77c7af975a4f4ddd3
 						</div>
 
 						<div class="detail-status">
@@ -55,21 +59,34 @@
 
 					<div class="row no-padd">
 						<div class="detail pannel-footer">
-							<div class="col-md-5 col-sm-5">
-								<ul class="detail-footer-social">
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-								</ul>
+							<div class="col-sm-2 col-md-2">
+									<div class="row">
+										<div class="col-sm-5 col-md-5">
+										 <div class="input-group">
+										 	<label for="switch">Status</label>
+										 </div>
+										</div>
+									  <div class="col-sm-3 col-md-3">
+											<label class="switch">
+											<input type="checkbox" name="switch">
+											<span class="slider round"></span>
+											</label>
+									  </div>
+									</div>
 							</div>
 
-							<div class="col-md-7 col-sm-7">
-								<div class="detail-pannel-footer-btn pull-right">
-									<a href="#" class="footer-btn grn-btn" title="">Modifier</a>
+							<div class="col-md-10 col-sm-10">
+								<form class="" action="{{url('/job-details/'.$offer->id)}}" method="post">
+									@csrf
+									@method('DELETE')
+									<div class="detail-pannel-footer-btn pull-right">
+											<a href="{{url('/job-details/'.$offer->id.'/delete')}}" class="footer-btn red-btn" title="">Supprimer </a>
+									</div>
 
+								<div class="detail-pannel-footer-btn pull-right">
+									<a href="/job-details/{{$offer->id}}/edit" class="footer-btn grn-btn" title="">Modifier</a>
 								</div>
+									</form>
 							</div>
 						</div>
 					</div>

@@ -106,7 +106,7 @@
 					<div class="row bottom-mrg extra-mrg">
 						<form>
 							<div class="col-md-12">
-								<button class="btn btn-success btn-primary small-btn">Save Changes</button>
+								<button class="btn btn-success btn-primary small-btn">Sauvegarder les modifications</button>
 							</div>
 						</form>
 					</div>

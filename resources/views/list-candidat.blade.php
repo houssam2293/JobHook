@@ -27,13 +27,13 @@
 
 								<div class="col-md-8 col-sm-7">
 									<div class="short-by pull-right">
-										Short By
+										Trier par
 										<div class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu déroulant <i class="fa fa-angle-down" aria-hidden="true"></i></a>
 										<ul class="dropdown-menu">
-											<li><a href="#">Short By Date</a></li>
-											<li><a href="#">Short By Views</a></li>
-											<li><a href="#">Short By Popular</a></li>
+											<li><a href="#">Trier par date</a></li>
+											<li><a href="#">Trier par vues</a></li>
+											<li><a href="#">Trier par popularite</a></li>
 										</ul>
 										</div>
 									</div>
@@ -55,9 +55,9 @@
 											<i class="fa fa-ellipsis-v"></i>
 										</button>
 										<ul class="dropdown-menu pull-right" role="menu">
-											<li><a href="#">Favourite</a>
+											<li><a href="#">Préférée</a>
 											</li>
-											<li><a href="#">Delete</a>
+											<li><a href="#">Supprimer</a>
 											</li>
 										</ul>
 									</div>
@@ -90,9 +90,9 @@
 											<i class="fa fa-ellipsis-v"></i>
 										</button>
 										<ul class="dropdown-menu pull-right" role="menu">
-											<li><a href="#">Favourite</a>
+											<li><a href="#">Préférée</a>
 											</li>
-											<li><a href="#">Delete</a>
+											<li><a href="#">Supprimer</a>
 											</li>
 										</ul>
 									</div>
@@ -125,9 +125,9 @@
 											<i class="fa fa-ellipsis-v"></i>
 										</button>
 										<ul class="dropdown-menu pull-right" role="menu">
-											<li><a href="#">Favourite</a>
+											<li><a href="#">Préférée</a>
 											</li>
-											<li><a href="#">Delete</a>
+											<li><a href="#">Supprimer</a>
 											</li>
 										</ul>
 									</div>
@@ -160,9 +160,9 @@
 											<i class="fa fa-ellipsis-v"></i>
 										</button>
 										<ul class="dropdown-menu pull-right" role="menu">
-											<li><a href="#">Favourite</a>
+											<li><a href="#">Préférée</a>
 											</li>
-											<li><a href="#">Delete</a>
+											<li><a href="#">Supprimer</a>
 											</li>
 										</ul>
 									</div>
@@ -195,9 +195,9 @@
 											<i class="fa fa-ellipsis-v"></i>
 										</button>
 										<ul class="dropdown-menu pull-right" role="menu">
-											<li><a href="#">Favourite</a>
+											<li><a href="#">Préférée</a>
 											</li>
-											<li><a href="#">Delete</a>
+											<li><a href="#">Supprimer</a>
 											</li>
 										</ul>
 									</div>
@@ -230,9 +230,9 @@
 											<i class="fa fa-ellipsis-v"></i>
 										</button>
 										<ul class="dropdown-menu pull-right" role="menu">
-											<li><a href="#">Favourite</a>
+											<li><a href="#">Préférée</a>
 											</li>
-											<li><a href="#">Delete</a>
+											<li><a href="#">Supprimer</a>
 											</li>
 										</ul>
 									</div>
@@ -265,9 +265,9 @@
 											<i class="fa fa-ellipsis-v"></i>
 										</button>
 										<ul class="dropdown-menu pull-right" role="menu">
-											<li><a href="#">Favourite</a>
+											<li><a href="#">Préférée</a>
 											</li>
-											<li><a href="#">Delete</a>
+											<li><a href="#">Supprimer</a>
 											</li>
 										</ul>
 									</div>
@@ -300,9 +300,9 @@
 											<i class="fa fa-ellipsis-v"></i>
 										</button>
 										<ul class="dropdown-menu pull-right" role="menu">
-											<li><a href="#">Favourite</a>
+											<li><a href="#">Préférée</a>
 											</li>
-											<li><a href="#">Delete</a>
+											<li><a href="#">Supprimer</a>
 											</li>
 										</ul>
 									</div>
@@ -335,9 +335,9 @@
 											<i class="fa fa-ellipsis-v"></i>
 										</button>
 										<ul class="dropdown-menu pull-right" role="menu">
-											<li><a href="#">Favourite</a>
+											<li><a href="#">Préférée</a>
 											</li>
-											<li><a href="#">Delete</a>
+											<li><a href="#">Supprimer</a>
 											</li>
 										</ul>
 									</div>

@@ -14,10 +14,10 @@ class CreateCvTable extends Migration
     public function up()
     {
         Schema::create('cvs', function (Blueprint $table) {
-            $table->bigIncrements('cvId');
+            $table->bigIncrements('id');
             $table->string('description');
-            $table->unsignedBigInteger('candidatId');
-            $table->foreign('candidatId')->references('candidatId')->on('candidats');
+            $table->unsignedBigInteger('candidat_id');
+            $table->foreign('candidat_id')->references('id')->on('candidats');
             $table->string('titre');
             $table->timestamps();
         });

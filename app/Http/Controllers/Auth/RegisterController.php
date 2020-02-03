@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Auth;
+use App\Candidat;
+use App\Recruteur;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,8 +31,24 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
-
+    protected $redirectTo = '/acceuil';
+    public function redirectTo()
+    {
+        switch(Auth::user()->type){
+            case 'C':
+            $this->redirectTo = '/candidats';
+            return $this->redirectTo;
+                break;
+            case 'R':
+                $this->redirectTo = '/recruteurs';
+                return $this->redirectTo;
+                break;
+            default:
+                $this->redirectTo = '/login';
+                $this->logout();
+                return $this->redirectTo;
+        }
+    }
     /**
      * Create a new controller instance.
      *
@@ -49,7 +68,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'type' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -63,10 +82,36 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $user =  User::create([
+            'type' => $data['type'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        if ($data['type'] == 'C') {
+                  Candidat::create([
+                    'nom' => $data['nom'],
+                    'prenom' => $data['prenom'],
+                    'email' => $data['email'],
+                    'user_id' => $user->id
+                  ]);
+        }
+        elseif ($data['type'] == 'R') {
+                  Recruteur::create([
+                    'nom' => $data['nom'],
+                    'email' => $data['email'],
+                    'user_id' => $user->id,
+                  ]);
+        }
+        else {
+          $user->delete();
+        }
+        return $user;
     }
+    // public function candidatCreate(Request $request, $id) {
+    //   // $candidat = new Candidat();
+    //   // $candidat->user_id
+    //   // $candidat->nom = $data['nom'];
+    //   // $candidat->prenom = $data['prenom'];
+    //   // $candidat->email = $data['email'];
+    // }
 }

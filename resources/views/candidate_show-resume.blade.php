@@ -21,22 +21,40 @@
 					<div class="row mrg-0">
 						
 						<div class="detail-status">
-							<span>{{ucfirst($cv[0]->created_at->diffForHumans())}}</span> 
+                           <button v-if="edittitre" class="btn btn-sm" v-on:click="updateTitre"><i class="fa fa-check" style="font-size:30px;"></i></button>
+
+							<span>{{ucfirst($cv->created_at->diffForHumans())}}</span> 
+							<br>
+							<button v-if="editdescription" class="btn btn-sm" v-on:click="updateDescription"><i class="fa fa-check" style="font-size:30px;"></i></button>
+
+							<br>
+							<button v-if="editcompetences" class="btn btn-sm" v-on:click="updateCompetences"><i class="fa fa-check" style="font-size:30px;"></i></button>
 						</div> {{-- derniére fois le cv est mis a jours --}}
 					</div>
 					<div class="row bottom-mrg mrg-0">
 						<div class="col-md-8 col-sm-8">
 							<div class="detail-desc-caption">
-								<h3 class="designation">{{$cv[0]->titre}}</h3>
-								<p>{{$cv[0]->description}}</p>
+								<h3 v-if="!edittitre" class="designation" @click="editTitre">@{{titre}}</h3>
+								
+								<input v-if="edittitre" name="titre" type="text" class="form-control" v-model="titre" required style="margin-top: 10px" required>
+								
+
+
+								<p v-if="!editdescription" @click="editDescription">@{{description}}</p>
+								<textarea v-if="editdescription" type="text" class="form-control" style="margin-top: 15px" v-model="description"></textarea>
+
+                           
 							</div>
 
 							<div class="detail-desc-skill" style="padding-bottom: 15px">
-								@foreach ($competences as $competence)
-									<span>{{$competence->nom}}</span>
-								@endforeach
-								
-
+								<div v-if="!editcompetences" @click="editCompetences">
+								<span v-for="competence in competences">@{{competence.nom}}
+									{{-- &nbsp;<i class="fa fa-trash-o" style="font-size:20px;color:red"></i> --}}
+								</span>
+								</div>
+								<div v-if="editcompetences">
+								<input  id="tags" name="competences" type="text" class="form-control" v-model="mesCompetences" placeholder="Competence, e.g. Css, Html...">
+								</div>
 							</div>
 						</div>	
 					</div>
@@ -292,7 +310,10 @@
      		
      		window.Laravel={!! json_encode([
            	'csrfToken' 	=> csrf_token(),
-            'idCv'  => $cv[0]->cvId,
+            'idCv'  => $cv->id,
+            'description' => $cv->description, 
+            'titre' => $cv->titre, 
+            'competences'  => $competences,
             'url' 			=>url('/')]) !!} ;
      </script> 
 
@@ -302,7 +323,12 @@
 	var app = new Vue({
        el: '#app',
        data: {
+       	 competences: window.Laravel.competences,
+       	 titre: window.Laravel.titre,
+       	 description: window.Laravel.description,
+       	 cvId: window.Laravel.idCv,
        	 message: 'Vue JS',
+       	 mesCompetences: '',
        	 experiences: [],
        	 formations: [],
        	 divers: [],
@@ -338,7 +364,10 @@
        	 },
        	 edit: false,
        	 editdivers: false,
-       	 editformation: false
+       	 editformation: false,
+       	 edittitre: false,
+       	 editdescription: false,
+       	 editcompetences: false
        },
        methods:{
        	getExperiences: function(){
@@ -346,10 +375,11 @@
 	       		.then(response => {
 	       			this.experiences = response.data;
 	       			//console.log(this.experiences);
-
+	       	
 	       		})
 	       		.catch(error => {
 	       			console.log("error");
+	       			
 	       		})
 	       	},
 	    addExperiences: function(){
@@ -360,7 +390,7 @@
 	       			//console.log(response.data);
 	       			if(response.data.etat){
 	       				this.open=false;
-	       				this.experience.id = response.data.experienceId;
+	       				this.experience.id = response.data.id;
 	       				this.experiences.unshift(this.experience);
 	       				this.experience = {
 	       					id: 0,
@@ -417,7 +447,7 @@
 				  confirmButtonText: 'Oui, Supprimer!'
 				}).then((result) => {
 				  if (result.value) {
-				  	axios.delete(window.Laravel.url+'/deleteExperiences/'+this.experience.experienceId)
+				  	axios.delete(window.Laravel.url+'/deleteExperiences/'+this.experience.id)
 					       		.then(response => {
 					       			if(response.data.etat){
 					       				var Position = this.experiences.indexOf(experience);
@@ -448,6 +478,7 @@
        		axios.get(window.Laravel.url+'/getFormations/'+window.Laravel.idCv)
 	       		.then(response => {
 	       			this.formations = response.data;
+	       			
 	       		})
 	       		.catch(error => {
 	       			console.log("error");
@@ -460,7 +491,7 @@
 	       			console.log(response.data);
 	       			if(response.data.etat){
 	       				this.openformation=false;
-	       				this.formation.id = response.data.formationId;
+	       				this.formation.id = response.data.id;
 	       				this.formations.unshift(this.formation);
 	       				this.formation= {
 				       	 	id: 0,
@@ -519,7 +550,7 @@
 				  confirmButtonText: 'Oui, Supprimer!'
 				}).then((result) => {
 				  if (result.value) {
-				  	axios.delete(window.Laravel.url+'/deleteFormation/'+this.formation.formationId)
+				  	axios.delete(window.Laravel.url+'/deleteFormation/'+this.formation.id)
 					       		.then(response => {
 					       			if(response.data.etat){
 					       				var Position = this.formations.indexOf(formation);
@@ -564,7 +595,7 @@
 	       			console.log(response.data);
 	       			if(response.data.etat){
 	       				this.opendivers=false;
-	       				this.diver.id = response.data.diverID;
+	       				this.diver.id = response.data.id;
 	       				this.divers.unshift(this.diver);
 	       				this.diver= {
 				       	 	id: 0,
@@ -604,6 +635,7 @@
 				       	 	nom: ''
        						 }
 	       				this.editdivers = false;
+	       				this.opendivers = false;
 	       			}
 	       		})
 	       		.catch(error => {
@@ -612,6 +644,7 @@
 	       	},
 	     deleteDiver: function(diver){
 	    	this.diver = diver;
+
 	    	Swal.fire({
 				  title: 'Etes-vous sur?',
 				  text: "Vous ne pourrez pas revenir sur cela!",
@@ -623,7 +656,7 @@
 				  confirmButtonText: 'Oui, Supprimer!'
 				}).then((result) => {
 				  if (result.value) {
-				  	axios.delete(window.Laravel.url+'/deleteDiver/'+this.diver.diverId)
+				  	axios.delete(window.Laravel.url+'/deleteDiver/'+this.diver.id)
 					       		.then(response => {
 					       			if(response.data.etat){
 					       				var Position = this.divers.indexOf(diver);
@@ -650,7 +683,57 @@
 				})
 	    	
 		},
+	    editTitre: function(){
+	    	this.edittitre = true;
+		},
+		updateTitre: function(){
+	    	axios.put(window.Laravel.url+'/updateTitre/'+this.titre+'/'+this.cvId)
+	       		.then(response => {
+	       			console.log(response.data);
+	       			
+	       		})
+	       		.catch(error => {
+	       			console.log(error);
+	       		})
+	    	this.edittitre = false;
+	    },
+		editDescription: function(){
+	    	this.editdescription = true;
+	    	console.log("description clicker");
+		},
+		updateDescription: function(){
+	    	axios.put(window.Laravel.url+'/updateDescription/'+this.description+'/'+this.cvId)
+	       		.then(response => {
+	       			console.log(response.data);
+	       			
+	       		})
+	       		.catch(error => {
+	       			console.log(error);
+	       		})
+	    	this.editdescription = false;
+	    },
 
+		editCompetences: function(){
+	    	this.editcompetences = true;
+	    	console.log("editcompetences clicker");
+		},
+		updateCompetences: function(){
+			console.log("test");
+	    	axios.put(window.Laravel.url+'/updateCompetences/'+this.mesCompetences+'/'+this.cvId)
+	       		.then(response => {
+	       			console.log(response.data.competences);
+	       			this.competences=response.data.competences;
+	       			this.editcompetences = false;
+	       			
+	       		})
+	       		.catch(error => {
+	       			console.log(error);
+	       		})
+	       		//console.log(this.mesCompetences);appel to get comp
+	       		// this.mesCompetences.forEach(competence => this.mesCompetences +=competence.nom + ",");
+	       		
+	    	
+	    },
 
        },
        
@@ -658,6 +741,11 @@
        	this.getExperiences();
        	this.getFormations();
        	this.getDivers();
+        this.competences.forEach(competence => this.mesCompetences +=competence.nom + ",");
+        console.log(this.mesCompetences);
+        if(this.mesCompetences == ''){
+        	this.editcompetences = true;
+        }
        }
 
 	});

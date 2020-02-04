@@ -55,9 +55,11 @@ Route::POST('addPostuler/{idCv}/{idCand}','PostulerController@addPostuler');
 
 //ADD CV
 Route::get('create_resume','CvController@index');
-
 Route::post('create_resume','CvController@store');
+//delete cv
+Route::get('destroy/{id}','CvController@destroy'); //vu js suprimer Divers in show cv blade
 
+//
 
 Route::get('modify_resume', function(){
     return view('candidate_modify-resume');

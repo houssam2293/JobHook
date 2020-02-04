@@ -109,10 +109,12 @@ class CvController extends Controller
     }
 */
     public function destroy($id){
-         $cv = Cv::where('cv_id',$id)->delete();;
+         
+    	$cv = Cv::find($id);
+       // dd($cv);
+        $cv->delete();
         //Session::put('messageDelete','Votre cv a été bien suprimé');
-
-    	return redirect('profile_modify');
+        return redirect('candidats');
     }
 
 	public function show($id){
@@ -140,4 +142,6 @@ class CvController extends Controller
 
         return Response()->json(['etat'=> true]);
     }
+
+
 }

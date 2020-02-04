@@ -9,7 +9,7 @@ class Cv extends Model
     public function experiences(){
     	return $this->hasMany('App\Experience');
     }
-    public function user() {
+    public function candidat() {
     return $this->belongsTo('App\Candidat');
   }
 }

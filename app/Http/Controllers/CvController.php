@@ -18,6 +18,9 @@ use app\Http\Controllers\DiverController;
 use app\Http\Controllers\ListCompetencesCandidatController;
 use Carbon\Carbon; # langue français
 use Session;
+use App\Candidat;
+use Auth;
+
 class CvController extends Controller
 {
     public function index(){
@@ -31,13 +34,14 @@ class CvController extends Controller
             // $data = $request->validate([
             //     'titre'=>'required'
             // ]);
-
+             $idCond = Auth::user()->id;
+             $candidats = Candidat::where('user_id', $idCond)->get();
+             $idCond = $candidats[0]->id;
             $cv=new Cv();
 
             $cv->titre=$request->input('titre');
             $cv->description=$request->input('Resumer');
-            $cv->candidat_id=1;//a récupéré TODO
-
+            $cv->candidat_id=$idCond ;
             $formationExist = false;
             $diverExist = false;
             $experienceExist = false;

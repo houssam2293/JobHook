@@ -50,6 +50,9 @@ Route::put('updateDescription/{description}/{cv}','CvController@updateDescriptio
 //update ompetence
 Route::put('updateCompetences/{titre}/{cv}','ListCompetencesCandidatController@updateCompetences');
 
+//candidat postuler
+Route::POST('addPostuler/{idCv}/{idCand}','PostulerController@addPostuler');
+
 //ADD CV
 Route::get('create_resume','CvController@index');
 

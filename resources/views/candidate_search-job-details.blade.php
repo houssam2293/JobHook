@@ -114,6 +114,8 @@
      		
      		window.Laravel={!! json_encode([
            	'csrfToken' 	=> csrf_token(),
+           	'cvs' => $candidats[0]->cvs,
+           	'offreId' => $offer->id,
             'url' 			=>url('/')]) !!} ;
      </script> 
 
@@ -124,22 +126,25 @@
        el: '#app',
        data: {
        	 message: "Detail d'emploie",
+       	 cvs: window.Laravel.cvs,
+       	 offreId: window.Laravel.offreId
+       	 
   	}, 
     methods:{
     	postuler: function(){
     		(async () => {
 
 				/* inputOptions can be an object or Promise */
-				const inputOptions = new Promise((resolve) => {
-				  setTimeout(() => {
-				    resolve({
-				      'Cv 1': 'Cv 1',
-				      'Cv 2': 'Cv 2',
-				      'Cv 3': 'Cv 3'
-				    })
-				  }, 1000)
-				})
-
+				a = this.cvs.length;
+				var obj ={};
+				for(i = 0; i < a; i++){
+       		
+		       		var name = this.cvs[i].titre;
+		       		var id = this.cvs[i].id;
+		       		obj[id] = name;
+		       		
+		       	}
+				const inputOptions = obj;
 				const { value: cv } = await Swal.fire({
 				  title: 'Selectionner le cv que vous vouler postuler avec',
 				  input: 'radio',
@@ -150,15 +155,34 @@
 				    }
 				  }
 				})
-				//axios postule
+				console.log("cv est "+cv+" L'offre  est:"+this.offreId);
+				axios.post(window.Laravel.url+'/addPostuler/'+cv+'/'+this.offreId)
+	       		.then(response => {
+
+	       			console.log(response.data);
+	       			if(response.data.etat){
+	       				
+	       			}
+	       		})
+	       		.catch(error => {
+	       			console.log(error);
+	       			cv = false;
+	       		})
+
 				if (cv) {
-				  Swal.fire({ html: `<b>Vous aver postuler avec</b>: ${cv}` })
+				  Swal.fire({ html: `<b>Vous aver postuler avec</b>: ${name}` })
+				}
+				else {
+					Swal.fire({ html: `<b>Vous aver pas postuler error*	</b>` })
 				}
 
 				})()
 		}
 
-    }
+    },
+   mounted:function(){
+   //	console.log(this.offreId);
+       }
 })
 
 </script>

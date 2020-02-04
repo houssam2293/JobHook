@@ -16,7 +16,7 @@
 					<div class="row">
 					
 						<div class="detail-pic">
-							<img src="{{URL::to($offer->logo)}}" class="img-responsive" alt="" />
+							<img src="{{URL::to($offer->recruteur->logo)}}" class="img-responsive" alt="" />
 							
 						</div>
 						
@@ -29,9 +29,9 @@
 					<div class="row bottom-mrg">
 						<div class="col-md-8 col-sm-8">
 							<div class="detail-desc-caption">
-								<h4>{{$offer->nom}}</h4>
-								<span class="designation">{{$offer->comptype}}</span>
-								<p>NO DESCRIPTION</p>
+								<h4>{{$offer->recruteur->nom}}</h4>
+								<span class="designation">{{$offer->intitule}}</span>
+								<p>{{$offer->description}}</p>
 								<ul>
 									<li><i class="fa fa-graduation-cap"></i><span>{{$offer->diplomeRequis}}</span></li>
 									<li><i class="fa fa-flask"></i><span>{{$offer->anneeExperience}} Anné d'xperience</span></li>
@@ -44,10 +44,10 @@
 							<div class="get-touch">
 								<h4>Infos</h4>
 								<ul>
-									<li><i class="fa fa-map-marker"></i><span>{{$offer->adresse}}</span></li>
-									<li><i class="fa fa-envelope"></i><span>{{$offer->email}}</span></li>
-									<li><i class="fa fa-globe"></i><span>{{$offer->siteWeb}}</span></li>
-									<li><i class="fa fa-phone"></i><span>{{$offer->telephone}}</span></li>
+									<li><i class="fa fa-map-marker"></i><span>{{$offer->recruteur->adresse}}</span></li>
+									<li><i class="fa fa-envelope"></i><span>{{$offer->recruteur->email}}</span></li>
+									<li><i class="fa fa-globe"></i><span>{{$offer->recruteur->siteWeb}}</span></li>
+									<li><i class="fa fa-phone"></i><span>{{$offer->recruteur->telephone}}</span></li>
 									<li><i class="fa fa-money"></i><span>${{$offer->remuneration}}/Month</span></li>
 								</ul>
 							</div>
@@ -88,12 +88,12 @@
 					
 					<div class="row row-bottom">
 						<h2 class="detail-title">Compétences requises</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						
 						<ul class="detail-list">
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
+							@foreach ($offer->listcompetencesoffres as $element)
+								<li>{{$element->competence}}vv </li> {{-- to fix it --}}
+							@endforeach
+							
 							
 						</ul>
 					</div>

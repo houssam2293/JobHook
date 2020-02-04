@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Candidat;
 use Auth;
-
+use Carbon\Carbon;
 class CandidatController extends Controller
 {
   public function __construct() {
@@ -18,6 +18,10 @@ class CandidatController extends Controller
   public function index() {
       $id = Auth::user()->id;
       $candidats = Candidat::where('user_id', $id)->get();
+     // dd($candidats[0]->cvs[2]->formations);
+
+
+      Carbon::setlocale('fr');
       return view('candidat.edit', ['candidat' => $candidats[0]]);
   }
   //permet de modifier un candidat

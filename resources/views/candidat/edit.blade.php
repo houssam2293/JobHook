@@ -125,6 +125,7 @@
 
 							</div>
 
+
 						</form>
 						@foreach ($candidat->cvs as $cv)
 							{{-- <p>{{ $cv->titre }}</p> --}}
@@ -140,18 +141,23 @@
 									<div class="col-md-3 col-sm-3">
 										<div class="mng-resume-name">
 											<h4><span class="cand-designation">{{ $cv->titre }}</span></h4>
-											<span class="cand-status">Tlemcen, Algerie</span>
+											<span class="cand-status">{{ $cv->description }}</span>
 										</div>
+									</div>
+									
+									<div class="col-md-4 col-sm-4">
+										@foreach ( $cv->listcompetencescandidat as $comp)
+											<div class="mng-employee-skill">
+												
+												<span>{{ $comp->competence_id }}</span> {{-- to fix it --}}
+
+											</div>
+										@endforeach
+										
 									</div>
 									<div class="col-md-4 col-sm-4">
 										<div class="per-hour-rate">
-											<p>Master2 - Tlemcen</p>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-4">
-										<div class="mng-employee-skill">
-											<span>html</span><span>css</span><span>laravel</span>
-											<span>bootstrap</span>
+											<p>{{ucfirst($cv->created_at->diffForHumans())}}</p>
 										</div>
 									</div>
 									<div class="col-md-1 col-sm-1">

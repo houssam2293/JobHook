@@ -124,7 +124,7 @@ class OfferController extends Controller
 
     public function searchJobDetaille($id){
 
-        $offer = \App\Offer::find($id);
+        $offer = \App\Offre::find($id);
 
         $idCond = Auth::user()->id;
         $candidats = Candidat::where('user_id', $idCond)->get();
@@ -137,6 +137,8 @@ class OfferController extends Controller
         // $offer = $offer[0];
        // $competences = ListCompetencesCandidats::where('cvId',$id)->join('competences', 'listCompetencesCandidats.competenceId', '=', 'competences.competenceId')->get();
         //dd($candidats[0]->cvs);
+
+        //dd($offer->listcompetencesoffres);
         Carbon::setlocale('fr');
      return view('candidate_search-job-details',compact('offer','idCond','candidats'));
     }

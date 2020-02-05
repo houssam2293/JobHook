@@ -23,8 +23,11 @@
 						<div class="detail-pic js">
 							<div class="box">
 								<input type="file" name="photo" id="upload-pic" class="inputfile" />
-								<!-- <img src="{{ asset('storage/'.$candidat->photo) }}" class="fa fa-user"> -->
-								<label for="upload-pic"><i class="fa fa-user" aria-hidden="true"></i><span></span></label>
+								@if($candidat->photo)
+										<label for="upload-pic"><img src="{{ asset('storage/'.$candidat->photo) }}" alt="logo"/><span></span></label>
+								@else
+										<label for="upload-pic"><i class="fa fa-user" aria-hidden="true"></i><span></span></label>
+								@endif
 							</div>
 						</div>
 					</div>
@@ -129,11 +132,11 @@
 						</form>
 						@foreach ($candidat->cvs as $cv)
 							{{-- <p>{{ $cv->titre }}</p> --}}
-						
-						
 
 
-						
+
+
+
 					<div class="row">
 						<div class="col-md-12">
 							<article>
@@ -144,16 +147,16 @@
 											<span class="cand-status">{{ $cv->description }}</span>
 										</div>
 									</div>
-									
+
 									<div class="col-md-4 col-sm-4">
 										@foreach ( $cv->listcompetencescandidat as $comp)
 											<div class="mng-employee-skill">
-												
+
 												<span>{{ $comp->competence_id }}</span> {{-- to fix it --}}
 
 											</div>
 										@endforeach
-										
+
 									</div>
 									<div class="col-md-4 col-sm-4">
 										<div class="per-hour-rate">

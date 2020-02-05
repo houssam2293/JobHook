@@ -36,8 +36,8 @@ class CandidatController extends Controller
       $candidat->adresse = $request->input('adresse');
       //$candidat->dateNaissance = $request->input('dateNaissance');
       $candidat->linkedin = $request->input('linkedin');
-       if($request->hasFile('photo')) {
-        $candidat->photo = $request->photo->store('image');
+       if($request->hasFile('photo')) {        
+        $candidat->photo = substr($request->photo->store('public'), 7);
       }
       $candidat->save();
       return redirect('candidats');

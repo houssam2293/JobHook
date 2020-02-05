@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use App\Recruteur;
 use Auth;
 
@@ -32,7 +33,7 @@ class RecruteurController extends Controller
         $recruteur->adresse = $request->input('adresse');
 
          if($request->hasFile('logo')) {
-          $recruteur->logo = $request->photo->store('image');
+          $recruteur->logo = substr($request->logo->store('public'), 7);
         }
         $recruteur->save();
         return redirect('recruteurs');

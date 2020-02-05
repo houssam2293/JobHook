@@ -19,7 +19,7 @@ class ListeCompetencesRecruteurController extends Controller
       }
 
 
-  return;
+  return ;
 }
 
   public function update($competence,$offreId)

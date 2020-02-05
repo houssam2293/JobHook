@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @Section('content')
 
+<div class="wrapper">
 	<section class="manage-resume gray">
 		<div class="container">
 			<form method="POST" action="{{('create_resume')}}">
@@ -14,12 +15,12 @@
 						<div class="col-md-12 col-sm-12">
 							<input name="titre" type="text" class="form-control" placeholder="Titre, e.g. Ingenieur civil" value="{{old('titre')}}" required>
 						</div>
-						
+
 						<div class="col-md-12 col-sm-12 ">
 								<textarea name="Resumer" type="text" class="form-control" style="margin-top: 15px" placeholder="Resumer">{{old('Resumer')}}</textarea>
 						</div>
-						@if ($errors->any()) 
-						<h1>Inexpected error</h1> 
+						@if ($errors->any())
+						<h1>Inexpected error</h1>
 						@endif
 
 					</div>
@@ -118,19 +119,19 @@
 									<div class="col-md-6 col-sm-6">
 										<div class="input-group">
 											<span class="input-group-addon">Debut</span>
-											<input name="diver_date_debut[]" type="text" id="exp-start" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control">
+											<input name="diver_date_debut[]" type="text" id="company-dob" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control">
 										</div>
 									</div>
 
 									<div class="col-md-6 col-sm-6">
 										<div class="input-group">
 											<span class="input-group-addon">Fin</span>
-											<input name="diver_date_fin[]" type="text" id="exp-end" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control">
+											<input name="diver_date_fin[]" type="text" id="company-dob" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control">
 										</div>
 									</div>
-{{-- 
+{{--
 									<div class="col-md-12 col-sm-12 ">
-										<textarea name="diver_description" class="form-control " placeholder="Remarques" style="margin-top: 15px 
+										<textarea name="diver_description" class="form-control " placeholder="Remarques" style="margin-top: 15px
 										"></textarea>
 									</div> --}}
 
@@ -157,24 +158,54 @@
 					</div>
 				</div>
 				<div class="row bottom-mrg extra-mrg">
-					
+
 						<div class="col-md-12">
 							<input type="Submit" class="btn btn-success btn-primary small-btn"></input>
 						</div>
-					
+
 				</div>
 			</div>
 			</form>
 		</div>
 	</section>
-	
+	<script type="text/javascript" src="assets/plugins/js/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/plugins/js/viewportchecker.js"></script>
+	<script type="text/javascript" src="assets/plugins/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/plugins/js/bootsnav.js"></script>
+	<script type="text/javascript" src="assets/plugins/js/select2.min.js"></script>
+	<script type="text/javascript" src="assets/plugins/js/wysihtml5-0.3.0.js"></script>
+	<script type="text/javascript" src="assets/plugins/js/bootstrap-wysihtml5.js"></script>
+	<script type="text/javascript" src="assets/plugins/js/datedropper.min.js"></script>
+	<script type="text/javascript" src="assets/plugins/js/dropzone.js"></script>
+	<script type="text/javascript" src="assets/plugins/js/loader.js"></script>
+	<script type="text/javascript" src="assets/plugins/js/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="assets/plugins/js/slick.min.js"></script>
+	<script type="text/javascript" src="assets/plugins/js/gmap3.min.js"></script>
+	<script type="text/javascript" src="assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
+	<!-- Date dropper js-->
+	<script src="#"></script>
+
+	<!-- Custom Js -->
+	<script src="assets/js/custom.js"></script>
+
+	<script>
+		$('#company-dob').dateDropper();
+	</script>
+	<script src="assets/js/jQuery.style.switcher.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#styleOptions').styleSwitcher();
+		});
+	</script>
+	</div>
+
 @endsection
 
 @section('javascripts')
 
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script> 
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script>
   <meta charset="utf-8">
       <script>
 $(function() {
@@ -182,7 +213,7 @@ $(function() {
     @foreach ($competences as $competence)
 		"{{$competence->nom}}",
 	@endforeach
-        
+
     ];
     function split( val ) {
         return val.split( / \s*/ );
@@ -195,7 +226,7 @@ $(function() {
         // don't navigate away from the field on tab when selecting an item
         .bind( "keydown", function( event ) {
             if ( event.keyCode === $.ui.keyCode.TAB &&
-                    $( this ).data("autocomplete" 
+                    $( this ).data("autocomplete"
 
          ).menu.active ) {
                 event.preventDefault();
@@ -206,7 +237,7 @@ $(function() {
             source: function( request, response ) {
 
                 response( $.ui.autocomplete.filter(
-                    availableTags, extractLast( request.term ) 
+                    availableTags, extractLast( request.term )
 
                         ) );
             },
@@ -222,7 +253,7 @@ $(function() {
                 terms.push( ui.item.value );
 
                 terms.push( "" );
-                this.value = terms.join( ", " );
+                this.value = terms.join( " " );
                 return false;
             }
         });

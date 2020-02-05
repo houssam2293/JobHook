@@ -15,7 +15,9 @@
 					<div class="row">
 
 						<div class="detail-pic">
+
 							<img src="{{URL::asset($offer->recruteur->logo)}}" class="img" onerror="if (this.src != '{{URL::asset('assets/img/default.png')}}') this.src = '{{URL::asset('assets/img/default.png')}}';" alt="" />
+
 						</div>
 
 						<div class="detail-status">

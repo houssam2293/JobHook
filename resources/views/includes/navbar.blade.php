@@ -6,7 +6,7 @@
     </button>
     <!-- Start Header Navigation -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="acceuil">
+      <a class="navbar-brand" href="/">
         <img src="{{ asset('assets/img/logo-white.png')}} " class="logo logo-scrolled" alt="">
       </a>
     </div>

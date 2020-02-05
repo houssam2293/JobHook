@@ -12,8 +12,7 @@
 */
 
 
-Route::get('search-job','OfferController@searchJob'); //recherche tous les offres
-Route::get('search-job-details/{id}','OfferController@searchJobDetaille');//recherche offre avec detaille
+Route::get('search-job-details/{id}','OffreController@searchJobDetaille');//recherche offre avec detaille
 
 Route::get('edit-resume/{id}','CvController@edit');
 Route::get('delete-resume/{id}','CvController@destroy');

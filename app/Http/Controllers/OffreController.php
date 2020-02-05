@@ -161,9 +161,9 @@ class OffreController extends Controller
     public function searchJobDetaille($id){
 
         $offer = \App\Offre::where('id', $id)
-        ->join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.recruteur_id')
-        ->join('domaines', 'offres.domaine_id', '=', 'domaines.domaine_id')
-        ->select('offres.offreId','offres.intitule','offres.diplomeRequis','offres.remuneration','offres.lieu','offres.description','domaines.nom as domain','offres.type','recruteurs.logo', 'recruteurs.nom','offres.updated_at','offres.anneeExperience','recruteurs.type as comptype','recruteurs.adresse','recruteurs.telephone','recruteurs.email','recruteurs.siteWeb')
+        ->join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
+        ->join('domaines', 'offres.domaine_id', '=', 'domaines.id')
+        ->select('offres.id','offres.intitule','offres.diplomeRequis','offres.remuneration','offres.lieu','offres.description','domaines.nom as domain','offres.type','recruteurs.logo', 'recruteurs.nom','offres.updated_at','offres.anneeExperience','recruteurs.type as comptype','recruteurs.adresse','recruteurs.telephone','recruteurs.email','recruteurs.siteWeb')
         ->get();
         $offer = $offer[0];
        // $competences = ListCompetencesCandidats::where('cvId',$id)->join('competences', 'listCompetencesCandidats.competenceId', '=', 'competences.competenceId')->get();

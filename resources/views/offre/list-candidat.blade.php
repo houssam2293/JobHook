@@ -65,7 +65,7 @@
 								<div class="employee-caption">
                   <a href="/detail-candidat/{{$postuler->cv->id}}">
 									<div class="employee-caption-pic">
-										<img src="{{URL::asset($postuler->cv->candidat->photo)}}" class="img-responsive" alt="" />
+										<img src="{{URL::asset($postuler->cv->candidat->photo)}}" class="img-responsive" onerror="if (this.src != '{{URL::asset('assets/img/default-1.png')}}') this.src = '{{URL::asset('assets/img/default-1.png')}}';" alt="" />
 									</div>
 									<h4>{{$postuler->cv->candidat->nom}} {{$postuler->cv->candidat->prenom}}</h4>
 									<span class="designation">{{$postuler->cv->titre}}</span>

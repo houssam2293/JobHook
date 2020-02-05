@@ -18,6 +18,9 @@ use app\Http\Controllers\DiverController;
 use app\Http\Controllers\ListCompetencesCandidatController;
 use Carbon\Carbon; # langue français
 use Session;
+use App\Candidat;
+use Auth;
+
 class CvController extends Controller
 {
     public function index(){
@@ -31,13 +34,14 @@ class CvController extends Controller
             // $data = $request->validate([
             //     'titre'=>'required'
             // ]);
-
+             $idCond = Auth::user()->id;
+             $candidats = Candidat::where('user_id', $idCond)->get();
+             $idCond = $candidats[0]->id;
             $cv=new Cv();
 
             $cv->titre=$request->input('titre');
             $cv->description=$request->input('Resumer');
-            $cv->candidat_id=1;//a récupéré TODO
-
+            $cv->candidat_id=$idCond ;
             $formationExist = false;
             $diverExist = false;
             $experienceExist = false;
@@ -87,38 +91,39 @@ class CvController extends Controller
 		return redirect()->action('CvController@show',['id'=>$cv->id]);
     }
 
-	public function edit($id){
-        $cv = Cv::where('cvId',$id)->get();
-       $formations = Formation::where('cvId',$id)->join('domaines', 'domaines.domaineId', '=', 'formations.domaineId')->get();
-       $experiences = Experience::where('cvId',$id)->get();
-       $divers = Diver::where('cvId',$id)->join('typedivers', 'typedivers.typeDiverId', '=', 'divers.typeDiverId')->get();
-       $competences = ListCompetencesCandidats::where('cvId',$id)->join('competences', 'listCompetencesCandidats.competenceId', '=', 'competences.competenceId')->get();
 
-      return view('candidate_edit-resume',['formations' => $formations,'cv'=>$cv,'experiences' =>$experiences,'divers'=>$divers,'competences' =>$competences]);
-    }
-/*
-	public function update(Request $request,$id){
-        $cv = Cv::find($id);
-        $cv->titre=$request->input('titre');
-        $cv->save();
-        return redirect('cvs');
-    }
-*/
     public function destroy($id){
-         $cv = Cv::where('cv_id',$id)->delete();;
+         
+    	$cv = Cv::find($id);
+       // dd($cv);
+        $cv->delete();
         //Session::put('messageDelete','Votre cv a été bien suprimé');
-
-    	return redirect('profile_modify');
+        return redirect('candidats');
     }
 
 	public function show($id){
+
        $cv = Cv::find($id);
+       if(!$cv)
+        {
+            abort(404);
+        }else{
+       if($cv->candidat->user_id != Auth::user()->id){
+        abort(404);
+         $id = Auth::user()->id;
+      $candidats = Candidat::where('user_id', $id)->get();
+     
+      Carbon::setlocale('fr');
+      return view('candidat.edit', ['candidat' => $candidats[0]]);
+       }
+       else {
+       
        $competences = ListCompetenceCandidat::where('cv_id',$id)->join('competences', 'listCompetencesCandidats.competence_id', '=', 'competences.id')->get();
        Carbon::setlocale('fr');
 
       return view('candidate_show-resume',['cv'=>$cv,'competences' =>$competences]);
-
-    }
+      }
+    }}
 
     public function updateTitre(String $titre,$id){
 
@@ -136,4 +141,6 @@ class CvController extends Controller
 
         return Response()->json(['etat'=> true]);
     }
+
+
 }

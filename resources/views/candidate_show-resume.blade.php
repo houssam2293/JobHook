@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @Section('content')
 
+
+
 <section id="app">
 	@if(Session::has('message'))
 	<h2 class="alert-info" style="align-content: center;">{{ Session::get('message')}}</h2>

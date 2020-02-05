@@ -13,16 +13,14 @@
 
 
 Route::get('search-job','OfferController@searchJob'); //recherche tous les offres
-Route::get('job-details/{id}','OfferController@searchJobDetaille');//recherche offre avec detaille
+Route::get('search-job-details/{id}','OfferController@searchJobDetaille');//recherche offre avec detaille
 
 Route::get('edit-resume/{id}','CvController@edit');
 Route::get('delete-resume/{id}','CvController@destroy');
 
 Route::get('show-resume/{id}','CvController@show');
 
-Route::get('show-resume', function(){
-    return view('candidate_show-resume');
- });
+
 
 Route::get('create_resume/create','CvController@create');
 // EXPERIENCE
@@ -50,11 +48,16 @@ Route::put('updateDescription/{description}/{cv}','CvController@updateDescriptio
 //update ompetence
 Route::put('updateCompetences/{titre}/{cv}','ListCompetencesCandidatController@updateCompetences');
 
+//candidat postuler
+Route::POST('addPostuler/{idCv}/{idCand}','PostulerController@addPostuler');
+
 //ADD CV
 Route::get('create_resume','CvController@index');
-
 Route::post('create_resume','CvController@store');
+//delete cv
+Route::get('destroy/{id}','CvController@destroy'); //vu js suprimer Divers in show cv blade
 
+//
 
 Route::get('modify_resume', function(){
     return view('candidate_modify-resume');

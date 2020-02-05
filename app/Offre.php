@@ -18,4 +18,5 @@ class Offre extends Model
     {
         return $this->hasOne('App\Domaine');
     }
+    
 }

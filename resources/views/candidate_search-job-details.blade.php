@@ -16,7 +16,7 @@
 					<div class="row">
 					
 						<div class="detail-pic">
-							<img src="{{URL::to($offer->logo)}}" class="img-responsive" alt="" />
+							<img src="{{URL::to($offer->recruteur->logo)}}" class="img-responsive" alt="" />
 							
 						</div>
 						
@@ -29,9 +29,9 @@
 					<div class="row bottom-mrg">
 						<div class="col-md-8 col-sm-8">
 							<div class="detail-desc-caption">
-								<h4>{{$offer->nom}}</h4>
-								<span class="designation">{{$offer->comptype}}</span>
-								<p>NO DESCRIPTION</p>
+								<h4>{{$offer->recruteur->nom}}</h4>
+								<span class="designation">{{$offer->intitule}}</span>
+								<p>{{$offer->description}}</p>
 								<ul>
 									<li><i class="fa fa-graduation-cap"></i><span>{{$offer->diplomeRequis}}</span></li>
 									<li><i class="fa fa-flask"></i><span>{{$offer->anneeExperience}} Anné d'xperience</span></li>
@@ -44,10 +44,10 @@
 							<div class="get-touch">
 								<h4>Infos</h4>
 								<ul>
-									<li><i class="fa fa-map-marker"></i><span>{{$offer->adresse}}</span></li>
-									<li><i class="fa fa-envelope"></i><span>{{$offer->email}}</span></li>
-									<li><i class="fa fa-globe"></i><span>{{$offer->siteWeb}}</span></li>
-									<li><i class="fa fa-phone"></i><span>{{$offer->telephone}}</span></li>
+									<li><i class="fa fa-map-marker"></i><span>{{$offer->recruteur->adresse}}</span></li>
+									<li><i class="fa fa-envelope"></i><span>{{$offer->recruteur->email}}</span></li>
+									<li><i class="fa fa-globe"></i><span>{{$offer->recruteur->siteWeb}}</span></li>
+									<li><i class="fa fa-phone"></i><span>{{$offer->recruteur->telephone}}</span></li>
 									<li><i class="fa fa-money"></i><span>${{$offer->remuneration}}/Month</span></li>
 								</ul>
 							</div>
@@ -88,19 +88,19 @@
 					
 					<div class="row row-bottom">
 						<h2 class="detail-title">Compétences requises</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						
 						<ul class="detail-list">
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
+							@foreach ($offer->listcompetencesoffres as $element)
+								<li>{{$element->competence}}vv </li> {{-- to fix it --}}
+							@endforeach
+							
 							
 						</ul>
 					</div>
 					
-					
-					
 				</div>	
+
+			
 				</section>
 
 			</section>
@@ -114,6 +114,8 @@
      		
      		window.Laravel={!! json_encode([
            	'csrfToken' 	=> csrf_token(),
+           	'cvs' => $candidats[0]->cvs,
+           	'offreId' => $offer->id,
             'url' 			=>url('/')]) !!} ;
      </script> 
 
@@ -124,22 +126,25 @@
        el: '#app',
        data: {
        	 message: "Detail d'emploie",
+       	 cvs: window.Laravel.cvs,
+       	 offreId: window.Laravel.offreId
+       	 
   	}, 
     methods:{
     	postuler: function(){
     		(async () => {
 
 				/* inputOptions can be an object or Promise */
-				const inputOptions = new Promise((resolve) => {
-				  setTimeout(() => {
-				    resolve({
-				      'Cv 1': 'Cv 1',
-				      'Cv 2': 'Cv 2',
-				      'Cv 3': 'Cv 3'
-				    })
-				  }, 1000)
-				})
-
+				a = this.cvs.length;
+				var obj ={};
+				for(i = 0; i < a; i++){
+       		
+		       		var name = this.cvs[i].titre;
+		       		var id = this.cvs[i].id;
+		       		obj[id] = name;
+		       		
+		       	}
+				const inputOptions = obj;
 				const { value: cv } = await Swal.fire({
 				  title: 'Selectionner le cv que vous vouler postuler avec',
 				  input: 'radio',
@@ -150,15 +155,34 @@
 				    }
 				  }
 				})
-				//axios postule
+				console.log("cv est "+cv+" L'offre  est:"+this.offreId);
+				axios.post(window.Laravel.url+'/addPostuler/'+cv+'/'+this.offreId)
+	       		.then(response => {
+
+	       			console.log(response.data);
+	       			if(response.data.etat){
+	       				
+	       			}
+	       		})
+	       		.catch(error => {
+	       			console.log(error);
+	       			cv = false;
+	       		})
+
 				if (cv) {
-				  Swal.fire({ html: `<b>Vous aver postuler avec</b>: ${cv}` })
+				  Swal.fire({ html: `<b>Vous aver postuler avec</b>: ${name}` })
+				}
+				else {
+					Swal.fire({ html: `<b>Vous aver pas postuler error*	</b>` })
 				}
 
 				})()
 		}
 
-    }
+    },
+   mounted:function(){
+   //	console.log(this.offreId);
+       }
 })
 
 </script>

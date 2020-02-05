@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\offer;
-use Carbon\Carbon; # langue français
+use Carbon\Carbon;
+use App\Candidat;
+use Auth;
+
 class OfferController extends Controller
 {
     /**
@@ -119,22 +121,26 @@ class OfferController extends Controller
      return redirect('/jobs-list');
     }
 
-    public function showDetail()
-    {
-      return view('candidat_details');
 
     public function searchJobDetaille($id){
 
-        $offer = Offer::where('offreId', $id)
-        ->join('recruteurs', 'offres.recruteurId', '=', 'recruteurs.recruteurId')
-        ->join('domaines', 'offres.domaineId', '=', 'domaines.domaineId')
-        ->select('offres.offreId','offres.intitule','offres.diplomeRequis','offres.remuneration','offres.lieu','offres.description','domaines.nom as domain','offres.type','recruteurs.logo', 'recruteurs.nom','offres.updated_at','offres.anneeExperience','recruteurs.type as comptype','recruteurs.adresse','recruteurs.telephone','recruteurs.email','recruteurs.siteWeb')
-        ->get();
-        $offer = $offer[0];
-       // $competences = ListCompetencesCandidats::where('cvId',$id)->join('competences', 'listCompetencesCandidats.competenceId', '=', 'competences.competenceId')->get();
+        $offer = \App\Offre::find($id);
 
+        $idCond = Auth::user()->id;
+        $candidats = Candidat::where('user_id', $idCond)->get();
+        $idCond = $candidats[0]->id;
+        //TO DO join offer avec domain,skil...
+        // ->join('recruteurs', 'offres.recruteurId', '=', 'recruteurs.recruteurId')
+        // ->join('domaines', 'offres.domaineId', '=', 'domaines.domaineId')
+        // ->select('offres.offreId','offres.intitule','offres.diplomeRequis','offres.remuneration','offres.lieu','offres.description','domaines.nom as domain','offres.type','recruteurs.logo', 'recruteurs.nom','offres.updated_at','offres.anneeExperience','recruteurs.type as comptype','recruteurs.adresse','recruteurs.telephone','recruteurs.email','recruteurs.siteWeb')
+        // ->get();
+        // $offer = $offer[0];
+       // $competences = ListCompetencesCandidats::where('cvId',$id)->join('competences', 'listCompetencesCandidats.competenceId', '=', 'competences.competenceId')->get();
+        //dd($candidats[0]->cvs);
+
+        //dd($offer->listcompetencesoffres);
         Carbon::setlocale('fr');
-     return view('candidate_search-job-details',['offer' => $offer]);
+     return view('candidate_search-job-details',compact('offer','idCond','candidats'));
     }
     public function destroy($id)
     {

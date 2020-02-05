@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @Section('content')
-
 <!-- Header Title Start -->
 <div class="wrapper">
 			<section class="inner-header-title blank">
@@ -38,7 +37,7 @@
 									<select class="form-control input-lg" name="domaine">
 										<option disabled selected>Domaine</option>
 										@forelse($domains as $Domaine)
-										<option value="{{$Domaine->domaineId}}">{{$Domaine->nom}}</option>
+										<option value="{{$Domaine->id}}">{{$Domaine->nom}}</option>
 										@empty
 										<option>No Data</option>
 										@endforelse

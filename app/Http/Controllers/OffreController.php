@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Offre;
+use App\Cv;
 use App\Candidat;
 use Auth;
 
-class OfferController extends Controller
+class OffreController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -17,7 +19,7 @@ class OfferController extends Controller
      */
     public function __construct()
     {
-      Carbon::now()->locale('fr_FR');
+      Carbon::setlocale('fr');
     }
 
     /**
@@ -33,12 +35,12 @@ class OfferController extends Controller
 
     public function index_offer_list()
     {
-      $offers = \App\Offer::all();
+      $offers = \App\Offre::all();
       return view('recruiter_jobs-list', compact('offers'));
     }
 
     public function showJobDetail($offreID){
-      $offer = \App\Offer::where('id', $offreID)->firstOrFail();
+      $offer = \App\Offre::where('id', $offreID)->firstOrFail();
       $domains = \App\Domaine::all();
       return view('recruter_job_detail', compact('offer','domains'));
     }
@@ -59,18 +61,18 @@ class OfferController extends Controller
          'dateDebut' =>'required'
 
       ]);
-      $offre = new \App\Offer();
+      $offre = new \App\Offre();
       $offre->intitule=request('intitule');
       $offre->type=request('type');
-      $offre->domaineId=request('domaine');
+      $offre->domaine_id=request('domaine');
       $offre->lieu=request('lieu');
       $offre->diplomeRequis=request('diplomeRequis');
       $offre->anneeExperience=request('anneeExperience');
       $offre->remuneration=request('remuneration');
       $offre->duree=request('duree');
-      $offre->status="online";
+      $offre->status="1";
       $offre->competences= request('competences');
-      $offre->recruteurId=1;
+      $offre->recruteur_id=1;
       $offre->dateDepot=Carbon::now();
       $offre->dateDebut=Carbon::parse(request('dateDebut'))->format('y-m-d');
       $offre->description=request('description');
@@ -78,16 +80,27 @@ class OfferController extends Controller
       app('App\Http\Controllers\ListeCompetencesRecruteurController')->store($offre->competences,$offre->id);
       return redirect('/jobs-list');
     }
+    static function updateStatus($offreID)
+    {
+      $offre = \App\Offre::where('id', $offreID)->firstOrFail();
+
+        if(request('sw'))
+          $offre->status="1";
+        else
+          $offre->status="0";
+        $offre->save();
+        return redirect()->back();
+    }
 
     public function edit($offreID)
     {
-      $offer = \App\Offer::where('id', $offreID)->firstOrFail();
+      $offer = \App\Offre::where('id', $offreID)->firstOrFail();
       $domains = \App\Domaine::all();
       return view('offre.modifier_offre_recruiter', compact('domains','offer'));
     }
     public function update($offreID)
     {
-      $offre = \App\Offer::where('id', $offreID)->firstOrFail();
+      $offre = \App\Offre::where('id', $offreID)->firstOrFail();
       $data = request()->validate([
         'intitule' => 'required',
         'domaine' => 'required',
@@ -104,15 +117,15 @@ class OfferController extends Controller
      ]);
      $offre->intitule=request('intitule');
      $offre->type=request('type');
-     $offre->domaineId=request('domaine');
+     $offre->domaine_id=request('domaine');
      $offre->lieu=request('lieu');
      $offre->diplomeRequis=request('diplomeRequis');
      $offre->anneeExperience=request('anneeExperience');
      $offre->remuneration=request('remuneration');
      $offre->duree=request('duree');
-     $offre->status="online";
+     $offre->status="1";
      $offre->competences= request('competences');
-     $offre->recruteurId=1;
+     $offre->recruteur_id=1;
      $offre->dateDepot=Carbon::now();
      $offre->dateDebut=Carbon::parse(request('dateDebut'))->format('y-m-d');
      $offre->description=request('description');
@@ -121,30 +134,35 @@ class OfferController extends Controller
      return redirect('/jobs-list');
     }
 
-
+    public function showDetail()
+    {
+      return view('offre.candidat_details');
+    }
+    public function showCandidatsList($offreID)
+    {
+        $offre = Offre::find($offreID);
+        //dd($offre->postulers);
+        $postulers=$offre->postulers;
+      return view('offre.list-candidat',compact('postulers'));
+    }
     public function searchJobDetaille($id){
 
-        $offer = \App\Offre::find($id);
-
-        $idCond = Auth::user()->id;
-        $candidats = Candidat::where('user_id', $idCond)->get();
-        $idCond = $candidats[0]->id;
-        //TO DO join offer avec domain,skil...
-        // ->join('recruteurs', 'offres.recruteurId', '=', 'recruteurs.recruteurId')
-        // ->join('domaines', 'offres.domaineId', '=', 'domaines.domaineId')
-        // ->select('offres.offreId','offres.intitule','offres.diplomeRequis','offres.remuneration','offres.lieu','offres.description','domaines.nom as domain','offres.type','recruteurs.logo', 'recruteurs.nom','offres.updated_at','offres.anneeExperience','recruteurs.type as comptype','recruteurs.adresse','recruteurs.telephone','recruteurs.email','recruteurs.siteWeb')
-        // ->get();
-        // $offer = $offer[0];
+        $offer = \App\Offre::where('id', $id)
+        ->join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.recruteur_id')
+        ->join('domaines', 'offres.domaine_id', '=', 'domaines.domaine_id')
+        ->select('offres.offreId','offres.intitule','offres.diplomeRequis','offres.remuneration','offres.lieu','offres.description','domaines.nom as domain','offres.type','recruteurs.logo', 'recruteurs.nom','offres.updated_at','offres.anneeExperience','recruteurs.type as comptype','recruteurs.adresse','recruteurs.telephone','recruteurs.email','recruteurs.siteWeb')
+        ->get();
+        $offer = $offer[0];
        // $competences = ListCompetencesCandidats::where('cvId',$id)->join('competences', 'listCompetencesCandidats.competenceId', '=', 'competences.competenceId')->get();
         //dd($candidats[0]->cvs);
 
         //dd($offer->listcompetencesoffres);
         Carbon::setlocale('fr');
-     return view('candidate_search-job-details',compact('offer','idCond','candidats'));
-    }
+     return view('candidate_search-job-details',['offer' => $offer]);
+   }
     public function destroy($id)
     {
-      \App\Offer::destroy($id);
+      \App\Offre::destroy($id);
       app('App\Http\Controllers\ListeCompetencesRecruteurController')->destroy($id);
       return redirect('/jobs-list');
     }

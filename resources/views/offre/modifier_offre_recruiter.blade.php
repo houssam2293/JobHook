@@ -39,10 +39,10 @@
 												<select class="form-control input-lg" name="domaine">
 													<option disabled>Domaine</option>
 													@forelse($domains as $Domaine)
-													@if ($offer->domaineId === "{{$Domaine->domaineId}}")
-													<option value="{{$Domaine->domaineId}}" selected>{{$Domaine->nom}}</option>
+													@if ($offer->domaine_id === "{{$Domaine->id}}")
+													<option value="{{$Domaine->id}}" selected>{{$Domaine->nom}}</option>
 													@else
-													<option value="{{$Domaine->domaineId}}">{{$Domaine->nom}}</option>
+													<option value="{{$Domaine->id}}">{{$Domaine->nom}}</option>
 													@endif
 													@empty
 													<option>No Data</option>

@@ -15,11 +15,11 @@
 					<div class="row">
 
 						<div class="detail-pic">
-							<img src="{{URL::asset('assets/img/com-2.jpg')}}" class="img" alt="" />
+							<img src="{{URL::asset($offer->recruteur->logo)}}" class="img" onerror="if (this.src != '{{URL::asset('assets/img/default.png')}}') this.src = '{{URL::asset('assets/img/default.png')}}';" alt="" />
 						</div>
 
 						<div class="detail-status">
-							<span>il y a 2 jour </span>
+							<span>{{$offer->updated_at->diffForHumans()}}</span>
 						</div>
 
 					</div>
@@ -27,25 +27,25 @@
 					<div class="row bottom-mrg">
 						<div class="col-md-8 col-sm-8">
 							<div class="detail-desc-caption">
-								<h4>Google</h4>
-								<span class="designation">Software Development Company</span>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+								<h4>{{$offer->recruteur->nom}}</h4>
+								<span class="designation">{{$offer->intitule}}</span>
+								<p>{{$offer->description}}</p>
 								<ul>
-									<li><i class="fa fa-briefcase"></i><span>Temps complet</span></li>
-									<li><i class="fa fa-flask"></i><span>3 Anné d'xperience</span></li>
+									<li><i class="fa fa-briefcase"></i><span>{{$offer->type}}</span></li>
+									<li><i class="fa fa-flask"></i><span>{{$offer->anneeExperience}}</span></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="col-md-4 col-sm-4">
 							<div class="get-touch">
-								<h4>Infos</h4>
+								<h4>Informations</h4>
 								<ul>
-									<li><i class="fa fa-map-marker"></i><span>Menlo Park, CA</span></li>
-									<li><i class="fa fa-envelope"></i><span>danieldax704@gmail.com</span></li>
-									<li><i class="fa fa-globe"></i><span>google.com</span></li>
-									<li><i class="fa fa-phone"></i><span>0 123 456 7859</span></li>
-									<li><i class="fa fa-money"></i><span>$1000 -$1200/Month</span></li>
+									<li><i class="fa fa-map-marker"></i><span>{{$offer->lieu}}</span></li>
+									<li><i class="fa fa-envelope"></i><span>{{$offer->recruteur->email}}</span></li>
+									<li><i class="fa fa-globe"></i><span>{{$offer->recruteur->siteWeb}}</span></li>
+									<li><i class="fa fa-phone"></i><span>{{$offer->recruteur->telephone}}</span></li>
+									<li><i class="fa fa-money"></i><span>{{$offer->remuneration}} DA</span></li>
 								</ul>
 							</div>
 						</div>
@@ -62,9 +62,17 @@
 										 </div>
 										</div>
 									  <div class="col-sm-3 col-md-3">
+											<form action="{{url('/update-status/'.$offer->id)}}" method="post">
+												@method('PATCH')
+												@csrf
 											<label class="switch">
-											<input type="checkbox" name="switch">
+												@if($offer->status=="1")
+												<input type="checkbox" name="sw" onchange="this.form.submit()" checked>
+												@else
+												<input type="checkbox" name="sw" onchange="this.form.submit()">
+												@endif
 											<span class="slider round"></span>
+										</form>
 											</label>
 									  </div>
 									</div>
@@ -81,6 +89,9 @@
 								<div class="detail-pannel-footer-btn pull-right">
 									<a href="/job-details/{{$offer->id}}/edit" class="footer-btn grn-btn" title="">Modifier</a>
 								</div>
+								<div class="detail-pannel-footer-btn pull-right">
+									<a href="/candidats-list/{{$offer->id}}" class="footer-btn blu-btn" title="">Candidats</a>
+								</div>
 									</form>
 							</div>
 						</div>
@@ -93,37 +104,26 @@
 			<section class="full-detail-description full-detail">
 				<div class="container">
 					<div class="row row-bottom">
-						<h2 class="detail-title">Responsibilité du poste</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-					</div>
-
-					<div class="row row-bottom">
 						<h2 class="detail-title">Compétences requises</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						<p></p>
 						<ul class="detail-list">
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
-
+							@forelse($offer->listcompetencesoffres as $list)
+							<li>{{$list->competence->nom}}</li>
+							@empty
+							<li>Aucune competence</li>
+							@endforelse
 						</ul>
 					</div>
 
 					<div class="row row-bottom">
 						<h2 class="detail-title">Diplôme requis</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						<p></p>
 						<ul class="detail-list">
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</li>
-
+							<li>{{$offer->diplomeRequis}}</li>
 						</ul>
 					</div>
 
 				</div>
 			</section>
 			<!-- Job full detail End -->
-
-
 @endsection

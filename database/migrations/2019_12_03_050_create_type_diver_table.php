@@ -13,7 +13,7 @@ class CreateTypeDiverTable extends Migration
      */
     public function up()
     {
-        Schema::create('typeDivers', function (Blueprint $table) {
+        Schema::create('typedivers', function (Blueprint $table) {
           $table->bigIncrements('id');
           $table->string('nom');
           $table->timestamps();
@@ -27,6 +27,6 @@ class CreateTypeDiverTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('typeDivers');
+        Schema::dropIfExists('typedivers');
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Offre;
 use App\Cv;
+use App\Candidat;
 use Auth;
 
 class OffreController extends Controller
@@ -166,7 +167,9 @@ class OffreController extends Controller
         ->get();
         $offer = $offer[0];
        // $competences = ListCompetencesCandidats::where('cvId',$id)->join('competences', 'listCompetencesCandidats.competenceId', '=', 'competences.competenceId')->get();
+        //dd($candidats[0]->cvs);
 
+        //dd($offer->listcompetencesoffres);
         Carbon::setlocale('fr');
      return view('candidate_search-job-details',['offer' => $offer]);
    }

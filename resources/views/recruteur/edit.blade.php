@@ -22,8 +22,12 @@
 					<div class="row">
 						<div class="detail-pic js">
 							<div class="box">
-								<input type="file" name="upload-pic[]" id="upload-pic" class="inputfile" />
-								<label for="upload-pic"><i class="fa fa-user" aria-hidden="true"></i><span></span></label>
+								<input type="file" name="logo" id="upload-pic" class="inputfile" />
+								@if($recruteur->logo)
+										<label for="upload-pic"><img src="{{ asset('storage/'.$recruteur->logo) }}" alt="logo"/><span></span></label>
+								@else
+										<label for="upload-pic"><i class="fa fa-user" aria-hidden="true"></i><span></span></label>
+								@endif
 							</div>
 						</div>
 					</div>

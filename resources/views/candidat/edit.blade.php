@@ -23,8 +23,11 @@
 						<div class="detail-pic js">
 							<div class="box">
 								<input type="file" name="photo" id="upload-pic" class="inputfile" />
-								<!-- <img src="{{ asset('storage/'.$candidat->photo) }}" class="fa fa-user"> -->
-								<label for="upload-pic"><i class="fa fa-user" aria-hidden="true"></i><span></span></label>
+								@if($candidat->photo)
+										<label for="upload-pic"><img src="{{ asset('storage/'.$candidat->photo) }}" alt="logo"/><span></span></label>
+								@else
+										<label for="upload-pic"><i class="fa fa-user" aria-hidden="true"></i><span></span></label>
+								@endif
 							</div>
 						</div>
 					</div>
@@ -125,38 +128,53 @@
 
 							</div>
 
+
 						</form>
+						@foreach ($candidat->cvs as $cv)
+							{{-- <p>{{ $cv->titre }}</p> --}}
+
+
+
+
+
 					<div class="row">
 						<div class="col-md-12">
 							<article>
 								<div class="mng-resume" style="border-left: 3px solid #07b107;">
 									<div class="col-md-3 col-sm-3">
 										<div class="mng-resume-name">
-											<h4><span class="cand-designation">Master 2, Developeer Web</span></h4>
-											<span class="cand-status">Tlemcen, Algerie</span>
+											<h4><span class="cand-designation">{{ $cv->titre }}</span></h4>
+											<span class="cand-status">{{ $cv->description }}</span>
 										</div>
+									</div>
+
+									<div class="col-md-4 col-sm-4">
+										@foreach ( $cv->listcompetencescandidat as $comp)
+											<div class="mng-employee-skill">
+
+												<span>{{ $comp->competence_id }}</span> {{-- to fix it --}}
+
+											</div>
+										@endforeach
+
 									</div>
 									<div class="col-md-4 col-sm-4">
 										<div class="per-hour-rate">
-											<p>Master2 - Tlemcen</p>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-4">
-										<div class="mng-employee-skill">
-											<span>html</span><span>css</span><span>laravel</span>
-											<span>bootstrap</span>
+											<p>{{ucfirst($cv->created_at->diffForHumans())}}</p>
 										</div>
 									</div>
 									<div class="col-md-1 col-sm-1">
 										<div class="mng-resume-action">
-											<a href="{{ ('modify_resume') }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
-											<a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
+											<a href="{{ ('show-resume/'.$cv->id) }}" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+											<a href="{{ ('destroy/'.$cv->id) }}" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
 										</div>
 									</div>
 								</div>
 							</article>
 						</div>
 					</div>
+
+					@endforeach
 				</div>
 				</div>
 			</section>

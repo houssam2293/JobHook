@@ -23,4 +23,5 @@ class Offre extends Model
     {
       return $this->hasMany('App\Postuler');
     }
+    
 }

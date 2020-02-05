@@ -43,13 +43,23 @@ Route::POST('/addDivers','DiverController@addDivers'); //vu js add Divers in sho
 Route::put('/updateDiver','DiverController@updateDiver'); //vu js edit Divers in show cv blade
 Route::delete('deleteDiver/{id}','DiverController@deleteDiver'); //vu js suprimer Divers in show cv blade
 
+//titre et desc
+Route::put('updateTitre/{titre}/{cv}','CvController@updateTitre');
+Route::put('updateDescription/{description}/{cv}','CvController@updateDescription');
 
+//update ompetence
+Route::put('updateCompetences/{titre}/{cv}','ListCompetencesCandidatController@updateCompetences');
+
+//candidat postuler
+Route::POST('addPostuler/{idCv}/{idCand}','PostulerController@addPostuler');
 
 //ADD CV
 Route::get('create_resume','CvController@index');
-
 Route::post('create_resume','CvController@store');
+//delete cv
+Route::get('destroy/{id}','CvController@destroy'); //vu js suprimer Divers in show cv blade
 
+//
 
 Route::get('modify_resume', function(){
     return view('candidate_modify-resume');

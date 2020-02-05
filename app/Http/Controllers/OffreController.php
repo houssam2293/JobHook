@@ -180,8 +180,4 @@ class OffreController extends Controller
       return redirect('/jobs-list');
     }
 
-    public function showDetail(){
-      return View('candidat_details');
-    }
-
 }

@@ -13,13 +13,7 @@ class Cv extends Model
 		public function formations(){
 			return $this->hasMany('App\Formation');
 		}
-		public function candidat() {
-		return $this->belongsTo('App\Candidat');
-		}
 
-		public function listcompetencescandidat(){
-		return $this->hasMany('App\ListCompetenceCandidat');
-		}
 		public function postulers()
 		{
 			return $this->hasMany('App\Postuler');
@@ -31,10 +25,6 @@ class Cv extends Model
 		{
 			return $this->hasMany('App\Listcompetencescandidat');
 		}
-    public function formations()
-    {
-      return $this->hasMany('App\Formation');
-    }
       public function divers()
       {
         return $this->hasMany('App\Diver');

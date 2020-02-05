@@ -131,7 +131,7 @@
 
 						</form>
 						@foreach ($candidat->cvs as $cv)
-							{{-- <p>{{ $cv->titre }}</p> --}}
+
 
 
 
@@ -149,13 +149,13 @@
 									</div>
 
 									<div class="col-md-4 col-sm-4">
-										@foreach ( $cv->listcompetencescandidat as $comp)
+
 											<div class="mng-employee-skill">
-
-												<span>{{ $comp->competence_id }}</span> {{-- to fix it --}}
-
+												@foreach ( $cv->listcompetencescandidats as $comp)
+												<span>{{ $comp->competence->nom }}</span> {{-- to fix it --}}
+												@endforeach
 											</div>
-										@endforeach
+
 
 									</div>
 									<div class="col-md-4 col-sm-4">

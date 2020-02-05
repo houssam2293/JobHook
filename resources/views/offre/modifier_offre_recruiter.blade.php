@@ -20,8 +20,7 @@
 						<div class="detail-desc section">
 							<div class="container white-shadow">
 								<div class="row">
-													<div class="detail-pic"><img src="{{URL::asset('assets/img/can-16.png')}}" class="img" onerror="if (this.src != '{{URL::asset('assets/img/default.png')}}') this.src = '{{URL::asset('assets/img/default.png')}}';" alt="" />
-														<a href="#" class="detail-edit" title="edit"><i class="fa fa-pencil"></i></a>
+													<div class="detail-pic"><img src="{{ asset('storage/'.$offer->recruteur->logo)}}" class="img" onerror="if (this.src != '{{URL::asset('assets/img/default.png')}}') this.src = '{{URL::asset('assets/img/default.png')}}';" alt="" />
 													</div>
 								</div>
 								<div class="row bottom-mrg">
@@ -110,9 +109,6 @@
 								<div class="row no-padd">
 										<div class="detail pannel-footer">
 											<div class="col-md-12 col-sm-12">
-												<div class="detail-pannel-footer-btn pull-right">
-													<a href="#" class="footer-btn choose-cover">Choose Cover Image</a>
-												</div>
 											</div>
 										</div>
 									</div>

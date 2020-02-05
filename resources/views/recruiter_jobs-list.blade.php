@@ -17,7 +17,7 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
 							<div class="search-filter">
-								<div class="col-md-4 col-sm-5">
+								<div class="col-md-4 col-sm-4">
 									<div class="filter-form">
 										<div class="input-group">
 											<input type="text" class="form-control" placeholder="Recherche">
@@ -27,7 +27,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-md-8 col-sm-7">
+								<div class="col-md-4 col-sm-4">
 									<div class="short-by pull-right">
 										Trier par
 										<div class="dropdown">
@@ -40,8 +40,14 @@
 										</div>
 									</div>
 								</div>
+
+								<div class="col-md-4 col-sm-4 pull-right" >
+										<a href="/add-offre"> <button type="button" class="btn btn-default">Ajouter offre</button></a>
+								</div>
 							</div>
+
 						</div>
+
 					</div>
 					<!-- search filter End -->
 

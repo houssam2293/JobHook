@@ -16,7 +16,7 @@
 
 						<div class="detail-pic">
 
-							<img src="{{URL::asset($offer->recruteur->logo)}}" class="img" onerror="if (this.src != '{{URL::asset('assets/img/default.png')}}') this.src = '{{URL::asset('assets/img/default.png')}}';" alt="" />
+							<img src="{{asset('storage/'.$offer->recruteur->logo)}}" class="img" onerror="if (this.src != '{{URL::asset('assets/img/default.png')}}') this.src = '{{URL::asset('assets/img/default.png')}}';" alt="" />
 
 						</div>
 

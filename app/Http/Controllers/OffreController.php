@@ -32,9 +32,9 @@ class OffreController extends Controller
     {
       if (Auth::check()) {
         $userid = Auth::user()->id;
-        $nom = \App\Recruteur::where('user_id', $userid)->firstOrFail()->nom;
+        $recruteur = \App\Recruteur::where('user_id', $userid)->firstOrFail();
         $domains = \App\Domaine::all();
-        return view('offre.add_offer_recruiter', compact('domains'));
+        return view('offre.add_offer_recruiter', compact('domains','recruteur'));
       }else {
         return abort(404);
       }

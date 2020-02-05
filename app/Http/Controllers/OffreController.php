@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Offre;
 use App\Cv;
+use Auth;
 
 class OffreController extends Controller
 {
@@ -27,8 +29,15 @@ class OffreController extends Controller
      */
     public function index()
     {
-      $domains = \App\Domaine::all();
-      return view('offre.add_offer_recruiter', compact('domains'));
+      if (Auth::check()) {
+        $userid = Auth::user()->id;
+        $nom = \App\Recruteur::where('user_id', $userid)->firstOrFail()->nom;
+        $domains = \App\Domaine::all();
+        return view('offre.add_offer_recruiter', compact('domains'));
+      }else {
+        return abort(404);
+      }
+
     }
 
     public function index_offer_list()
@@ -59,6 +68,8 @@ class OffreController extends Controller
          'dateDebut' =>'required'
 
       ]);
+      $userid = Auth::user()->id;
+      $id = \App\Recruteur::where('user_id', $userid)->firstOrFail()->id;
       $offre = new \App\Offre();
       $offre->intitule=request('intitule');
       $offre->type=request('type');
@@ -70,7 +81,7 @@ class OffreController extends Controller
       $offre->duree=request('duree');
       $offre->status="1";
       $offre->competences= request('competences');
-      $offre->recruteur_id=1;
+      $offre->recruteur_id=$id;
       $offre->dateDepot=Carbon::now();
       $offre->dateDebut=Carbon::parse(request('dateDebut'))->format('y-m-d');
       $offre->description=request('description');
@@ -113,6 +124,8 @@ class OffreController extends Controller
         'dateDebut' =>'required'
 
      ]);
+     $userid = Auth::user()->id;
+     $id = \App\Recruteur::where('user_id', $userid)->firstOrFail()->id;
      $offre->intitule=request('intitule');
      $offre->type=request('type');
      $offre->domaine_id=request('domaine');
@@ -123,7 +136,7 @@ class OffreController extends Controller
      $offre->duree=request('duree');
      $offre->status="1";
      $offre->competences= request('competences');
-     $offre->recruteur_id=1;
+     $offre->recruteur_id=$id;
      $offre->dateDepot=Carbon::now();
      $offre->dateDebut=Carbon::parse(request('dateDebut'))->format('y-m-d');
      $offre->description=request('description');
@@ -132,13 +145,14 @@ class OffreController extends Controller
      return redirect('/jobs-list');
     }
 
-    public function showDetail()
+    public function showDetail($cvID)
     {
-      return view('offre.candidat_details');
+      $cv = Cv::findOrFail($cvID);
+      return view('offre.candidat_details',compact('cv'));
     }
     public function showCandidatsList($offreID)
     {
-        $offre = Offre::find($offreID);
+        $offre = Offre::findOrFail($offreID);
         //dd($offre->postulers);
         $postulers=$offre->postulers;
       return view('offre.list-candidat',compact('postulers'));

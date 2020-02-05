@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Diver extends Model
 {
-    protected $primaryKey = "diverId";
-    public function typeDivers(){
-    	return $this->belongsTo('App\TypeDiver');
+    public function typediver(){
+    	return $this->belongsTo('App\Typediver');
+    }
+    public function cv(){
+    	return $this->belongsTo('App\Cv');
     }
 }

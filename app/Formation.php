@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Formation extends Model
 {
-	 protected $primaryKey = "formationId";
 
     public function domaine(){
-    	return $this->belongsTo('App\Domaine','foreign_key');
+    	return $this->belongsTo('App\Domaine');
     }
+		public function cv(){
+    	return $this->belongsTo('App\Cv');
+    }
+
 }

@@ -124,7 +124,7 @@
 									<label for="duree">Annee D'experience Requis (Max=15):</label>
 								</div>
 									<div class="input-group">
-											<input type="number" name="anneeExperience" min="0" max="15" value="{{old('anneeExperience')}}">
+											<input type="number" class="form-control" name="anneeExperience" min="0" max="15" value="{{old('anneeExperience')}}">
 											<p style="color: red">@error('anneeExperience') {{$message}} @enderror</p>
 										</div>
 							</div>
@@ -134,7 +134,7 @@
 									<label for="duree">Duree de contrat :</label>
 								</div>
 									<div class="input-group">
-											<input type="number" name="duree" min="1" value="{{old('duree')}}">
+											<input type="number" class="form-control" name="duree" min="1" value="{{old('duree')}}">
 											<p style="color: red">@error('duree') {{$message}} @enderror</p>
 										</div>
 							</div>

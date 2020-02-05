@@ -10,4 +10,7 @@ class Competence extends Model
   public function listcompetencesoffres(){
     return $this->hasMany('App\Listcompetencesoffre');
   }
+  public function listcompetencescandidats(){
+    return $this->hasMany('App\Listcompetencescandidat');
+  }
 }

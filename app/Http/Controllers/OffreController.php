@@ -160,18 +160,13 @@ class OffreController extends Controller
     }
     public function searchJobDetaille($id){
 
-        $offer = \App\Offre::where('id', $id)
-        ->join('recruteurs', 'offres.recruteur_id', '=', 'recruteurs.id')
-        ->join('domaines', 'offres.domaine_id', '=', 'domaines.id')
-        ->select('offres.id','offres.intitule','offres.diplomeRequis','offres.remuneration','offres.lieu','offres.description','domaines.nom as domain','offres.type','recruteurs.logo', 'recruteurs.nom','offres.updated_at','offres.anneeExperience','recruteurs.type as comptype','recruteurs.adresse','recruteurs.telephone','recruteurs.email','recruteurs.siteWeb')
-        ->get();
-        $offer = $offer[0];
+        $offer = Offre::find($id);
        // $competences = ListCompetencesCandidats::where('cvId',$id)->join('competences', 'listCompetencesCandidats.competenceId', '=', 'competences.competenceId')->get();
         //dd($candidats[0]->cvs);
 
         //dd($offer->listcompetencesoffres);
         Carbon::setlocale('fr');
-     return view('candidate_search-job-details',['offer' => $offer]);
+     return view('candidate_search-job-details',compact('offer'));
    }
     public function destroy($id)
     {

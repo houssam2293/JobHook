@@ -18,7 +18,7 @@
 							<img src="assets/img/client-1.jpg" class="img" onerror="if (this.src != 'assets/img/default.png') this.src = 'assets/img/default.png';" alt="" />
 						</div>
 						<div class="detail-status">
-							<span>7 Hour Days Ago</span>
+							<span>7 Hour Ago</span>
 						</div>
 					</div>
 					<div class="row bottom-mrg mrg-0">
@@ -59,7 +59,6 @@
 							<div class="col-md-7 col-sm-7">
 								<div class="detail-pannel-footer-btn pull-right">
 									<a href="#" class="footer-btn grn-btn" title="">Hire Now</a>
-									<a href="#" class="footer-btn blu-btn" title="">Edit</a>
 								</div>
 							</div>
 						</div>

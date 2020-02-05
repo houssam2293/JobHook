@@ -20,7 +20,6 @@ class CreatePostulerTable extends Migration
             $table->foreign('offre_id')->references('id')->on('offres');
             $table->foreign('cv_id')->references('id')->on('cvs');
             $table->date('datePostuler');
-            $table->unique('offre_id','cv_id');
             $table->timestamps();
         });
     }

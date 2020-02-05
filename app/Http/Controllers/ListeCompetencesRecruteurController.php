@@ -11,11 +11,10 @@ class ListeCompetencesRecruteurController extends Controller
 
       $cometnces = explode(",",$competence);
       $arrlength = count($cometnces);
-
       for($x = 0; $x < $arrlength; $x++) {
       $lcc=new \App\ListCompetencesOffre();
-          $lcc->competenceId =app('App\Http\Controllers\CompetenceController')->store($cometnces[$x]);
-          $lcc->offreId=$offreId;
+          $lcc->competence_id =app('App\Http\Controllers\CompetenceController')->store($cometnces[$x]);
+          $lcc->offre_id=$offreId;
     $lcc->save();
       }
 
@@ -33,7 +32,7 @@ class ListeCompetencesRecruteurController extends Controller
 
   public function destroy($id)
   {
-    $listCompetence = \App\ListCompetencesOffre::where('offreId', $id)->delete();
+    $listCompetence = \App\ListCompetencesOffre::where('offre_id', $id)->delete();
     return;
   }
 }

@@ -11,6 +11,7 @@ class CompetenceController extends Controller
 
 			$competence = Competence::firstOrCreate(['nom' => $competenc]); // insert if not exist!
 			$competence = Competence::firstOrCreate(['nom' => $competenc]); // insert if not exist!
+
     return $competence->id;
 	}
 }

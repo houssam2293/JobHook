@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Offre extends Model
 {
+  protected $fillable = ['status'];
   public function recruteur() {
     return $this->belongsTo('App\Recruteur');
   }
@@ -16,7 +17,11 @@ class Offre extends Model
 
   public function domaine()
     {
-        return $this->hasOne('App\Domaine');
+        return $this->belongsTo('App\Domaine');
+    }
+    public function postulers()
+    {
+      return $this->hasMany('App\Postuler');
     }
     
 }

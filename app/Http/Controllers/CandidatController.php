@@ -18,9 +18,7 @@ class CandidatController extends Controller
   public function index() {
       $id = Auth::user()->id;
       $candidats = Candidat::where('user_id', $id)->get();
-     // dd($candidats[0]->cvs[2]->formations);
-
-
+     
       Carbon::setlocale('fr');
       return view('candidat.edit', ['candidat' => $candidats[0]]);
   }

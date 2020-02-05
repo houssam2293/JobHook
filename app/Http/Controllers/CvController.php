@@ -91,23 +91,7 @@ class CvController extends Controller
 		return redirect()->action('CvController@show',['id'=>$cv->id]);
     }
 
-	public function edit($id){
-        $cv = Cv::where('cvId',$id)->get();
-       $formations = Formation::where('cvId',$id)->join('domaines', 'domaines.domaineId', '=', 'formations.domaineId')->get();
-       $experiences = Experience::where('cvId',$id)->get();
-       $divers = Diver::where('cvId',$id)->join('typedivers', 'typedivers.typeDiverId', '=', 'divers.typeDiverId')->get();
-       $competences = ListCompetencesCandidats::where('cvId',$id)->join('competences', 'listCompetencesCandidats.competenceId', '=', 'competences.competenceId')->get();
 
-      return view('candidate_edit-resume',['formations' => $formations,'cv'=>$cv,'experiences' =>$experiences,'divers'=>$divers,'competences' =>$competences]);
-    }
-/*
-	public function update(Request $request,$id){
-        $cv = Cv::find($id);
-        $cv->titre=$request->input('titre');
-        $cv->save();
-        return redirect('cvs');
-    }
-*/
     public function destroy($id){
          
     	$cv = Cv::find($id);
@@ -118,13 +102,28 @@ class CvController extends Controller
     }
 
 	public function show($id){
+
        $cv = Cv::find($id);
+       if(!$cv)
+        {
+            abort(404);
+        }else{
+       if($cv->candidat->user_id != Auth::user()->id){
+        abort(404);
+         $id = Auth::user()->id;
+      $candidats = Candidat::where('user_id', $id)->get();
+     
+      Carbon::setlocale('fr');
+      return view('candidat.edit', ['candidat' => $candidats[0]]);
+       }
+       else {
+       
        $competences = ListCompetenceCandidat::where('cv_id',$id)->join('competences', 'listCompetencesCandidats.competence_id', '=', 'competences.id')->get();
        Carbon::setlocale('fr');
 
       return view('candidate_show-resume',['cv'=>$cv,'competences' =>$competences]);
-
-    }
+      }
+    }}
 
     public function updateTitre(String $titre,$id){
 

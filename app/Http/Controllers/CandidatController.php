@@ -13,12 +13,14 @@ class CandidatController extends Controller
        $this->middleware('candidat');
        $this->middleware('auth');
   }
-
+  public function dashboard(){
+    return view('candidat.dashboard');
+  }
 //afficher profile
   public function index() {
       $id = Auth::user()->id;
       $candidats = Candidat::where('user_id', $id)->get();
-     
+
       Carbon::setlocale('fr');
       return view('candidat.edit', ['candidat' => $candidats[0]]);
   }
@@ -34,7 +36,7 @@ class CandidatController extends Controller
       $candidat->adresse = $request->input('adresse');
       //$candidat->dateNaissance = $request->input('dateNaissance');
       $candidat->linkedin = $request->input('linkedin');
-       if($request->hasFile('photo')) {        
+       if($request->hasFile('photo')) {
         $candidat->photo = substr($request->photo->store('public'), 7);
       }
       $candidat->save();

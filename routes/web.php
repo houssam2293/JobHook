@@ -108,8 +108,9 @@ Route::get('/candidats-list', function () {
 });
 Route::get('/chart','ChartController@index');
 
-Route::get('/candidats','CandidatController@index');
+Route::get('/candidats','CandidatController@dashboard');
 Route::put('/candidats/{id}','CandidatController@update');
+Route::get('/candidats/modify','CandidatController@index');
 
 Route::get('/recruteurs','recruteurController@dashboard');
 Route::get('/recruteurs/modify','recruteurController@index');

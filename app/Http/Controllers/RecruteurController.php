@@ -16,6 +16,9 @@ class RecruteurController extends Controller
   }
 
   //afficher profile
+    public function dashboard(){
+      return view('recruteur.dashboard');
+    }
     public function profile($id) {
         $recruteur = Recruteur::find($id);
         return view('company_details', compact('recruteur'));

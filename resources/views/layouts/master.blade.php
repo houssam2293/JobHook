@@ -16,6 +16,8 @@
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" id="jssDefault" href="{{ asset('assets/css/colors/green-style.css') }}">
 
+	
+
 	</head>
 	<body>
 

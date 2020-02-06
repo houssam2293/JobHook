@@ -15,7 +15,7 @@ class SearchController extends Controller
 {
   public function search(Request $request)
   {
-    
+
 
       $term = $request->input('term');
       $lieu = $request->input('lieu');

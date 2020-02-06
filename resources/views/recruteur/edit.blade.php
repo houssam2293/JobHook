@@ -2,7 +2,6 @@
 @Section('content')
 
 <div class="clearfix"></div>
-
 			<!-- Header Title Start -->
 			<section class="inner-header-title blank">
 				<div class="container">
@@ -87,12 +86,7 @@
 								</div>
 							</div>
 
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-birthday-cake"></i></span>
-									<input type="text" id="dob" data-lang="en" data-large-mode="true" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" readonly="">
-								</div>
-							</div>
+
 					</div>
 					<div class="row bottom-mrg extra-mrg">
 							<div class="col-md-12">
@@ -143,4 +137,5 @@
 				</div>
 				</div>
 			</section>
+
       @endsection

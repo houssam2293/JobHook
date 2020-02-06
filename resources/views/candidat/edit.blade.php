@@ -122,7 +122,10 @@
 					</div>
 					<div class="row bottom-mrg extra-mrg" >
 						<form>
-							<h2 class="detail-title">Votre cv <button class="push-right">Ajouter</button></h2>
+							<h2 class="detail-title">Vos Cvs<div class="detail-pannel-footer-btn pull-right">
+								<a href="{{url('/create_resume')}}"><button class="add-field center">Ajouter</button></a>
+							</div></h2>
+
 
 							<div class="col-md-12 col-sm-12">
 

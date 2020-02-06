@@ -19,7 +19,7 @@ class CreatePostulerspontanesTable extends Migration
             $table->unsignedBigInteger('recruteur_id');
             $table->unsignedBigInteger('cv_id');
             $table->foreign('recruteur_id')->references('id')->on('recruteurs');
-            $table->foreign('cv_id')->references('id')->on('cvs');
+            $table->foreign('cv_id')->references('id')->on('cvs')->onDelete('cascade');;
             $table->timestamps();
         });
     }

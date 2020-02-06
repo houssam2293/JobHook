@@ -43,14 +43,26 @@ class OffreController extends Controller
 
     public function index_offer_list()
     {
+      if (Auth::check()) {
+        $userid = Auth::user()->id;
+        $recruteur = \App\Recruteur::where('user_id', $userid)->firstOrFail();
       $offers = \App\Offre::all();
       return view('recruiter_jobs-list', compact('offers'));
+    }else {
+      return abort(404);
+    }
     }
 
     public function showJobDetail($offreID){
+      if (Auth::check()) {
+        $userid = Auth::user()->id;
+        $recruteur = \App\Recruteur::where('user_id', $userid)->firstOrFail();
       $offer = \App\Offre::where('id', $offreID)->firstOrFail();
       $domains = \App\Domaine::all();
       return view('recruter_job_detail', compact('offer','domains'));
+    }else {
+      return abort(404);
+    }
     }
     public function store()
     {
@@ -148,15 +160,28 @@ class OffreController extends Controller
 
     public function showDetail($cvID)
     {
+      if (Auth::check()) {
+        $userid = Auth::user()->id;
+        $recruteur = \App\Recruteur::where('user_id', $userid)->firstOrFail();
+
       $cv = Cv::findOrFail($cvID);
       return view('offre.candidat_details',compact('cv'));
+    }else {
+      return abort(404);
+    }
     }
     public function showCandidatsList($offreID)
     {
+      if (Auth::check()) {
+        $userid = Auth::user()->id;
+        $recruteur = \App\Recruteur::where('user_id', $userid)->firstOrFail();
         $offre = Offre::findOrFail($offreID);
         //dd($offre->postulers);
         $postulers=$offre->postulers;
       return view('offre.list-candidat',compact('postulers'));
+    }else {
+      return abort(404);
+    }
     }
     public function searchJobDetaille($id){
 

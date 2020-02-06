@@ -12,24 +12,24 @@
 			<!-- Job Detail Start -->
 			<section class="detail-desc">
 				<div class="container white-shadow">
-				
+
 					<div class="row">
-					
+
 						<div class="detail-pic">
-							<img src="{{URL::to($offer->recruteur->logo)}}" class="img-responsive" alt="" />
-							
+							<img src="{{ asset('storage/'.$offer->recruteur->logo)}}" class="img-responsive" alt="" />
+
 						</div>
-						
+
 						<div class="detail-status">
 							<span>{{ucfirst($offer->updated_at->diffForHumans())}}</span>
 						</div>
-						
+
 					</div>
-					
+
 					<div class="row bottom-mrg">
 						<div class="col-md-8 col-sm-8">
 							<div class="detail-desc-caption">
-								<h4>{{$offer->recruteur->nom}}</h4>
+								<a href="{{url('/company/'.$offer->recruteur->id)}}"><h4>{{$offer->recruteur->nom}}</h4></a>
 								<span class="designation">{{$offer->intitule}}</span>
 								<p>{{$offer->description}}</p>
 								<ul>
@@ -39,7 +39,7 @@
 								</ul>
 							</div>
 						</div>
-						
+
 						<div class="col-md-4 col-sm-4">
 							<div class="get-touch">
 								<h4>Infos</h4>
@@ -52,9 +52,9 @@
 								</ul>
 							</div>
 						</div>
-						
+
 					</div>
-					
+
 					<div class="row no-padd">
 						<div class="detail pannel-footer">
 							{{-- <div class="col-md-5 col-sm-5">
@@ -66,7 +66,7 @@
 									<li><a href="#"><i class="fa fa-instagram"></i></a></li>
 								</ul>
 							</div> --}}
-							
+
 							<div class="col-md-7 col-sm-7">
 								<div class="detail-pannel-footer-btn pull-right">
 									<button class="add-field" v-on:click="postuler">Appliquer mtn</button>
@@ -82,25 +82,25 @@
 			<section class="full-detail-description full-detail">
 				<div class="container">
 					<div class="row row-bottom">
-						<h2 class="detail-title">Responsibilité du poste</h2>
+						<h2 class="detail-title">Description</h2>
 						<p>{{$offer->description}}</p>
 					</div>
-					
+
 					<div class="row row-bottom">
 						<h2 class="detail-title">Compétences requises</h2>
-						
+
 						<ul class="detail-list">
 							@foreach ($offer->listcompetencesoffres as $element)
-								<li>{{$element->competence}}vv </li> {{-- to fix it --}}
+								<li>{{$element->competence->nom}}</li>
 							@endforeach
-							
-							
+
+
 						</ul>
 					</div>
-					
-				</div>	
 
-			
+				</div>
+
+
 				</section>
 
 			</section>
@@ -111,13 +111,13 @@
              <script src="{{ asset('js/sweetalert.js') }}"></script>
 
      <script type="text/javascript">
-     		
+
      		window.Laravel={!! json_encode([
            	'csrfToken' 	=> csrf_token(),
-           	'cvs' => $candidats[0]->cvs,
+           	'cvs' => Auth::user()->candidat->cvs,
            	'offreId' => $offer->id,
             'url' 			=>url('/')]) !!} ;
-     </script> 
+     </script>
 
 <script>
 
@@ -128,8 +128,8 @@
        	 message: "Detail d'emploie",
        	 cvs: window.Laravel.cvs,
        	 offreId: window.Laravel.offreId
-       	 
-  	}, 
+
+  	},
     methods:{
     	postuler: function(){
     		(async () => {
@@ -138,11 +138,11 @@
 				a = this.cvs.length;
 				var obj ={};
 				for(i = 0; i < a; i++){
-       		
+
 		       		var name = this.cvs[i].titre;
 		       		var id = this.cvs[i].id;
 		       		obj[id] = name;
-		       		
+
 		       	}
 				const inputOptions = obj;
 				const { value: cv } = await Swal.fire({
@@ -161,7 +161,7 @@
 
 	       			console.log(response.data);
 	       			if(response.data.etat){
-	       				
+
 	       			}
 	       		})
 	       		.catch(error => {
@@ -170,10 +170,10 @@
 	       		})
 
 				if (cv) {
-				  Swal.fire({ html: `<b>Vous aver postuler avec</b>: ${name}` })
+				  Swal.fire({ html: `<b>Vous avez postuler avec</b>: ${name}` })
 				}
 				else {
-					Swal.fire({ html: `<b>Vous aver pas postuler error*	</b>` })
+					Swal.fire({ html: `<b>Vous avez pas postuler error*	</b>` })
 				}
 
 				})()
@@ -186,5 +186,5 @@
 })
 
 </script>
- 			
+
 @endsection

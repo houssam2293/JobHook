@@ -35,7 +35,7 @@
 
 								</div>
 								<div class="col-md-2 col-sm-2">
-									<button type="submit" class="btn btn-primary">Filter</button>
+									<button type="submit" class="btn btn-primary">Recherche</button>
 								</div>
 							</form>
 						</div>
@@ -46,7 +46,7 @@
 							<div class="brows-job-list">
 								<div class="col-md-1 col-sm-2 small-padding">
 									<div class="brows-job-company-img">
-										<a href="job-detail.html"><img src="{{ asset($offre->recruteur->logo) }}" class="img-responsive" alt="" /></a>
+										<a href="job-detail.html"><img src="{{ asset('storage/'.$offre->recruteur->logo) }}" class="img-responsive" alt="" /></a>
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-5">
@@ -65,7 +65,7 @@
 								</div>
 								<div class="col-md-2 col-sm-2">
 									<div class="brows-job-link">
-										<a href="{{('job-details')}}" class="btn btn-default">Apply Now</a>
+										<a href="{{'search-job-details/'.$offre->id}}" class="btn btn-default">Detail</a>
 									</div>
 								</div>
 							</div>

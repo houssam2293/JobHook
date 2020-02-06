@@ -11,11 +11,15 @@ use Auth;
 class RecruteurController extends Controller
 {
   public function __construct() {
-       $this->middleware('recruteur');
+       $this->middleware('recruteur')->except('profile');
        $this->middleware('auth');
   }
 
   //afficher profile
+    public function profile($id) {
+        $recruteur = Recruteur::find($id);
+        return view('company_details', compact('recruteur'));
+    }
     public function index() {
         $id = Auth::user()->id;
         $recruteurs = Recruteur::where('user_id', $id)->get();

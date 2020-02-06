@@ -122,7 +122,7 @@
 					</div>
 					<div class="row bottom-mrg extra-mrg" >
 						<form>
-							<h2 class="detail-title">Votre cv</h2>
+							<h2 class="detail-title">Votre cv <button class="push-right">Ajouter</button></h2>
 
 							<div class="col-md-12 col-sm-12">
 

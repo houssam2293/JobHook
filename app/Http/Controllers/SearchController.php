@@ -15,11 +15,7 @@ class SearchController extends Controller
 {
   public function search(Request $request)
   {
-    $postuler = new Postulerspontane();
-    $postuler->cv_id=1;
-    $postuler->recruteur_id=2;
 
-    $postuler->save();
 
       $term = $request->input('term');
       $lieu = $request->input('lieu');

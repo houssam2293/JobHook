@@ -9,6 +9,7 @@ use App\Offre;
 use Carbon\Carbon;
 use App\Postuler;
 use App\Postulerspontane;
+use Auth;
 
 class ChartController extends Controller
 {
@@ -16,11 +17,12 @@ class ChartController extends Controller
     {
         $borderColors = [];
         $fillColors = [];
-        $offres = Offre::all();
-        $cdi = Offre::where('type',"CDI")->get();
-        $cdd = Offre::where('type',"CDD")->get();
-        $anem = Offre::where('type',"ANEM")->get();
-        $stage = Offre::where('type',"STAGE")->get();
+        $id = Auth::user()->recruteur->id;
+        $offres = Offre::where('recruteur_id', $id)->get();
+        $cdi = Offre::where('type',"CDI")->where('recruteur_id', $id)->get();
+        $cdd = Offre::where('type',"CDD")->where('recruteur_id', $id)->get();
+        $anem = Offre::where('type',"ANEM")->where('recruteur_id', $id)->get();
+        $stage = Offre::where('type',"STAGE")->where('recruteur_id', $id)->get();
         $postuleN = Postuler::all();
         $postuleS = Postulerspontane::all();
 
@@ -94,7 +96,7 @@ class ChartController extends Controller
       $wilayas=array_unique($wilayas);
       $vals =[];
       foreach ($wilayas as $w ) {
-        array_push($vals,Offre::where('lieu', $w)->count());
+        array_push($vals,Offre::where('lieu', $w)->where('recruteur_id', $id)->count());
 
       }
       $offreWilaya = new OfferPerYear;
@@ -121,7 +123,7 @@ class ChartController extends Controller
             $r=rand(1,255);
             $g=rand(1,255);
             $b=rand(1,255);
-            $data = Offre::where('created_at','LIKE',$year.'%')->get();
+            $data = Offre::where('created_at','LIKE',$year.'%')->where('recruteur_id', $id)->get();
             foreach ($data as $v) {
                 for ($x = 0; $x <= 11; $x++) {
                     if($v->created_at->month==$x+1){

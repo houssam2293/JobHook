@@ -127,7 +127,7 @@
 					<div class="row bottom-mrg extra-mrg" >
 						<form>
 							<h2 class="detail-title">Vos Cvs<div class="detail-pannel-footer-btn pull-right">
-								<a href="{{url('/create_resume')}}"><button class="add-field center">Ajouter</button></a>
+								<a href="{{('/create_resume')}}"  class="footer-btn grn-btn">Ajouter</a>
 							</div></h2>
 
 

@@ -126,7 +126,7 @@
 									<div class="col-md-6 col-sm-6">
 										<div class="input-group">
 											<span class="input-group-addon">Fin</span>
-											<input name="diver_date_fin[]" type="text" id="company-dob" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control">
+											<input name="diver_date_fin[]" type="text"  data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control">
 										</div>
 									</div>
 {{--

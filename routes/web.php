@@ -53,7 +53,7 @@ Route::POST('addSpontane/{idRec}/{idCand}','PostulerController@addSpontane');
 
 //ADD CV
 Route::get('/create_resume','CvController@index');
-Route::post('create_resume','CvController@store');
+Route::post('/create_resume','CvController@store');
 //delete cv
 Route::get('destroy/{id}','CvController@destroy'); //vu js suprimer Divers in show cv blade
 

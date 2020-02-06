@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Offre;
 use App\Competence;
+use App\Postulerspontane;
 use App\Domaine;
 use App\Recruteur;
 
@@ -14,6 +15,12 @@ class SearchController extends Controller
 {
   public function search(Request $request)
   {
+    $postuler = new Postulerspontane();
+    $postuler->cv_id=1;
+    $postuler->recruteur_id=2;
+
+    $postuler->save();
+
       $term = $request->input('term');
       $lieu = $request->input('lieu');
       if($lieu == "Choisissez la ville")

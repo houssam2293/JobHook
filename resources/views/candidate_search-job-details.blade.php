@@ -29,7 +29,7 @@
 					<div class="row bottom-mrg">
 						<div class="col-md-8 col-sm-8">
 							<div class="detail-desc-caption">
-								<h4>{{$offer->recruteur->nom}}</h4>
+								<a href="{{url('/company/'.$offer->recruteur->id)}}"><h4>{{$offer->recruteur->nom}}</h4></a>
 								<span class="designation">{{$offer->intitule}}</span>
 								<p>{{$offer->description}}</p>
 								<ul>

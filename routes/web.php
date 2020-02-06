@@ -49,6 +49,7 @@ Route::put('updateCompetences/{titre}/{cv}','ListCompetencesCandidatController@u
 
 //candidat postuler
 Route::POST('addPostuler/{idCv}/{idCand}','PostulerController@addPostuler');
+Route::POST('addSpontane/{idRec}/{idCand}','PostulerController@addSpontane');
 
 //ADD CV
 Route::get('create_resume','CvController@index');
@@ -111,6 +112,7 @@ Route::get('/candidats','CandidatController@index');
 Route::put('/candidats/{id}','CandidatController@update');
 
 Route::get('/recruteurs','recruteurController@index');
+Route::get('/company/{id}','recruteurController@profile');
 Route::put('/recruteurs/{id}','recruteurController@update');
 
 Route::get('logout', 'Auth\LoginController@logout', function () {

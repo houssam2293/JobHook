@@ -21,8 +21,8 @@
       {{ $offreperT->script() }}
     </div>
     <div class="col-md-6 col-sm-6">
-      {{ $offreWilaya->container() }}
-      {{ $offreWilaya->script() }}
+      {{ $offreperP->container() }}
+      {{ $offreperP->script() }}
     </div>
   </div>
 @endsection
